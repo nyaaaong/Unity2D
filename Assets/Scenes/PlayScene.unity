@@ -238,7 +238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc0a8010a4e04844b388742a42e559e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Animator: {fileID: 0}
   m_MoveSpeed: 1
   m_DefaultAnimName: Idle_Right
 --- !u!212 &674752846

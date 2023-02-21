@@ -14,12 +14,8 @@ enum Player_Status
 enum Player_Dir
 {
 	Up,
-	UpLeft,
-	UpRight,
 	Left,
 	Right,
 	Down,
-	DownLeft,
-	DownRight,
 	End
 }
