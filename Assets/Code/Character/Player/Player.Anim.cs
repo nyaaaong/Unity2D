@@ -44,22 +44,22 @@ public partial class Player : Character
 
 		else
 		{
-			if (m_P2MAngle == 180.0f || (m_P2MAngle < 180.0f & m_P2MAngle > 105.0f))
+			if (m_P2MAngle == 180.0f || (m_P2MAngle < 180.0f && m_P2MAngle > 105.0f))
 				m_AnimName += "LeftUp";
 
-			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f & m_P2MAngle > 75.0f))
+			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f && m_P2MAngle > 75.0f))
 				m_AnimName += "Up";
 
-			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f & m_P2MAngle > 0.0f))
+			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f && m_P2MAngle > 0.0f))
 				m_AnimName += "RightUp";
 
-			else if (m_P2MAngle == 0.0f || (m_P2MAngle < 0.0f & m_P2MAngle > -75.0f))
+			else if (m_P2MAngle == 0.0f || (m_P2MAngle < 0.0f && m_P2MAngle > -75.0f))
 				m_AnimName += "RightDown";
 
-			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f & m_P2MAngle > -105.0f))
+			else if (m_P2MAngle == -75.0f || (m_P2MAngle < -75.0f && m_P2MAngle > -105.0f))
 				m_AnimName += "Down";
 
-			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f & m_P2MAngle > -180.0f))
+			else if (m_P2MAngle == -105.0f || (m_P2MAngle < -105.0f && m_P2MAngle > -180.0f))
 				m_AnimName += "LeftDown";
 		}
 	}
@@ -77,12 +77,12 @@ public partial class Player : Character
 				CheckAnimDir();
 				break;
 			case Player_Status.End:
-				m_AnimName = m_DefaultAnimName;
+				Debug.LogError("case Player_Status.End:");
 				break;
 		}
 
 		if (m_AnimName == "Idle_" || m_AnimName == "Walk_")
-			m_AnimName = m_DefaultAnimName;
+			Debug.LogError("m_AnimName == Idle_ || m_AnimName == Walk_");
 
 		if (m_PrevAnimName != m_AnimName) // 이걸 하지 않으면 애니메이션이 굉장히 빨라진다.
 		{
