@@ -108,7 +108,7 @@ public partial class Player : Character
 			transform.position += Movedir * m_MoveSpeed * m_deltaTime;
 	}
 
-	private void KeyCheck()
+	private void MoveKeyCheck()
 	{
 		Move(UP);
 		Move(LEFT);

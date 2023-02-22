@@ -19,3 +19,11 @@ enum Player_Dir
 	Down,
 	End
 }
+
+enum Player_WeaponSlot
+{
+	Pistol,
+	Rifle,
+	Sniper,
+	End
+}

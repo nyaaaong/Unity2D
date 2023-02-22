@@ -9,35 +9,59 @@ public partial class Player : Character
 {
 	private void CheckAnimDir()
 	{
-		if (m_Dir[UP])
+		if (m_Slot == Player_WeaponSlot.End)
 		{
-			if (m_Dir[LEFT])
+			if (m_Dir[UP])
+			{
+				if (m_Dir[LEFT])
+					m_AnimName += "LeftUp";
+
+				else if (m_Dir[RIGHT])
+					m_AnimName += "RightUp";
+
+				else
+					m_AnimName += "Up";
+			}
+
+			else if (m_Dir[DOWN])
+			{
+				if (m_Dir[LEFT])
+					m_AnimName += "LeftDown";
+
+				else if (m_Dir[RIGHT])
+					m_AnimName += "RightDown";
+
+				else
+					m_AnimName += "Down";
+			}
+
+			else if (m_Dir[LEFT])
+				m_AnimName += "Left";
+
+			else if (m_Dir[RIGHT])
+				m_AnimName += "Right";
+		}
+
+		else
+		{
+			if (m_P2MAngle == 180.0f || (m_P2MAngle < 180.0f & m_P2MAngle > 105.0f))
 				m_AnimName += "LeftUp";
 
-			else if (m_Dir[RIGHT])
+			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f & m_P2MAngle > 75.0f))
+				m_AnimName += "Up";
+
+			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f & m_P2MAngle > 0.0f))
 				m_AnimName += "RightUp";
 
-			else
-				m_AnimName += "Up";
-		}
-
-		else if (m_Dir[DOWN])
-		{
-			if (m_Dir[LEFT])
-				m_AnimName += "LeftDown";
-
-			else if (m_Dir[RIGHT])
+			else if (m_P2MAngle == 0.0f || (m_P2MAngle < 0.0f & m_P2MAngle > -75.0f))
 				m_AnimName += "RightDown";
 
-			else
+			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f & m_P2MAngle > -105.0f))
 				m_AnimName += "Down";
+
+			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f & m_P2MAngle > -180.0f))
+				m_AnimName += "LeftDown";
 		}
-
-		else if (m_Dir[LEFT])
-			m_AnimName += "Left";
-
-		else if (m_Dir[RIGHT])
-			m_AnimName += "Right";
 	}
 
 	private void AnimCheck()
@@ -58,7 +82,7 @@ public partial class Player : Character
 		}
 
 		if (m_AnimName == "Idle_" || m_AnimName == "Walk_")
-			Debug.LogError("m_AnimName이 Idle_거나 Walk_입니다");
+			m_AnimName = m_DefaultAnimName;
 
 		if (m_PrevAnimName != m_AnimName) // 이걸 하지 않으면 애니메이션이 굉장히 빨라진다.
 		{
