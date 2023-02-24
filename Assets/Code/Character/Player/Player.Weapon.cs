@@ -5,27 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public partial class Player
+public partial class Player	:	Character
 {
-	private void EquipWeapon(Player_WeaponSlot slot)
+	private void EquipWeapon(Weapon_Type slot)
 	{
 		if (m_HasWeapon[(int)slot])
-			m_Slot = slot;
+			m_WeapType = slot;
 
 		else
-			m_Slot = Player_WeaponSlot.End;
+			m_WeapType = Weapon_Type.End;
 	}
 
 	private void ChangeWeapon()
 	{
 		if (Input.GetKeyDown(KeyCode.Alpha1))
-			EquipWeapon(Player_WeaponSlot.Pistol);
+			EquipWeapon(Weapon_Type.Pistol);
 
 		else if (Input.GetKeyDown(KeyCode.Alpha2))
-			EquipWeapon(Player_WeaponSlot.Rifle);
+			EquipWeapon(Weapon_Type.Rifle);
 
 		else if (Input.GetKeyDown(KeyCode.Alpha3))
-			EquipWeapon(Player_WeaponSlot.Sniper);
+			EquipWeapon(Weapon_Type.Sniper);
 	}
 
 	private void WeaponKeyCheck()

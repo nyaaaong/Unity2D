@@ -49,7 +49,7 @@ public partial class Player : Character
 				!m_KeyDown[RIGHT])
 			{
 				m_Move = false;
-				m_Status = Player_Status.Idle;
+				m_Status = Character_Status.Idle;
 			}
 		}
 	}
@@ -100,7 +100,7 @@ public partial class Player : Character
 			m_KeyDown[dir] = true;
 
 			m_Dir[dir] = true;
-			m_Status = Player_Status.Walk;
+			m_Status = Character_Status.Walk;
 			m_Move = true;
 		}
 

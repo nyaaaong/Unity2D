@@ -9,7 +9,7 @@ public partial class Player : Character
 {
 	private void CheckAnimDir()
 	{
-		if (m_Slot == Player_WeaponSlot.End)
+		if (m_WeapType == Weapon_Type.End)
 		{
 			if (m_Dir[UP])
 			{
@@ -45,22 +45,82 @@ public partial class Player : Character
 		else
 		{
 			if (m_P2MAngle == 180.0f || (m_P2MAngle < 180.0f && m_P2MAngle > 105.0f))
+			{
+				if (m_WeapType != Weapon_Type.End)
+					m_HandDir = Weapon_Hand.Left;
+
+				else
+					m_HandDir = Weapon_Hand.None;
+
+				m_WeapRenderOrder = Weapon_RenderOrder.Back;
+
 				m_AnimName += "LeftUp";
+			}
 
 			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f && m_P2MAngle > 75.0f))
+			{
+				if (m_WeapType != Weapon_Type.End)
+					m_HandDir = Weapon_Hand.Left;
+
+				else
+					m_HandDir = Weapon_Hand.None;
+
+				m_WeapRenderOrder = Weapon_RenderOrder.Back;
+
 				m_AnimName += "Up";
+			}
 
 			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f && m_P2MAngle > 0.0f))
+			{
+				if (m_WeapType != Weapon_Type.End)
+					m_HandDir = Weapon_Hand.Right;
+
+				else
+					m_HandDir = Weapon_Hand.None;
+
+				m_WeapRenderOrder = Weapon_RenderOrder.Back;
+
 				m_AnimName += "RightUp";
+			}
 
 			else if (m_P2MAngle == 0.0f || (m_P2MAngle < 0.0f && m_P2MAngle > -75.0f))
+			{
+				if (m_WeapType != Weapon_Type.End)
+					m_HandDir = Weapon_Hand.Right;
+
+				else
+					m_HandDir = Weapon_Hand.None;
+
+				m_WeapRenderOrder = Weapon_RenderOrder.Front;
+
 				m_AnimName += "RightDown";
+			}
 
 			else if (m_P2MAngle == -75.0f || (m_P2MAngle < -75.0f && m_P2MAngle > -105.0f))
+			{
+				if (m_WeapType != Weapon_Type.End)
+					m_HandDir = Weapon_Hand.Right;
+
+				else
+					m_HandDir = Weapon_Hand.None;
+
+				m_WeapRenderOrder = Weapon_RenderOrder.Front;
+
 				m_AnimName += "Down";
+			}
 
 			else if (m_P2MAngle == -105.0f || (m_P2MAngle < -105.0f && m_P2MAngle > -180.0f))
+			{
+				if (m_WeapType != Weapon_Type.End)
+					m_HandDir = Weapon_Hand.Left;
+
+				else
+					m_HandDir = Weapon_Hand.None;
+
+				m_WeapRenderOrder = Weapon_RenderOrder.Front;
+
 				m_AnimName += "LeftDown";
+			}
 		}
 	}
 
@@ -68,16 +128,16 @@ public partial class Player : Character
 	{
 		switch (m_Status)
 		{
-			case Player_Status.Idle:
+			case Character_Status.Idle:
 				m_AnimName = "Idle_";
 				CheckAnimDir();
 				break;
-			case Player_Status.Walk:
+			case Character_Status.Walk:
 				m_AnimName = "Walk_";
 				CheckAnimDir();
 				break;
-			case Player_Status.End:
-				Debug.LogError("case Player_Status.End:");
+			case Character_Status.End:
+				Debug.LogError("case Character_Status.End:");
 				break;
 		}
 

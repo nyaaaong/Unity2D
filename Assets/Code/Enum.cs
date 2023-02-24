@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-enum Player_Status
+public enum Character_Status
 {
 	Idle,
 	Walk,
 	End
 }
 
-enum Player_Dir
+public enum Player_Dir
 {
 	Up,
 	Left,
@@ -20,10 +20,29 @@ enum Player_Dir
 	End
 }
 
-enum Player_WeaponSlot
+public enum Weapon_Type
 {
 	Pistol,
 	Rifle,
 	Sniper,
 	End
+}
+
+public enum Weapon_Hand
+{
+	None,
+	Right,
+	Left
+}
+
+public enum Weapon_Owner
+{
+	Player,
+	Monster
+}
+
+public enum Weapon_RenderOrder
+{
+	Front = 1,
+	Back = -1
 }
