@@ -1,0 +1,1317 @@
+fileFormatVersion: 2
+guid: 121d5aab26d6fff42b52f20a0d17ea57
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 72
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player_Dodge_Down_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 339
+        width: 48
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5344ea3396eb7244eb0dbbc9be806a5f
+      internalID: -767169563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 351
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfdb6e2595e376346a61a018fe85f46c
+      internalID: 1868896897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 339
+        width: 48
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4fe9dbf3c6c224baabfda7ca62d580
+      internalID: 1595608660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 321
+        width: 42
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9428b21c6d9a0469317ea6e5209dd1
+      internalID: -235746834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_5
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 309
+        width: 54
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4db362a25eb33d4a99f954c7388aa53
+      internalID: 1893610379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_9
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 309
+        width: 48
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac7dd284cf34c14d95ce13d0a4d65cd
+      internalID: -2028692919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_9
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 317
+        width: 39
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5db9085e8d6cd94e90734e78b02305b
+      internalID: 2066606066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_8
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 316
+        width: 42
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c3bbf20da6337b44a941710e18acdbe
+      internalID: 652607741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_7
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 317
+        width: 51
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86272192f43f00142a2432386bb272a1
+      internalID: -944041965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_5
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 317
+        width: 48
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 526eb9635896ce243bec0d841e4d58ff
+      internalID: 350197146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_4
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 335
+        width: 60
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161d1790903678f4bbcefa5f6b23d453
+      internalID: 320248021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_3
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 353
+        width: 72
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd5da42ba6777e4385049aaccaf462e
+      internalID: 2103785306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_2
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 359
+        width: 72
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e62dd196caba1747b37dce32ec48546
+      internalID: -115717731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_1
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 353
+        width: 72
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e72db45ee515f5409794b3bbbcc4116
+      internalID: -433114689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_6
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 309
+        width: 54
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40e577cdeef703649ac33f705f76328a
+      internalID: -1579477750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_7
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 309
+        width: 42
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55fbab2bfdc5c44eb9f5b4f6c08ae0f
+      internalID: -1058212675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Down_8
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 309
+        width: 42
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec02eaa484e55048908685ae40aa1ea
+      internalID: -1632754136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Left_6
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 317
+        width: 60
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 001672de4ae407b48944d8afe950e9ba
+      internalID: 1795804354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 243
+        width: 72
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3872eb0ad44754544b1841fe6458cde6
+      internalID: 1313090456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_2
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 249
+        width: 72
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4881625c708cf945901ccb9f1d6925d
+      internalID: -1577801554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_3
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 243
+        width: 72
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba74f31b8a8203044aa5068bd57ae458
+      internalID: -1803456210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_4
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 225
+        width: 60
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9035f962f623f464187da7d4fc35807b
+      internalID: 2017078392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 207
+        width: 48
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d93cad0229c77104da0f06c267f575fb
+      internalID: 1273860524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_7
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 207
+        width: 51
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f0e3f8f5d7062b44b36222621b2078c
+      internalID: 1664193988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_8
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 207
+        width: 42
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c995aea72d0855045b7f4334257b1e81
+      internalID: -990949467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_9
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 207
+        width: 39
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89257d6778103fd4aa6c13bd96427251
+      internalID: 839764396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Right_6
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 207
+        width: 60
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69ef089504d58647a3818d2c759ebd5
+      internalID: -515895536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 138
+        width: 48
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f8176dacd1c981448c613f713b0a0f4
+      internalID: -1488348482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 144
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae329032fb968cf4e81122741c1f69e9
+      internalID: -1649569526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 150
+        width: 48
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 468285ae0b1bfd64f88d310fe4aa8d4e
+      internalID: 1344104913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 132
+        width: 48
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d38e14eb189652c4fbe81d112eee4a4a
+      internalID: 1010717113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_5
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 105
+        width: 54
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3112c03827589b4e9239913f6b67f2b
+      internalID: 852743271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_8
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 105
+        width: 48
+        height: 51
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e64764cf9616104e91c9294deda4576
+      internalID: 584599088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_9
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 108
+        width: 48
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f0f7a49eb92db0419fecbba8a8b63cf
+      internalID: -33627582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_9
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 110
+        width: 39
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b3032f1925aef43959bb5257ba0d47
+      internalID: -2077857964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_8
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 110
+        width: 42
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f9dfbc8fbf2d86488a5b5661734e39d
+      internalID: 56231139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_7
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 110
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805592fcc468cdb46a27ad1faee224d1
+      internalID: 2132126240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_5
+      rect:
+        serializedVersion: 2
+        x: 815
+        y: 110
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86bbc1a8c36fd9d479717b2d0e14760e
+      internalID: -1867824713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_4
+      rect:
+        serializedVersion: 2
+        x: 869
+        y: 131
+        width: 63
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417c118e8b3e601418fb2242205cd85c
+      internalID: 602143275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_3
+      rect:
+        serializedVersion: 2
+        x: 938
+        y: 149
+        width: 60
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b406dceb1ea1442a00a683e8a8807a
+      internalID: 1633337623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_2
+      rect:
+        serializedVersion: 2
+        x: 1004
+        y: 143
+        width: 57
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01bbc88ecebe00e45a158c92b5089735
+      internalID: -769286578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_1
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 131
+        width: 57
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d484ee735e2e3994897965214f1e7cba
+      internalID: -1474606016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_6
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 105
+        width: 60
+        height: 39
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60a0894fcb424054e990b0dddd63f6b5
+      internalID: 1727744281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_Up_7
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 105
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 139b231f79ccfcc409785b1db2753114
+      internalID: -1315711647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_LeftUp_6
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 110
+        width: 54
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7a01eff364b5d44e9345f8c3e6d7f93
+      internalID: -604221116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 21
+        width: 57
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6106afe5f12a3d84ba607757efb4ad12
+      internalID: -1550713328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 33
+        width: 57
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85d16de0bbccb847a51b23256d6fafa
+      internalID: 847236794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_3
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 39
+        width: 60
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe7d7bb526a7acd4595d7e4acedc5729
+      internalID: 299100180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 21
+        width: 63
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b59b33e3a8df15140a88a8686ebdd3d2
+      internalID: 194058139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_5
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 0
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc520049a95aca49b6f9cd850fdaf86
+      internalID: 1489227528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_7
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 0
+        width: 48
+        height: 45
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76cb2774b7341224b8fc8bc62b2489ca
+      internalID: -1581754115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_8
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 0
+        width: 42
+        height: 57
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025450e02a24c6841bede65eedb2c81f
+      internalID: 240990705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_9
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 0
+        width: 39
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24052dc5cefc52c4abfe4608b012f4bc
+      internalID: 1629273535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_Dodge_RightUp_6
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 0
+        width: 54
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f4f9f04cc8db9d4aa6ea695576a4005
+      internalID: -725711774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Player_Dodge_Right_2: -1577801554
+      Player_Dodge_LeftUp_2: -769286578
+      Player_Dodge_Up_2: -1649569526
+      Player_Dodge_LeftUp_4: 602143275
+      Player_Dodge_RightUp_2: 847236794
+      Player_Dodge_RightUp_8: 240990705
+      Player_Dodge_Left_3: 2103785306
+      Player_Dodge_LeftUp_1: -1474606016
+      Player_Dodge_Left_5: 350197146
+      Player_Dodge_LeftUp_3: 1633337623
+      Player_Dodge_Right_3: -1803456210
+      Player_Dodge_Up_4: 1010717113
+      Player_Dodge_3: -1654764966
+      Player_Dodge_LeftUp_9: -2077857964
+      Player_Dodge_LeftUp_6: -604221116
+      Player_Dodge_6: 316239393
+      Player_Dodge_Right_9: 839764396
+      Player_Dodge_RightUp_9: 1629273535
+      Player_Dodge_Left_1: -433114689
+      Player_Dodge_Up_5: 852743271
+      Player_Dodge_Up_8: 584599088
+      Player_Dodge_RightUp_7: -1581754115
+      Player_Dodge_1: -328398224
+      Player_Dodge_5: -353482680
+      Player_Dodge_LeftUp_7: 2132126240
+      Player_Dodge_Up_1: -1488348482
+      Player_Dodge_Up_7: -1315711647
+      Player_Dodge_Down_1: -767169563
+      Player_Dodge_RightUp_1: -1550713328
+      Player_Dodge_Right_4: 2017078392
+      Player_Dodge_RightUp_3: 299100180
+      Player_Dodge_LeftUp_8: 56231139
+      Player_Dodge_Left_9: 2066606066
+      Player_Dodge_Left_4: 320248021
+      Player_Dodge_RightUp_4: 194058139
+      Player_Dodge_RightUp_5: 1489227528
+      Player_Dodge_Right_5: 1273860524
+      Player_Dodge_Up_6: 1727744281
+      Player_Dodge_RightUp_6: -725711774
+      Player_Dodge_4: 1185704602
+      Player_Dodge_Right_6: -515895536
+      Player_Dodge_Down_6: -1579477750
+      Player_Dodge_Left_7: -944041965
+      Player_Dodge_Down_5: 1893610379
+      Player_Dodge_Down_7: -1058212675
+      Player_Dodge_LeftUp_5: -1867824713
+      Player_Dodge_Left_6: 1795804354
+      Player_Dodge_0: -634376812
+      Player_Dodge_Left_8: 652607741
+      Player_Dodge_Down_8: -1632754136
+      Player_Dodge_Down_9: -2028692919
+      Player_Dodge_Right_1: 1313090456
+      Player_Dodge_Down_4: -235746834
+      Player_Dodge_Up_9: -33627582
+      Player_Dodge_Right_7: 1664193988
+      Player_Dodge_Right_8: -990949467
+      Player_Dodge_Down_2: 1868896897
+      Player_Dodge_Up_3: 1344104913
+      Player_Dodge_Left_2: -115717731
+      Player_Dodge_Down_3: 1595608660
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

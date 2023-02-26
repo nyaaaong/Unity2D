@@ -1,15 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public partial class Player : Character
 {
-	private void CheckAnimDir()
+	private void AnimDirCheck()
 	{
-		if (m_WeapType == Weapon_Type.End)
+		if (m_Status == Character_Status.Dodge)
+		{
+			if (m_LastDir[UP])
+			{
+				if (m_LastDir[LEFT])
+					m_AnimName += "LeftUp";
+
+				else if (m_LastDir[RIGHT])
+					m_AnimName += "RightUp";
+
+				else
+					m_AnimName += "Up";
+			}
+
+			else if (m_LastDir[DOWN])
+			{
+				if (m_LastDir[LEFT])
+					m_AnimName += "LeftDown";
+
+				else if (m_LastDir[RIGHT])
+					m_AnimName += "RightDown";
+
+				else
+					m_AnimName += "Down";
+			}
+
+			else if (m_LastDir[LEFT])
+				m_AnimName += "Left";
+
+			else if (m_LastDir[RIGHT])
+				m_AnimName += "Right";
+		}
+
+		else if (m_WeapType == Weapon_Type.End)
 		{
 			if (m_Dir[UP])
 			{
@@ -124,25 +152,38 @@ public partial class Player : Character
 		}
 	}
 
+	private void DodgeAnimEnd()
+	{
+		m_Status = Character_Status.Idle;
+
+		m_NoHit = false;
+		m_Move = false;
+		m_KeyLock = false;
+		m_HideWeapon = false;
+	}
+
 	private void AnimCheck()
 	{
 		switch (m_Status)
 		{
 			case Character_Status.Idle:
 				m_AnimName = "Idle_";
-				CheckAnimDir();
 				break;
 			case Character_Status.Walk:
 				m_AnimName = "Walk_";
-				CheckAnimDir();
+				break;
+			case Character_Status.Dodge:
+				m_AnimName = "Dodge_";
 				break;
 			case Character_Status.End:
 				Debug.LogError("case Character_Status.End:");
 				break;
 		}
 
-		if (m_AnimName == "Idle_" || m_AnimName == "Walk_")
-			Debug.LogError("m_AnimName == Idle_ || m_AnimName == Walk_");
+		AnimDirCheck();
+
+		if (m_AnimName == "Idle_" || m_AnimName == "Walk_" || m_AnimName == "Dodge_")
+			Debug.LogError("m_AnimName == Idle_ || m_AnimName == Walk_ || m_AnimName == Dodge_");
 
 		if (m_PrevAnimName != m_AnimName) // 이걸 하지 않으면 애니메이션이 굉장히 빨라진다.
 		{

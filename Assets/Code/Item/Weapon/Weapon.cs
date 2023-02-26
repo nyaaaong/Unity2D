@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -12,8 +10,8 @@ public class Weapon : MonoBehaviour
 	private Weapon_Type		m_WeapType = Weapon_Type.End;
 
 	private Weapon_Hand		m_HandSpriteDir = Weapon_Hand.Right;
-	private SpriteRenderer	m_HandSR = null;
-	private SpriteRenderer	m_SR = null;
+	private SpriteRenderer  m_HandSR = null;
+	private SpriteRenderer  m_SR = null;
 	private float			m_TargetAngle = 0.0f;
 	private Vector3			m_Rot = Vector3.zero;
 

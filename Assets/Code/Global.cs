@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Global : MonoBehaviour
@@ -7,8 +5,8 @@ public class Global : MonoBehaviour
 	[SerializeField]
 	private Camera      m_MainCamera = null;
 
-	private static Global	m_Inst = null;
-	private GameObject	m_Player = null;
+	private static Global  m_Inst = null;
+	private GameObject  m_Player = null;
 	private Vector2     m_P2MDist = Vector2.zero;
 	private Vector2     m_T2PDist = Vector2.zero;
 	private float       m_P2MAngle = 0.0f;

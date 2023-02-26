@@ -1,18 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Player : Character
 {
 	[SerializeField]
-	private bool				m_DebugHasAllWeap = false;
+	private bool                m_DebugHasAllWeap = false;
+	[SerializeField]
+	private float               m_DodgeSpeed = 5.0f;
 
-	private static Player		m_Inst = null;
-	private float				m_P2MAngle = 0.0f;
-	private bool[]				m_Dir = null;
-	private bool[]				m_KeyDown = null;
-	private bool[]				m_HasWeapon = null;
+	private float               m_P2MAngle = 0.0f;
+	private bool[]              m_Dir = null;
+	private bool[]              m_LastDir = null;
+	private bool[]              m_KeyDown = null;
+	private bool[]              m_HasWeapon = null;
+	private bool                m_KeyLock = false;
 
 	private const int           UP = (int)Player_Dir.Up;
 	private const int           LEFT = (int)Player_Dir.Left;
@@ -22,14 +22,13 @@ public partial class Player : Character
 
 	private void Awake()
 	{
-		m_Inst = this;
-
 		m_Animator = GetComponent<Animator>();
 
 		if (m_Animator == null)
 			Debug.LogError("if (m_Animator == null)");
 
 		m_Dir = new bool[END];
+		m_LastDir = new bool[END];
 		m_KeyDown = new bool[END];
 		m_HasWeapon = new bool[(int)Weapon_Type.End];
 
@@ -42,6 +41,7 @@ public partial class Player : Character
 		}
 
 		m_Dir[RIGHT] = true;
+		m_LastDir[RIGHT] = true;
 	}
 
 	private void FixedUpdate()

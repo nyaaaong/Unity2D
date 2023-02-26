@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 public partial class Player : Character
 {
@@ -41,7 +36,7 @@ public partial class Player : Character
 		KeyDownCheck(LEFT);
 		KeyDownCheck(RIGHT);
 
-		if (m_Move)
+		if (m_Move && m_Status != Character_Status.Dodge)
 		{
 			if (!m_KeyDown[UP] &&
 				!m_KeyDown[DOWN] &&
@@ -56,16 +51,16 @@ public partial class Player : Character
 
 	private void ResetDirCheck()
 	{
-		if (m_Move)
+		if (m_Move && m_Status != Character_Status.Dodge)
 		{
 			int maxIdx = END;
 
 			for (int i = 0; i < maxIdx; ++i)
 			{
+				m_LastDir[i] = m_Dir[i];
+
 				if (!m_KeyDown[i])
-				{
 					m_Dir[i] = false;
-				}
 			}
 		}
 	}
@@ -95,26 +90,82 @@ public partial class Player : Character
 				break;
 		}
 
-		if (Input.GetKeyDown(key))
+		if (Input.GetKey(key))
 		{
+			m_Dir[dir] = true;
 			m_KeyDown[dir] = true;
 
-			m_Dir[dir] = true;
-			m_Status = Character_Status.Walk;
-			m_Move = true;
-		}
+			if (!m_KeyLock)
+			{
+				m_Status = Character_Status.Walk;
+				m_Move = true;
 
-		if (m_KeyDown[dir])
-			transform.position += Movedir * m_MoveSpeed * m_deltaTime;
+				transform.position += Movedir * m_MoveSpeed * m_deltaTime;
+			}
+		}
+	}
+
+	private void Dodge()
+	{
+		if (Input.GetMouseButtonDown((int)Mouse_Click.Right))
+		{
+			m_Status = Character_Status.Dodge;
+
+			m_NoHit = true;
+			m_Move = true;
+			m_KeyLock = true;
+			m_HideWeapon = true;
+		}
+	}
+
+	private void DodgeCheck()
+	{
+		if (m_Status == Character_Status.Dodge)
+		{
+			Vector3 Movedir = Vector3.zero;
+
+			if (m_LastDir[UP])
+			{
+				Movedir = Vector3.up;
+
+				if (m_LastDir[LEFT])
+					Movedir += Vector3.left;
+
+				else if (m_LastDir[RIGHT])
+					Movedir += Vector3.right;
+			}
+
+			else if (m_LastDir[DOWN])
+			{
+				Movedir = Vector3.down;
+
+				if (m_LastDir[LEFT])
+					Movedir += Vector3.left;
+
+				else if (m_LastDir[RIGHT])
+					Movedir += Vector3.right;
+			}
+
+			else if (m_LastDir[LEFT])
+				Movedir = Vector3.left;
+
+			else if (m_LastDir[RIGHT])
+				Movedir = Vector3.right;
+
+			transform.position += Movedir * m_DodgeSpeed * m_deltaTime;
+		}
 	}
 
 	private void MoveKeyCheck()
 	{
+		Dodge();
+
 		Move(UP);
 		Move(LEFT);
 		Move(RIGHT);
 		Move(DOWN);
 
+		DodgeCheck();
 		MoveDirCheck();
 		ResetDirCheck();
 	}

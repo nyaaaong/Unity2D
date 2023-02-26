@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-public enum Character_Status
+﻿public enum Character_Status
 {
 	Idle,
 	Walk,
+	Dodge,
 	End
 }
 
@@ -45,4 +40,10 @@ public enum Weapon_RenderOrder
 {
 	Front = 1,
 	Back = -1
+}
+
+public enum Mouse_Click
+{
+	Left,
+	Right
 }
