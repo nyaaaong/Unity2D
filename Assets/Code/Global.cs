@@ -4,6 +4,10 @@ public class Global : MonoBehaviour
 {
 	[SerializeField]
 	private Camera      m_MainCamera = null;
+	[SerializeField]
+	private float       m_EffectVolume = 1.0f;
+	[SerializeField]
+	private float       m_BGMVolume = 1.0f;
 
 	private static Global  m_Inst = null;
 	private GameObject  m_Player = null;
@@ -14,6 +18,7 @@ public class Global : MonoBehaviour
 
 	public static GameObject Player { get { return m_Inst.m_Player; } }
 	public static float P2MAngle { get { return m_Inst.m_P2MAngle; } }
+	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
 
 	public static float T2PAngle(Vector3 targetPos)
 	{

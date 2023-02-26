@@ -6,6 +6,8 @@ public partial class Player : Character
 	private bool                m_DebugHasAllWeap = false;
 	[SerializeField]
 	private float               m_DodgeSpeed = 5.0f;
+	[SerializeField]
+	AudioClip                   m_DodgeClip = null;
 
 	private float               m_P2MAngle = 0.0f;
 	private bool[]              m_Dir = null;
@@ -20,12 +22,9 @@ public partial class Player : Character
 	private const int           DOWN = (int)Player_Dir.Down;
 	private const int           END = (int)Player_Dir.End;
 
-	private void Awake()
+	protected override void Awake()
 	{
-		m_Animator = GetComponent<Animator>();
-
-		if (m_Animator == null)
-			Debug.LogError("if (m_Animator == null)");
+		base.Awake();
 
 		m_Dir = new bool[END];
 		m_LastDir = new bool[END];
@@ -44,12 +43,10 @@ public partial class Player : Character
 		m_LastDir[RIGHT] = true;
 	}
 
-	private void FixedUpdate()
+	protected override void Update()
 	{
-	}
+		base.Update();
 
-	private void Update()
-	{
 		if (m_WeapType != Weapon_Type.End)
 			m_P2MAngle = Global.P2MAngle;
 

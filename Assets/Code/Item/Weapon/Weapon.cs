@@ -19,13 +19,13 @@ public class Weapon : MonoBehaviour
 	{
 		m_SR = GetComponent<SpriteRenderer>();
 
-		if (m_SR == null)
-			Debug.LogError("if (m_SR == null)");
+		if (m_SR is null)
+			Debug.LogError("if (m_SR is null)");
 
 		m_HandSR = m_Hand.GetComponent<SpriteRenderer>();
 
-		if (m_HandSR == null)
-			Debug.LogError("if (m_HandSR == null)");
+		if (m_HandSR is null)
+			Debug.LogError("if (m_HandSR is null)");
 
 		switch (m_Owner)
 		{

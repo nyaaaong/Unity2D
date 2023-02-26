@@ -115,6 +115,8 @@ public partial class Player : Character
 			m_Move = true;
 			m_KeyLock = true;
 			m_HideWeapon = true;
+
+			PlaySound(m_DodgeClip);
 		}
 	}
 
@@ -123,16 +125,23 @@ public partial class Player : Character
 		if (m_Status == Character_Status.Dodge)
 		{
 			Vector3 Movedir = Vector3.zero;
+			bool    Cross = false;
 
 			if (m_LastDir[UP])
 			{
 				Movedir = Vector3.up;
 
 				if (m_LastDir[LEFT])
+				{
+					Cross = true;
 					Movedir += Vector3.left;
+				}
 
 				else if (m_LastDir[RIGHT])
+				{
+					Cross = true;
 					Movedir += Vector3.right;
+				}
 			}
 
 			else if (m_LastDir[DOWN])
@@ -140,10 +149,16 @@ public partial class Player : Character
 				Movedir = Vector3.down;
 
 				if (m_LastDir[LEFT])
+				{
+					Cross = true;
 					Movedir += Vector3.left;
+				}
 
 				else if (m_LastDir[RIGHT])
+				{
+					Cross = true;
 					Movedir += Vector3.right;
+				}
 			}
 
 			else if (m_LastDir[LEFT])
@@ -152,7 +167,11 @@ public partial class Player : Character
 			else if (m_LastDir[RIGHT])
 				Movedir = Vector3.right;
 
-			transform.position += Movedir * m_DodgeSpeed * m_deltaTime;
+			if (Cross)
+				transform.position += Movedir * m_DodgeSpeed * 0.75f * m_deltaTime;
+
+			else
+				transform.position += Movedir * m_DodgeSpeed * m_deltaTime;
 		}
 	}
 

@@ -16,6 +16,7 @@ public class Character : MonoBehaviour
 	protected bool                  m_NoHit = false;
 	protected bool					m_HideWeapon = false;
 	protected Animator				m_Animator = null;
+	protected AudioSource           m_Audio = null;
 
 	public Weapon_Hand HandDir { get { return m_HandDir; } }
 	public Weapon_RenderOrder WeapRenderOrder { get { return m_WeapRenderOrder; } }
@@ -23,14 +24,36 @@ public class Character : MonoBehaviour
 	public bool NoHit{ get{ return m_NoHit; } }
 	public bool HideWeapon { get { return m_HideWeapon; } }
 
-	private void Awake()
+	protected void PlaySound(AudioClip clip, bool isLoop = false)
 	{
+		if (clip is null)
+			Debug.LogError("if (clip is null)");
 
+		m_Audio.clip = clip;
+		m_Audio.loop = isLoop;
+		m_Audio.Play();
 	}
 
-	private void Update()
+	protected virtual void Awake()
+	{
+		m_Animator = GetComponent<Animator>();
+
+		if (m_Animator is null)
+			Debug.LogError("if (m_Animator is null)");
+
+		m_Audio = GetComponent<AudioSource>();
+
+		if (m_Audio is null)
+			Debug.LogError("if (m_Audio is null)");
+	}
+
+	protected virtual void Start()
+	{
+		m_Audio.volume = Global.EffectVolume;
+	}
+
+	protected virtual void Update()
 	{
 		m_deltaTime = Time.deltaTime;
-
 	}
 }

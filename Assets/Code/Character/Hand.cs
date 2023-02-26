@@ -18,15 +18,15 @@ public class Hand : MonoBehaviour
 	{
 		m_SR = GetComponent<SpriteRenderer>();
 
-		if (m_SR == null)
+		if (m_SR is null)
 			Debug.LogError("m_SR = GetComponent<SpriteRenderer>();");
 
-		if (m_BaseObj == null)
-			Debug.LogError("if (m_BaseObj == null)");
+		if (m_BaseObj is null)
+			Debug.LogError("if (m_BaseObj is null)");
 
 		m_Base = m_BaseObj.GetComponent<Character>();
 
-		if (m_Base == null)
+		if (m_Base is null)
 			Debug.LogError("m_Base = m_BaseObj.GetComponent<Character>();");
 	}
 
