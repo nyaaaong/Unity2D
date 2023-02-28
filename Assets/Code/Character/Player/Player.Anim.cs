@@ -37,7 +37,7 @@ public partial class Player : Character
 				m_AnimName += "Right";
 		}
 
-		else if (m_WeapType == Weapon_Type.End)
+		else if (m_WeapType == Weapon_Type_Player.End)
 		{
 			if (m_Dir[UP])
 			{
@@ -74,7 +74,7 @@ public partial class Player : Character
 		{
 			if (m_P2MAngle == 180.0f || (m_P2MAngle < 180.0f && m_P2MAngle > 105.0f))
 			{
-				if (m_WeapType != Weapon_Type.End)
+				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Left;
 
 				else
@@ -87,7 +87,7 @@ public partial class Player : Character
 
 			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f && m_P2MAngle > 75.0f))
 			{
-				if (m_WeapType != Weapon_Type.End)
+				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Left;
 
 				else
@@ -100,7 +100,7 @@ public partial class Player : Character
 
 			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f && m_P2MAngle > 0.0f))
 			{
-				if (m_WeapType != Weapon_Type.End)
+				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Right;
 
 				else
@@ -113,7 +113,7 @@ public partial class Player : Character
 
 			else if (m_P2MAngle == 0.0f || (m_P2MAngle < 0.0f && m_P2MAngle > -75.0f))
 			{
-				if (m_WeapType != Weapon_Type.End)
+				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Right;
 
 				else
@@ -126,7 +126,7 @@ public partial class Player : Character
 
 			else if (m_P2MAngle == -75.0f || (m_P2MAngle < -75.0f && m_P2MAngle > -105.0f))
 			{
-				if (m_WeapType != Weapon_Type.End)
+				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Right;
 
 				else
@@ -139,7 +139,7 @@ public partial class Player : Character
 
 			else if (m_P2MAngle == -105.0f || (m_P2MAngle < -105.0f && m_P2MAngle > -180.0f))
 			{
-				if (m_WeapType != Weapon_Type.End)
+				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Left;
 
 				else

@@ -10,9 +10,9 @@ public class Hand : MonoBehaviour
 	private Character   m_Base = null;
 	private SpriteRenderer  m_SR = null;
 
+	public Character Base { get { return m_Base; } }
 	public Weapon_Hand HandSpriteDir { get { return m_HandSpriteDir; } }
-	public Weapon_RenderOrder WeapRenderOrder { get { return m_Base.WeapRenderOrder; } }
-	public Weapon_Type WeapType { get { return m_Base.Type; } }
+	public Weapon_Type_Player WeapType { get { return m_Base.Type; } }
 
 	private void Awake()
 	{
@@ -38,6 +38,6 @@ public class Hand : MonoBehaviour
 		else
 			m_SR.enabled = true;
 
-		m_SR.sortingOrder = (int)WeapRenderOrder;
+		m_SR.sortingOrder = (int)m_Base.WeapRenderOrder;
 	}
 }

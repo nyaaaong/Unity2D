@@ -100,7 +100,7 @@ public partial class Player : Character
 				m_Status = Character_Status.Walk;
 				m_Move = true;
 
-				transform.position += Movedir * m_MoveSpeed * m_deltaTime;
+				transform.position += Movedir * m_Info.m_MoveSpeed * m_deltaTime;
 			}
 		}
 	}

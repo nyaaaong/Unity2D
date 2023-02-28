@@ -15,11 +15,19 @@ public enum Player_Dir
 	End
 }
 
-public enum Weapon_Type
+public enum Weapon_Type_Player
 {
 	Pistol,
 	Rifle,
 	Sniper,
+	End
+}
+
+public enum Weapon_Type_Monster
+{
+	Pistol,
+	Rifle,
+	Shotgun,
 	End
 }
 
@@ -46,4 +54,10 @@ public enum Mouse_Click
 {
 	Left,
 	Right
+}
+
+public enum Bullet_Owner
+{
+	Player,
+	Monster
 }
