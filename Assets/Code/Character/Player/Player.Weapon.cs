@@ -37,8 +37,6 @@ public partial class Player : Character
 
 		else
 			m_Fire = false;
-
-		m_FireTime += m_deltaTime;
 }
 
 	private void WeaponKeyCheck()

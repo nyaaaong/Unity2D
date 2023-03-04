@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
 	private bool            m_Destroy = false;
 
 	public Bullet_Owner Owner { get { return m_Owner; } set { m_Owner = value; } }
-	public Vector3 Dir { set { m_Dir = value; } }
+	public Vector3 Dir { get { return m_Dir; } set { m_Dir = value; } }
 	public float Damage { get { return m_Damage; } }
 
 	public void SetInfo(in WeaponInfo info)

@@ -24,10 +24,12 @@ public class Character : MonoBehaviour
 	protected CharInfo              m_Info = new CharInfo();
 
 	protected float                 m_deltaTime = 0.0f;
+	protected float					m_TargetAngle = 0.0f;
+	protected float					m_FireTime = 0.0f;
 	protected Character_Status      m_Status = Character_Status.Idle;
 	protected Weapon_Hand           m_HandDir = Weapon_Hand.None;   // 어느 쪽 손을 보일 것 인지
 	protected Weapon_RenderOrder    m_WeapRenderOrder = Weapon_RenderOrder.Front;   // 캐릭터 기준 총이 보여질지 가려질지
-	protected Weapon_Type_Player           m_WeapType = Weapon_Type_Player.End;
+	protected Weapon_Type_Player    m_WeapType = Weapon_Type_Player.End;
 	protected string                m_AnimName = "";
 	protected string                m_PrevAnimName = "";
 	protected bool                  m_Move = false;
@@ -37,6 +39,7 @@ public class Character : MonoBehaviour
 	protected bool                  m_Fire = false;
 	protected Animator              m_Animator = null;
 	protected AudioSource           m_Audio = null;
+	protected Vector3				m_TargetDir = Vector3.zero;
 
 	public Weapon_Hand HandDir { get { return m_HandDir; } }
 	public Weapon_RenderOrder WeapRenderOrder { get { return m_WeapRenderOrder; } }
@@ -45,6 +48,9 @@ public class Character : MonoBehaviour
 	public bool HideWeapon { get { return m_HideWeapon; } }
 	public bool Death { get { return m_Death; } }
 	public bool Fire { get { return m_Fire; } }
+	public float TargetAngle { get { return m_TargetAngle; } set { m_TargetAngle = value; } }
+	public Vector3 TargetDir { get { return m_TargetDir; } set { m_TargetDir = value; } }
+	public float FireTime { get { return m_FireTime; } set { m_FireTime = value; } }
 
 
 	public virtual void SetDamage(float dmg)
@@ -105,5 +111,7 @@ public class Character : MonoBehaviour
 	protected virtual void Update()
 	{
 		m_deltaTime = Time.deltaTime;
+
+		m_FireTime += m_deltaTime;
 	}
 }

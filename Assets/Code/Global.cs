@@ -1,3 +1,4 @@
+using Newtonsoft.Json.Linq;
 using System;
 using UnityEngine;
 
@@ -20,16 +21,18 @@ public class Global : MonoBehaviour
 	private GameObject  m_PlayerObj = null;
 	private Player      m_Player = null;
 	private Vector2     m_P2MDist = Vector2.zero;
-	private Vector3     m_P2MDir = Vector3.zero;
-	private Vector2     m_T2PDist = Vector2.zero;
-	private float       m_P2MAngle = 0.0f;
-	private float       m_T2PAngle = 0.0f;
+	private Vector2     m_E2PDist = Vector2.zero;
 
-	public static float P2MAngle { get { return m_Inst.m_P2MAngle; } }
-	public static Vector3 P2MDir { get { return m_Inst.m_P2MDir; } }
 	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
 	public static Player Player { get { return m_Inst.m_Player; } }	
 	public static WeaponInfo Pistol { get { return m_Inst.m_WeapInfo[(int)Weapon_Type_Player.Pistol]; } }
+
+	public static Vector2 ConvertDir(float angle)
+	{
+		angle *= Mathf.Deg2Rad;
+
+		return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+	}
 
 	public static void SetWeaponInfo(in WeaponInfo info, Weapon_Type_Player type)
 	{
@@ -51,13 +54,12 @@ public class Global : MonoBehaviour
 		info.m_OffsetY = m_Inst.m_WeapMonsterInfo[(int)type].m_OffsetY;
 	}
 
-	public static float T2PAngle(Vector3 targetPos)
+	public static void E2PData(Character enemy)
 	{
-		m_Inst.m_T2PDist = m_Inst.m_PlayerObj.transform.position - m_Inst.m_MainCamera.ScreenToWorldPoint(targetPos);
+		m_Inst.m_E2PDist = m_Inst.m_Player.transform.position - enemy.transform.position;
 
-		m_Inst.m_T2PAngle = Mathf.Atan2(m_Inst.m_T2PDist.y, m_Inst.m_T2PDist.x) * Mathf.Rad2Deg;
-
-		return m_Inst.m_T2PAngle;
+		enemy.TargetDir = m_Inst.m_E2PDist.normalized;
+		enemy.TargetAngle = Mathf.Atan2(m_Inst.m_E2PDist.y, m_Inst.m_E2PDist.x) * Mathf.Rad2Deg;
 	}
 
 	private void Awake()
@@ -83,9 +85,9 @@ public class Global : MonoBehaviour
 
 	private void Update()
 	{
-		m_P2MDist = m_MainCamera.ScreenToWorldPoint(Input.mousePosition) - m_PlayerObj.transform.position;
-		m_P2MDir = m_P2MDist.normalized;
+		m_P2MDist = m_MainCamera.ScreenToWorldPoint(Input.mousePosition) - m_Player.transform.position;
+		m_Player.TargetDir = m_P2MDist.normalized;
 
-		m_P2MAngle = Mathf.Atan2(m_P2MDist.y, m_P2MDist.x) * Mathf.Rad2Deg;
+		m_Player.TargetAngle = Mathf.Atan2(m_P2MDist.y, m_P2MDist.x) * Mathf.Rad2Deg;
 	}
 }

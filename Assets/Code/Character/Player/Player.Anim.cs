@@ -72,7 +72,7 @@ public partial class Player : Character
 
 		else
 		{
-			if (m_P2MAngle == 180.0f || (m_P2MAngle < 180.0f && m_P2MAngle > 105.0f))
+			if (m_TargetAngle == 180.0f || (m_TargetAngle < 180.0f && m_TargetAngle > 105.0f))
 			{
 				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Left;
@@ -85,7 +85,7 @@ public partial class Player : Character
 				m_AnimName += "LeftUp";
 			}
 
-			else if (m_P2MAngle == 105.0f || (m_P2MAngle < 105.0f && m_P2MAngle > 75.0f))
+			else if (m_TargetAngle == 105.0f || (m_TargetAngle < 105.0f && m_TargetAngle > 75.0f))
 			{
 				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Left;
@@ -98,7 +98,7 @@ public partial class Player : Character
 				m_AnimName += "Up";
 			}
 
-			else if (m_P2MAngle == 75.0f || (m_P2MAngle < 75.0f && m_P2MAngle > 0.0f))
+			else if (m_TargetAngle == 75.0f || (m_TargetAngle < 75.0f && m_TargetAngle > 0.0f))
 			{
 				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Right;
@@ -111,7 +111,7 @@ public partial class Player : Character
 				m_AnimName += "RightUp";
 			}
 
-			else if (m_P2MAngle == 0.0f || (m_P2MAngle < 0.0f && m_P2MAngle > -75.0f))
+			else if (m_TargetAngle == 0.0f || (m_TargetAngle < 0.0f && m_TargetAngle > -75.0f))
 			{
 				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Right;
@@ -124,7 +124,7 @@ public partial class Player : Character
 				m_AnimName += "RightDown";
 			}
 
-			else if (m_P2MAngle == -75.0f || (m_P2MAngle < -75.0f && m_P2MAngle > -105.0f))
+			else if (m_TargetAngle == -75.0f || (m_TargetAngle < -75.0f && m_TargetAngle > -105.0f))
 			{
 				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Right;
@@ -137,7 +137,7 @@ public partial class Player : Character
 				m_AnimName += "Down";
 			}
 
-			else if (m_P2MAngle == -105.0f || (m_P2MAngle < -105.0f && m_P2MAngle > -180.0f))
+			else if (m_TargetAngle == -105.0f || (m_TargetAngle < -105.0f && m_TargetAngle > -180.0f))
 			{
 				if (m_WeapType != Weapon_Type_Player.End)
 					m_HandDir = Weapon_Hand.Left;

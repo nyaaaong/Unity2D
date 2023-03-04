@@ -9,8 +9,6 @@ public partial class Player : Character
 	[SerializeField]
 	AudioClip                   m_DodgeClip = null;
 
-	private float               m_P2MAngle = 0.0f;
-	private float               m_FireTime = 0.0f;
 	private bool[]              m_Dir = null;
 	private bool[]              m_LastDir = null;
 	private bool[]              m_KeyDown = null;
@@ -25,7 +23,6 @@ public partial class Player : Character
 	private const int           END = (int)Player_Dir.End;
 
 	public bool WeaponChange { get { return m_WeaponChange; } set { m_WeaponChange = value; } }
-	public float FireTime { get { return m_FireTime; } set { m_FireTime = value; } }
 
 	protected void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -71,9 +68,6 @@ public partial class Player : Character
 	protected override void Update()
 	{
 		base.Update();
-
-		if (m_WeapType != Weapon_Type_Player.End)
-			m_P2MAngle = Global.P2MAngle;
 
 		MoveKeyCheck();
 		WeaponKeyCheck();

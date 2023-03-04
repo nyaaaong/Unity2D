@@ -58,7 +58,28 @@ public class Weapon : MonoBehaviour
 					m_NewBulletObj = Instantiate(m_PlayerBullet);
 					break;
 				case Weapon_Owner.Monster:
-					m_NewBulletObj = Instantiate(m_MonsterBullet);
+					if (m_WeapTypeMonster == Weapon_Type_Monster.Shotgun)
+					{
+						float angle = -20.0f;
+						float newAngle = 0.0f;
+						for (int i = 0; i < 5; ++i)
+						{
+							m_NewBulletObj = Instantiate(m_MonsterBullet);
+
+							m_NewBulletObj.name = "Bullet";
+							m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
+							m_NewBullet.SetInfo(m_Bullet);
+							newAngle = m_TargetAngle + angle;
+							m_NewBullet.Dir = Global.ConvertDir(newAngle);
+							angle += 10.0f;
+						}
+
+						m_Audio.Play();
+						return;
+					}
+
+					else
+						m_NewBulletObj = Instantiate(m_MonsterBullet);
 					break;
 			}
 
@@ -90,24 +111,37 @@ public class Weapon : MonoBehaviour
 		¿ÞÂÊ ¹«±â:	m_TargetAngle == -90 ~ 180 -> -90
 					m_TargetAngle == -91 ~ -180 -> +270
 		*/
-		switch (m_Owner)
+		m_TargetAngle = m_Base.TargetAngle;
+		m_TargetDir = m_Base.TargetDir;
+
+		if (m_Owner == Weapon_Owner.Player)
 		{
-			case Weapon_Owner.Player:
-				m_TargetAngle = Global.P2MAngle;
-				m_TargetDir = Global.P2MDir;
-				break;
-			case Weapon_Owner.Monster:
-				break;
+			switch (m_HandSpriteDir)
+			{
+				case Weapon_Hand.Right:
+					m_Rot.z = m_TargetAngle - 90.0f;
+					break;
+				case Weapon_Hand.Left:
+					m_Rot.z = m_TargetAngle >= -90.0f ? m_TargetAngle - 90.0f : m_TargetAngle + 270.0f;
+					break;
+			}
 		}
 
-		switch (m_HandSpriteDir)
+		else
 		{
-			case Weapon_Hand.Right:
-				m_Rot.z = m_TargetAngle - 90.0f;
-				break;
-			case Weapon_Hand.Left:
-				m_Rot.z = m_TargetAngle >= -90.0f ? m_TargetAngle - 90.0f : m_TargetAngle + 270.0f;
-				break;
+			m_Rot.z = m_TargetAngle;
+
+			switch (m_WeapTypeMonster)
+			{
+				case Weapon_Type_Monster.Pistol:
+					if (m_HandSpriteDir == Weapon_Hand.Left)
+						m_Rot.z -= 180.0f;
+					break;
+				case Weapon_Type_Monster.Rifle:
+				case Weapon_Type_Monster.Shotgun:
+					m_Rot.z -= 90.0f;
+					break;
+			}
 		}
 
 		transform.localEulerAngles = m_Rot;
@@ -151,10 +185,11 @@ public class Weapon : MonoBehaviour
 		if (m_Base is null)
 			Debug.LogError("if (m_Base is null)");
 
+		m_HandSpriteDir = m_Hand.HandSpriteDir;
+
 		switch (m_Owner)
 		{
 			case Weapon_Owner.Player:
-				m_HandSpriteDir = m_Hand.HandSpriteDir;
 				m_Bullet = m_PlayerBullet.GetComponent<Bullet>();
 				m_Bullet.Owner = Bullet_Owner.Player;
 				break;
@@ -177,13 +212,12 @@ public class Weapon : MonoBehaviour
 
 		m_Bullet.SetInfo(m_Info);
 
-		Global.Player.FireTime = m_Info.m_FireRate;
+		m_Base.FireTime = m_Info.m_FireRate;
 	}
 
 	private void Update()
 	{
 		SpriteCheck();
-		//WeaponChangeCheck();
 
 		if (m_SR.enabled)
 		{
@@ -191,9 +225,9 @@ public class Weapon : MonoBehaviour
 
 			if (m_Base.Fire)
 			{
-				if (Global.Player.FireTime >= m_Info.m_FireRate)
+				if (m_Base.FireTime >= m_Info.m_FireRate)
 				{
-					Global.Player.FireTime = 0.0f;
+					m_Base.FireTime = 0.0f;
 
 					Fire();
 				}

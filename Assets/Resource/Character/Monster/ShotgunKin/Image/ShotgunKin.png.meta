@@ -1,0 +1,1181 @@
+fileFormatVersion: 2
+guid: 98f18a634cc6c5c46a1ab806f13eee14
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 126
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ShotgunKin_Idle_Right_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 540
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 447909e6673281348b52a1a1edfd6ee3
+      internalID: -1332300316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Idle_Right_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 540
+        width: 36
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec41e16574736c45a5f43d7a33403bf
+      internalID: 2062658060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Idle_Left_1
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 540
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a22be0b31dd9c4baee7a067dd7516a
+      internalID: 357414177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Idle_Left_2
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 540
+        width: 36
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d97dc7be877771488f282f28574549f
+      internalID: -1932069817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Right_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 442
+        width: 39
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 378e741bc3eff5f4a95e81502b7482b9
+      internalID: -1204222269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Right_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 441
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67a515cb00c65ac4a8306fd92e85dae8
+      internalID: 569652638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Right_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 441
+        width: 51
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5c19ce2385b95c48b725644632e30f4
+      internalID: 744713001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Right_4
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 441
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 795d3c1b70b605441a049b4ea7e0a820
+      internalID: 1445525763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Right_5
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 441
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ed9a740fca5c548b3e1919eeb4caba
+      internalID: -413129122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Right_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 441
+        width: 54
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3917527c314ea4491826260e9d30d9
+      internalID: 1122242127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Left_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 441
+        width: 39
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84b1b2e3139b7c44aa49453137640cb
+      internalID: 491821461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Left_2
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 441
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7005af82b9f180438d12bf645a1076e
+      internalID: -8885771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Left_3
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 441
+        width: 60
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e6f9dbb5cbdf5543bd5251aff5d4fbe
+      internalID: -435017852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Left_4
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 441
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bab01e1c66ddd545a72ea9e09a9dbf0
+      internalID: 1120190885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Left_5
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 441
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a79329fe8bd935e42b4ac251a6320204
+      internalID: -1224836454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Walk_Left_6
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 441
+        width: 54
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7254e6024a820449babcf88a54e5915
+      internalID: -598747334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_5
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 318
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5511ce858b4a14da2a1f786338dcad
+      internalID: 445464621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_6
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 318
+        width: 111
+        height: 111
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a09a58883e7f64796c888f65963656
+      internalID: 223125967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_1
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 318
+        width: 42
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3806e9f49eb35b943a9ccfea470e54f8
+      internalID: 669661221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 318
+        width: 36
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 341f7ead71f83c6419d67934a109a939
+      internalID: 2008940471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_3
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 318
+        width: 84
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4af1ec493a45224e870ebbcb1079265
+      internalID: 1852225714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_4
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 319
+        width: 69
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4296843b8d727e946a7db115c396011c
+      internalID: -1051517234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_Death_7
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 318
+        width: 126
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d76718fc90f474f9b205e7ee727999
+      internalID: 381791602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Idle_Right_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 223
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f33d15853ee3164dbb1d49f8d841de9
+      internalID: -1872669508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Idle_Right_2
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 223
+        width: 36
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ee9e1aafb76e9e45a4c3db074a94359
+      internalID: -1464092911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Idle_Left_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 223
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58b1adf3eda4db144a12f1072e648aff
+      internalID: -257924183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Idle_Left_2
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 223
+        width: 36
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec8930bfaa22834da92fbe8d9f87504
+      internalID: -2025650180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Right_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 126
+        width: 39
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd87699910fdeb48b77e916ae7552b1
+      internalID: 1926998505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Right_2
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 126
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a2be235b0c10964aa75cad8a0e33853
+      internalID: 1306793378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Right_3
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 126
+        width: 51
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1fa9224fc4e87148871f342253dae7d
+      internalID: -697467695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Right_4
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 126
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac0eecd755e9f746a48e250d21f7c44
+      internalID: 184375298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Right_5
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 126
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b7e53b25f1e0894186c9e71353ce95b
+      internalID: -1793636184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Right_6
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 126
+        width: 54
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45a6d2e2182eb1f4a9955904bc838d24
+      internalID: -1955844332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Left_1
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 126
+        width: 39
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3025e3be84b6f841be8c202044fc4cd
+      internalID: -1259150116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Left_2
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 126
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 833a293127f45d0409144e22a969e94b
+      internalID: -1411552496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Left_3
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 126
+        width: 57
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21f5adee554cdbf439515e2396d7561f
+      internalID: 157201993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Left_4
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 126
+        width: 36
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f4664590195bf746a1efa5eb4456167
+      internalID: -836753710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Left_5
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 126
+        width: 51
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85ccb43dc149c6440a0e428e8b28bb56
+      internalID: 692634780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Walk_Left_6
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 126
+        width: 54
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72af0568526bd47499671c32b8824d9d
+      internalID: 1487908568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_5
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 6
+        width: 96
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875912da53bcb214284fb9d512a9c37e
+      internalID: 1210477422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 6
+        width: 111
+        height: 111
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a4ba216ca94174a90552c61af409eb
+      internalID: 1902419436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 6
+        width: 42
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44d5f651c9d9f8b46932a4d2f461c2e1
+      internalID: 697688201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_2
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 6
+        width: 36
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 030fe9f060947f54c8a4128d123a9aab
+      internalID: -1912690453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_3
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 6
+        width: 84
+        height: 87
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc4fba9503af44c4a8ddde54c19ad23d
+      internalID: -1340846235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_4
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 6
+        width: 69
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cce6369c0cc6854790ec2c5d8c121f5
+      internalID: 2131279391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShotgunKin_B_Death_7
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 6
+        width: 126
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a83bfeb1aa819c438d0ca46bb3d6272
+      internalID: -1762217152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      ShotgunKin_78: -1231926210
+      ShotgunKin_45: -501085206
+      ShotgunKin_85: -1646060914
+      ShotgunKin_B_Death_3: -1340846235
+      ShotgunKin_30: 876995344
+      ShotgunKin_86: -526179765
+      ShotgunKin_Walk_Left_6: -598747334
+      ShotgunKin_B_Idle_Right_1: -1872669508
+      ShotgunKin_Death_2: 2008940471
+      ShotgunKin_73: -63698098
+      ShotgunKin_Walk_Right_2: 569652638
+      ShotgunKin_83: 380752237
+      ShotgunKin_Idle_Left_2: -1932069817
+      ShotgunKin_20: 108097730
+      ShotgunKin_B_Walk_Left_2: -1411552496
+      ShotgunKin_84: -152520174
+      ShotgunKin_B_Walk_Right_6: -1955844332
+      ShotgunKin_81: 355037476
+      ShotgunKin_19: 1355912073
+      ShotgunKin_43: -1349497506
+      ShotgunKin_91: 214649881
+      ShotgunKin_29: 1239065746
+      ShotgunKin_38: -2143305655
+      ShotgunKin_35: 1801002392
+      ShotgunKin_89: 1003481572
+      ShotgunKin_Death_3: 1852225714
+      ShotgunKin_B_Walk_Left_5: 692634780
+      ShotgunKin_39: -450274000
+      ShotgunKin_40: 1163189888
+      ShotgunKin_Idle_Right_2: 2062658060
+      ShotgunKin_Walk_Left_5: -1224836454
+      ShotgunKin_41: 216973386
+      ShotgunKin_Death_4: -1051517234
+      ShotgunKin_25: -1812520087
+      ShotgunKin_B_Idle_Left_2: -2025650180
+      ShotgunKin_32: 11104067
+      ShotgunKin_B_Idle_Right_2: -1464092911
+      ShotgunKin_B_Death_5: 1210477422
+      ShotgunKin_Idle_Right_1: -1332300316
+      ShotgunKin_Death_7: 381791602
+      ShotgunKin_B_Walk_Left_6: 1487908568
+      ShotgunKin_72: -1618248864
+      ShotgunKin_Death_1: 669661221
+      ShotgunKin_42: 2056342157
+      ShotgunKin_90: -1579273178
+      ShotgunKin_37: -418892470
+      ShotgunKin_77: -1362098908
+      ShotgunKin_B_Idle_Left_1: -257924183
+      ShotgunKin_64: -60836763
+      ShotgunKin_Walk_Right_3: 744713001
+      ShotgunKin_31: -133048272
+      ShotgunKin_Walk_Right_5: -413129122
+      ShotgunKin_75: 1521593592
+      ShotgunKin_B_Death_6: 1902419436
+      ShotgunKin_Idle_Left_1: 357414177
+      ShotgunKin_24: -54615194
+      ShotgunKin_B_Walk_Right_3: -697467695
+      ShotgunKin_Walk_Left_4: 1120190885
+      ShotgunKin_80: -1908554333
+      ShotgunKin_B_Walk_Left_4: -836753710
+      ShotgunKin_B_Death_7: -1762217152
+      ShotgunKin_66: -1772528851
+      ShotgunKin_Death_6: 223125967
+      ShotgunKin_B_Death_1: 697688201
+      ShotgunKin_87: -490034252
+      ShotgunKin_B_Walk_Left_1: -1259150116
+      ShotgunKin_B_Walk_Right_5: -1793636184
+      ShotgunKin_44: 310647757
+      ShotgunKin_B_Walk_Left_3: 157201993
+      ShotgunKin_B_Death_4: 2131279391
+      ShotgunKin_Walk_Left_1: 491821461
+      ShotgunKin_Walk_Left_2: -8885771
+      ShotgunKin_71: -542345295
+      ShotgunKin_Walk_Right_1: -1204222269
+      ShotgunKin_65: -2046227489
+      ShotgunKin_Walk_Right_4: 1445525763
+      ShotgunKin_Walk_Right_6: 1122242127
+      ShotgunKin_33: 1386070696
+      ShotgunKin_B_Walk_Right_2: 1306793378
+      ShotgunKin_34: -883359798
+      ShotgunKin_Death_5: 445464621
+      ShotgunKin_Walk_Left_3: -435017852
+      ShotgunKin_70: -1968807319
+      ShotgunKin_B_Walk_Right_1: 1926998505
+      ShotgunKin_26: 760004367
+      ShotgunKin_18: -64833758
+      ShotgunKin_76: -1327923073
+      ShotgunKin_88: -1533706092
+      ShotgunKin_79: 1971028489
+      ShotgunKin_B_Walk_Right_4: 184375298
+      ShotgunKin_27: 636365954
+      ShotgunKin_B_Death_2: -1912690453
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
