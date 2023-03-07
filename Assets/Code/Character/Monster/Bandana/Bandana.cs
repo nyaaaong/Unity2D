@@ -12,6 +12,8 @@ public class Bandana : Monster
 	protected override void Awake()
 	{
 		base.Awake();
+
+		m_UseAlpha = true;
 	}
 
 	protected override void Start()

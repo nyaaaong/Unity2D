@@ -155,7 +155,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Info:
     m_HP: 20
     m_MoveSpeed: 1
-  m_DebugFire: 1
+  m_DebugFire: 0
   m_Blue: 0
 --- !u!1 &24211145
 GameObject:
@@ -505,6 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 185050847}
   - component: {fileID: 185050848}
+  - component: {fileID: 185050849}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -579,6 +580,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &185050849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185050846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f2dc5314ccbe540a913769b6a72dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Base: {fileID: 674752845}
 --- !u!1 &201361889
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 212155841}
   - component: {fileID: 212155842}
+  - component: {fileID: 212155843}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -863,6 +878,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &212155843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212155840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f2dc5314ccbe540a913769b6a72dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Base: {fileID: 5812282}
 --- !u!1 &213263272
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,6 +1803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 493863865}
   - component: {fileID: 493863866}
+  - component: {fileID: 493863867}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -1849,6 +1878,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &493863867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493863864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f2dc5314ccbe540a913769b6a72dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Base: {fileID: 1031620185}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,7 +2309,7 @@ MonoBehaviour:
   m_Info:
     m_HP: 100
     m_MoveSpeed: 3
-  m_DebugHasAllWeap: 0
+  m_DebugHasAllWeap: 1
   m_DodgeSpeed: 5
   m_DodgeClip: {fileID: 8300000, guid: e43bc960ea4c91d4bb0d02740759d371, type: 3}
 --- !u!212 &674752846
@@ -2466,7 +2508,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -2851,7 +2893,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -3606,7 +3648,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -3844,7 +3886,7 @@ MonoBehaviour:
   m_Info:
     m_HP: 15
     m_MoveSpeed: 1
-  m_DebugFire: 1
+  m_DebugFire: 0
 --- !u!1 &1235934086
 GameObject:
   m_ObjectHideFlags: 0
@@ -4577,7 +4619,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.5}
@@ -4815,7 +4857,7 @@ MonoBehaviour:
   m_Info:
     m_HP: 20
     m_MoveSpeed: 1
-  m_DebugFire: 1
+  m_DebugFire: 0
   m_Blue: 1
 --- !u!1 &1467089711
 GameObject:
@@ -4827,6 +4869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1467089712}
   - component: {fileID: 1467089713}
+  - component: {fileID: 1467089714}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -4901,6 +4944,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1467089714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467089711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f2dc5314ccbe540a913769b6a72dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Base: {fileID: 1209763656}
 --- !u!1 &1546716538
 GameObject:
   m_ObjectHideFlags: 0
@@ -5311,6 +5367,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782176600}
   - component: {fileID: 1782176601}
+  - component: {fileID: 1782176602}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -5385,6 +5442,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1782176602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782176599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92f2dc5314ccbe540a913769b6a72dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Base: {fileID: 1384701944}
 --- !u!1 &1793380618
 GameObject:
   m_ObjectHideFlags: 0
@@ -5820,43 +5890,55 @@ MonoBehaviour:
   m_EffectVolume: 0.3
   m_BGMVolume: 1
   m_WeapInfo:
-  - m_Damage: 2
+  - m_Name: Pistol
+    m_Damage: 2
     m_FireRate: 1
     m_FireSpeed: 5
     m_FireRange: 5
     m_FirstDist: 0.7
     m_OffsetY: 0.1
-  - m_Damage: 2
+    m_Pierce: 0
+  - m_Name: Rifle
+    m_Damage: 2
     m_FireRate: 0.1
     m_FireSpeed: 7
     m_FireRange: 7
     m_FirstDist: 0.9
     m_OffsetY: 0.07
-  - m_Damage: 10
+    m_Pierce: 0
+  - m_Name: Sniper
+    m_Damage: 10
     m_FireRate: 1.5
     m_FireSpeed: 40
     m_FireRange: 15
     m_FirstDist: 0.95
     m_OffsetY: 0.05
+    m_Pierce: 1
   m_WeapMonsterInfo:
-  - m_Damage: 2
+  - m_Name: Pistol
+    m_Damage: 2
     m_FireRate: 1
     m_FireSpeed: 5
     m_FireRange: 5
-    m_FirstDist: 1
-    m_OffsetY: 0
-  - m_Damage: 2
+    m_FirstDist: 0.7
+    m_OffsetY: 0.2
+    m_Pierce: 0
+  - m_Name: Rifle
+    m_Damage: 2
     m_FireRate: 0.2
     m_FireSpeed: 5
     m_FireRange: 5
-    m_FirstDist: 1.2
-    m_OffsetY: 0
-  - m_Damage: 2
+    m_FirstDist: 0.9
+    m_OffsetY: 0.07
+    m_Pierce: 0
+  - m_Name: Shotgun
+    m_Damage: 2
     m_FireRate: 1
     m_FireSpeed: 5
     m_FireRange: 5
     m_FirstDist: 0.7
     m_OffsetY: 0
+    m_Pierce: 0
 --- !u!4 &2029167182
 Transform:
   m_ObjectHideFlags: 0

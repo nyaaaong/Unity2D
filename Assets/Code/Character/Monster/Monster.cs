@@ -10,6 +10,107 @@ public class Monster : Character
 	protected delegate void Pattern();
 	protected List<Pattern>    m_PatternList = null;
 
+	protected bool m_UseAlpha = false;
+
+	private bool	m_Destroy = false;
+	private float	m_Alpha = 1.0f;
+	private float	m_FadeTime = 1.0f; // 사라질 시간
+	private Color	m_Color;
+
+	private void DestroyCheck()
+	{
+		if (m_Destroy)
+		{
+			if (m_UseAlpha)
+			{
+				m_Color.a -= m_Alpha * m_deltaTime;
+
+				if (m_Color.a < 0.0f)
+					m_Color.a = 0.0f;
+
+				m_SR.color = m_Color;
+
+				if (m_Color.a <= 0.0f)
+					Destroy(gameObject);
+			}
+
+			else
+				Destroy(gameObject);
+		}
+	}
+
+	private void Destroy()
+	{
+		m_Destroy = true;
+	}
+
+	protected virtual void DeathAnimEvent()
+	{
+	}
+
+	protected virtual void DeathAnimEndEvent()
+	{
+		Destroy();
+	}
+
+	protected virtual void DeathAnimCheck()
+	{
+		if (m_Death && !m_DeathAnimProc)
+		{
+			if (m_HandDir == Weapon_Hand.Left)
+				m_Animator.SetTrigger("Death_Left");
+
+			else
+				m_Animator.SetTrigger("Death_Right");
+
+			m_DeathAnimProc = true;
+		}
+	}
+
+	protected virtual void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (m_Death || m_NoHit)
+			return;
+
+		if (collision.tag == "Bullet")
+		{
+			Bullet  bullet = collision.gameObject.GetComponent<Bullet>();
+
+			if (bullet is null)
+				Debug.LogError("if (bullet is null)");
+
+			if (bullet.Owner == Bullet_Owner.Player)
+			{
+				SetDamage(bullet.Damage);
+
+				m_HitAnim = true;
+				m_HitAnimTime = 0.0f;
+			}
+		}
+	}
+
+	private void HitAnimCheck()
+	{
+		if (m_HitAnim)
+		{
+			if (m_SR.color == Color.white)
+				m_SR.color = Color.red;
+
+			else
+			{
+				m_HitAnimTime += m_deltaTime;
+
+				if (m_HitAnimTime >= m_HitAnimTimeMax)
+				{
+					m_HitAnimTime = 0.0f;
+					m_SR.color = Color.white;
+
+					m_HitAnim = false;
+				}
+			}
+		}
+	}
+
 	private void PatternExec()
 	{
 		int idx = m_PatternList.Count;
@@ -38,6 +139,10 @@ public class Monster : Character
 		m_PatternList = new List<Pattern>();
 
 		m_Fire = m_DebugFire;
+
+		m_Color = m_SR.color;
+		
+		m_Alpha /= m_FadeTime;
 	}
 
 	protected override void Start()
@@ -53,5 +158,8 @@ public class Monster : Character
 
 		HandCheck();
 		PatternExec();
+		HitAnimCheck();
+		DeathAnimCheck();
+		DestroyCheck();
 	}
 }

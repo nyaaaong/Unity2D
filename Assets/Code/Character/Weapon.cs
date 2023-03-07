@@ -1,17 +1,6 @@
 using UnityEngine;
 using System;
 
-[Serializable]
-public class WeaponInfo
-{
-	public float m_Damage;
-	public float m_FireRate;
-	public float m_FireSpeed;
-	public float m_FireRange;
-	public float m_FirstDist;
-	public float m_OffsetY;
-}
-
 public class Weapon : MonoBehaviour
 {
 	[SerializeField]
@@ -41,53 +30,86 @@ public class Weapon : MonoBehaviour
 	private Vector3         m_Rot = Vector3.zero;
 	private Vector3         m_BulletPos = Vector3.zero;
 
+	private void SpreadBulletCheck()
+	{
+		if (m_Base.SpreadBullet)
+		{
+			m_Base.SpreadBullet = false;
+
+			m_Bullet.transform.position = m_Base.transform.position;
+			m_Bullet.Dir = Vector3.zero;
+			m_Bullet.SetInfo(m_Info, m_Base);
+
+			float angle = 0.0f;
+
+			for (int i = 0; i < 12; ++i)
+			{
+				m_NewBulletObj = Instantiate(m_MonsterBullet);
+
+				m_NewBulletObj.name = "Bullet";
+				m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
+				m_NewBullet.SetInfo(m_Bullet);
+				m_NewBullet.Dir = Global.ConvertDir(angle);
+				angle += 30.0f;
+			}
+
+			m_Audio.Play();
+			return;
+		}
+	}
+
 	private void Fire()
 	{
 		if (m_Base.Fire)
 		{
-			m_BulletPos = transform.position + (m_TargetDir * m_Info.m_FirstDist);
-			m_BulletPos.y += m_Info.m_OffsetY;
-
-			m_Bullet.transform.position = m_BulletPos;
-			m_Bullet.Dir = m_TargetDir;
-			m_Bullet.SetInfo(m_Info);
-
-			switch (m_Owner)
+			if (m_Base.FireTime >= m_Info.m_FireRate)
 			{
-				case Weapon_Owner.Player:
-					m_NewBulletObj = Instantiate(m_PlayerBullet);
-					break;
-				case Weapon_Owner.Monster:
-					if (m_WeapTypeMonster == Weapon_Type_Monster.Shotgun)
-					{
-						float angle = -20.0f;
-						float newAngle = 0.0f;
-						for (int i = 0; i < 5; ++i)
-						{
-							m_NewBulletObj = Instantiate(m_MonsterBullet);
+				m_Base.FireTime = 0.0f;
 
-							m_NewBulletObj.name = "Bullet";
-							m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
-							m_NewBullet.SetInfo(m_Bullet);
-							newAngle = m_TargetAngle + angle;
-							m_NewBullet.Dir = Global.ConvertDir(newAngle);
-							angle += 10.0f;
+				m_BulletPos = transform.position + (m_TargetDir * m_Info.m_FirstDist);
+				m_BulletPos.y += m_Info.m_OffsetY;
+
+				m_Bullet.transform.position = m_BulletPos;
+				m_Bullet.Dir = m_TargetDir;
+				m_Bullet.SetInfo(m_Info, m_Base);
+
+				switch (m_Owner)
+				{
+					case Weapon_Owner.Player:
+						m_NewBulletObj = Instantiate(m_PlayerBullet);
+						break;
+					case Weapon_Owner.Monster:
+						if (m_WeapTypeMonster == Weapon_Type_Monster.Shotgun)
+						{
+							float angle = -20.0f;
+							float newAngle = 0.0f;
+							for (int i = 0; i < 5; ++i)
+							{
+								m_NewBulletObj = Instantiate(m_MonsterBullet);
+
+								m_NewBulletObj.name = "Bullet";
+								m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
+								m_NewBullet.SetInfo(m_Bullet);
+								newAngle = m_TargetAngle + angle;
+								m_NewBullet.Dir = Global.ConvertDir(newAngle);
+								angle += 10.0f;
+							}
+
+							m_Audio.Play();
+							return;
 						}
 
-						m_Audio.Play();
-						return;
-					}
+						else
+							m_NewBulletObj = Instantiate(m_MonsterBullet);
+						break;
+				}
 
-					else
-						m_NewBulletObj = Instantiate(m_MonsterBullet);
-					break;
+				m_NewBulletObj.name = "Bullet";
+				m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
+				m_NewBullet.SetInfo(m_Bullet);
+
+				m_Audio.Play();
 			}
-
-			m_NewBulletObj.name = "Bullet";
-			m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
-			m_NewBullet.SetInfo(m_Bullet);
-
-			m_Audio.Play();
 		}
 	}
 
@@ -210,7 +232,7 @@ public class Weapon : MonoBehaviour
 		else
 			Global.SetWeaponInfo(m_Info, m_WeapType);
 
-		m_Bullet.SetInfo(m_Info);
+		m_Bullet.SetInfo(m_Info, m_Base);
 
 		m_Base.FireTime = m_Info.m_FireRate;
 	}
@@ -222,16 +244,9 @@ public class Weapon : MonoBehaviour
 		if (m_SR.enabled)
 		{
 			Calc();
-
-			if (m_Base.Fire)
-			{
-				if (m_Base.FireTime >= m_Info.m_FireRate)
-				{
-					m_Base.FireTime = 0.0f;
-
-					Fire();
-				}
-			}
+			Fire();
 		}
+
+		SpreadBulletCheck();
 	}
 }

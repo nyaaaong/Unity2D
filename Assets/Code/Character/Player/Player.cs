@@ -15,6 +15,8 @@ public partial class Player : Character
 	private bool[]              m_HasWeapon = null;
 	private bool                m_KeyLock = false;
 	private bool                m_WeaponChange = false;
+	private float               m_BlinkTime = 0.0f;
+	private float               m_BlinkTimeMax = 0.1f;
 
 	private const int           UP = (int)Player_Dir.Up;
 	private const int           LEFT = (int)Player_Dir.Left;
@@ -26,7 +28,7 @@ public partial class Player : Character
 
 	protected void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (m_Death)
+		if (m_Death || m_NoHit)
 			return;
 
 		if (collision.tag == "Bullet")
@@ -39,7 +41,9 @@ public partial class Player : Character
 			if (bullet.Owner == Bullet_Owner.Monster)
 			{
 				SetDamage(bullet.Damage);
-				// 히트 애니메이션 (잠시동안 틴트 빨간색)
+
+				m_NoHit = true;
+				m_HitAnim = true;
 			}
 		}
 	}
@@ -63,6 +67,8 @@ public partial class Player : Character
 
 		m_Dir[RIGHT] = true;
 		m_LastDir[RIGHT] = true;
+
+		m_HitAnimTimeMax = 2.0f;
 	}
 
 	protected override void Update()
@@ -72,5 +78,6 @@ public partial class Player : Character
 		MoveKeyCheck();
 		WeaponKeyCheck();
 		AnimCheck();
+		HitAnimCheck();
 	}
 }

@@ -26,6 +26,8 @@ public class Character : MonoBehaviour
 	protected float                 m_deltaTime = 0.0f;
 	protected float					m_TargetAngle = 0.0f;
 	protected float					m_FireTime = 0.0f;
+	protected float                 m_HitAnimTime = 0.0f;
+	protected float                 m_HitAnimTimeMax = 0.1f;
 	protected Character_Status      m_Status = Character_Status.Idle;
 	protected Weapon_Hand           m_HandDir = Weapon_Hand.None;   // 어느 쪽 손을 보일 것 인지
 	protected Weapon_RenderOrder    m_WeapRenderOrder = Weapon_RenderOrder.Front;   // 캐릭터 기준 총이 보여질지 가려질지
@@ -37,10 +39,16 @@ public class Character : MonoBehaviour
 	protected bool                  m_HideWeapon = false;
 	protected bool                  m_Death = false;
 	protected bool                  m_Fire = false;
+	protected bool                  m_SpreadBullet = false; // ShotgunKin_B 전용
+	protected bool					m_HitAnim = false;
+	protected bool					m_DeathAnimProc = false;
 	protected Animator              m_Animator = null;
 	protected AudioSource           m_Audio = null;
+	protected SpriteRenderer        m_SR = null;
 	protected Vector3				m_TargetDir = Vector3.zero;
 
+	public Color Color { get { return m_SR.color; } }
+	public bool SpreadBullet { get { return m_SpreadBullet; } set { m_SpreadBullet = value; } }
 	public Weapon_Hand HandDir { get { return m_HandDir; } }
 	public Weapon_RenderOrder WeapRenderOrder { get { return m_WeapRenderOrder; } }
 	public Weapon_Type_Player Type { get { return m_WeapType; } }
@@ -51,19 +59,19 @@ public class Character : MonoBehaviour
 	public float TargetAngle { get { return m_TargetAngle; } set { m_TargetAngle = value; } }
 	public Vector3 TargetDir { get { return m_TargetDir; } set { m_TargetDir = value; } }
 	public float FireTime { get { return m_FireTime; } set { m_FireTime = value; } }
+	public bool Visible { get { return m_SR.enabled; } }
+	public bool DeathAnimProc { get { return m_DeathAnimProc; } }
 
 
 	public virtual void SetDamage(float dmg)
 	{
-		if (m_Death)
-			return;
-
 		m_Info.m_HP -= dmg;
 
 		if (m_Info.m_HP <= 0.0f)
 		{
 			m_Info.m_HP = 0.0f;
 			m_Death = true;
+			m_Fire = false;
 		}
 	}
 
@@ -99,6 +107,11 @@ public class Character : MonoBehaviour
 
 		if (m_Audio is null)
 			Debug.LogError("if (m_Audio is null)");
+
+		m_SR = GetComponent<SpriteRenderer>();
+
+		if (m_SR is null)
+			Debug.LogError("if (m_SR is null)");
 
 		m_Info.Init();
 	}

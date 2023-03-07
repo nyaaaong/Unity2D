@@ -192,4 +192,29 @@ public partial class Player : Character
 			m_PrevAnimName = m_AnimName;
 		}
 	}
+
+	private void HitAnimCheck()
+	{
+		if (m_HitAnim)
+		{
+			m_HitAnimTime += m_deltaTime;
+			m_BlinkTime += m_deltaTime;
+
+			if (m_BlinkTime >= m_BlinkTimeMax)
+			{
+				m_BlinkTime = 0.0f;
+				m_SR.enabled = !m_SR.enabled;
+			}
+
+			if (m_HitAnimTime >= m_HitAnimTimeMax)
+			{
+				m_HitAnimTime = 0.0f;
+				m_BlinkTime = 0.0f;
+				m_SR.enabled = true;
+
+				m_HitAnim = false;
+				m_NoHit = false;
+			}
+		}
+	}
 }

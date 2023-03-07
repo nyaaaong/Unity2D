@@ -14,18 +14,21 @@ public class Bullet : MonoBehaviour
 	private Bullet_Owner    m_Owner = Bullet_Owner.Player;
 	private Animator        m_Anim = null;
 	private CircleCollider2D    m_Collider = null;
+	private Character       m_Target = null;
 	private bool            m_Destroy = false;
+	private bool            m_Pierce = false;
 
 	public Bullet_Owner Owner { get { return m_Owner; } set { m_Owner = value; } }
 	public Vector3 Dir { get { return m_Dir; } set { m_Dir = value; } }
 	public float Damage { get { return m_Damage; } }
 
-	public void SetInfo(in WeaponInfo info)
+	public void SetInfo(in WeaponInfo info, Character _base)
 	{
 		m_Damage = info.m_Damage;
 		m_Speed = info.m_FireSpeed;
 		m_Range = info.m_FireRange;
 		m_FirstDist = info.m_FirstDist;
+		m_Pierce = info.m_Pierce;
 	}
 
 	public void SetInfo(Bullet bullet)
@@ -37,11 +40,24 @@ public class Bullet : MonoBehaviour
 		m_MoveDist = bullet.m_MoveDist;
 		m_FirstDist = bullet.m_FirstDist;
 		m_Owner = bullet.m_Owner;
+		m_Pierce = bullet.m_Pierce;
 	}
 
 	private void Destroy()
 	{
 		GameObject.Destroy(gameObject);
+	}
+
+	private void HitAnim()
+	{
+		m_Destroy = true;
+		m_Anim.SetTrigger("Hit");
+	}
+
+	private void NoHitAnim()
+	{
+		m_Destroy = true;
+		m_Anim.SetTrigger("Hit");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -52,27 +68,47 @@ public class Bullet : MonoBehaviour
 		else if (collision.tag == "Bullet")
 			return;
 
-		m_Destroy = true;
-
-		if (m_Owner == Bullet_Owner.Player)
+		if (m_Owner == Bullet_Owner.Player) // 플레이어 총기
 		{
 			if (collision.tag == "Monster")
 			{
-				m_Anim.SetTrigger("Hit");
-				return;
+				m_Target = collision.gameObject.GetComponent<Character>();
+
+				if (m_Target is null)
+					Debug.LogError("if (m_Target is null)");
+
+				if (m_Target.Death)
+					return;
+
+				else if (!m_Pierce)
+					HitAnim();
 			}
+
+			else if (collision.tag == "Player")
+				return;
+
+			else // 오브젝트 충돌
+				NoHitAnim();
 		}
 
-		else
+		else if (m_Owner == Bullet_Owner.Monster) // 몬스터 총기
 		{
 			if (collision.tag == "Player")
 			{
-				m_Anim.SetTrigger("Hit");
-				return;
-			}
-		}
+				Player player = collision.gameObject.GetComponent<Player>();
 
-		m_Anim.SetTrigger("NoHit");
+				if (player.NoHit)
+					return;
+
+				HitAnim();
+			}
+
+			else if (collision.tag == "Monster")
+				return;
+
+			else // 오브젝트 충돌
+				NoHitAnim();
+		}
 	}
 
 	private void Awake()

@@ -1,8 +1,23 @@
 using Newtonsoft.Json.Linq;
 using System;
 using UnityEngine;
+using UnityEditor;
 
 #pragma warning disable 0414 // 사용하지 않은 변수 Warning 알림 제거
+
+[Serializable]
+public class WeaponInfo
+{
+	[SerializeField]
+	public string m_Name;
+	public float m_Damage;
+	public float m_FireRate;
+	public float m_FireSpeed;
+	public float m_FireRange;
+	public float m_FirstDist;
+	public float m_OffsetY;
+	public bool m_Pierce;
+}
 
 public class Global : MonoBehaviour
 {
@@ -12,10 +27,11 @@ public class Global : MonoBehaviour
 	private float       m_EffectVolume = 1.0f;
 	[SerializeField]
 	private float       m_BGMVolume = 1.0f;
+
 	[SerializeField]
-	private WeaponInfo[]    m_WeapInfo = null;
+	private WeaponInfo[]    m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];
 	[SerializeField]
-	private WeaponInfo[]    m_WeapMonsterInfo = null;
+	private WeaponInfo[]    m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
 
 	private static Global  m_Inst = null;
 	private GameObject  m_PlayerObj = null;
@@ -42,6 +58,7 @@ public class Global : MonoBehaviour
 		info.m_FireRange = m_Inst.m_WeapInfo[(int)type].m_FireRange;
 		info.m_FirstDist = m_Inst.m_WeapInfo[(int)type].m_FirstDist;
 		info.m_OffsetY = m_Inst.m_WeapInfo[(int)type].m_OffsetY;
+		info.m_Pierce = m_Inst.m_WeapInfo[(int)type].m_Pierce;
 	}
 
 	public static void SetWeaponInfo(in WeaponInfo info, Weapon_Type_Monster type)
@@ -52,6 +69,7 @@ public class Global : MonoBehaviour
 		info.m_FireRange = m_Inst.m_WeapMonsterInfo[(int)type].m_FireRange;
 		info.m_FirstDist = m_Inst.m_WeapMonsterInfo[(int)type].m_FirstDist;
 		info.m_OffsetY = m_Inst.m_WeapMonsterInfo[(int)type].m_OffsetY;
+		info.m_Pierce = m_Inst.m_WeapMonsterInfo[(int)type].m_Pierce;
 	}
 
 	public static void E2PData(Character enemy)
