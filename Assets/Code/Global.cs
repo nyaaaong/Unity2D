@@ -15,7 +15,6 @@ public class WeaponInfo
 	public float m_FireSpeed;
 	public float m_FireRange;
 	public float m_FirstDist;
-	public float m_OffsetY;
 	public bool m_Pierce;
 }
 
@@ -33,12 +32,22 @@ public class Global : MonoBehaviour
 	[SerializeField]
 	private WeaponInfo[]    m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
 
+	[SerializeField]
+	protected AudioClip m_HitEffectAudio = null;
+	[SerializeField]
+	protected AudioClip m_DeathEffectAudio = null;
+	[SerializeField]
+	protected AudioClip[] m_DeathAudio = null;
+
 	private static Global  m_Inst = null;
 	private GameObject  m_PlayerObj = null;
 	private Player      m_Player = null;
 	private Vector2     m_P2MDist = Vector2.zero;
 	private Vector2     m_E2PDist = Vector2.zero;
 
+	public static AudioClip HitEffectAudio { get { return m_Inst.m_HitEffectAudio; } }
+	public static AudioClip DeathEffectAudio { get { return m_Inst.m_DeathEffectAudio; } }
+	public static AudioClip[] DeathAudio { get { return m_Inst.m_DeathAudio; } }
 	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
 	public static Player Player { get { return m_Inst.m_Player; } }	
 	public static WeaponInfo Pistol { get { return m_Inst.m_WeapInfo[(int)Weapon_Type_Player.Pistol]; } }
@@ -57,7 +66,6 @@ public class Global : MonoBehaviour
 		info.m_FireSpeed = m_Inst.m_WeapInfo[(int)type].m_FireSpeed;
 		info.m_FireRange = m_Inst.m_WeapInfo[(int)type].m_FireRange;
 		info.m_FirstDist = m_Inst.m_WeapInfo[(int)type].m_FirstDist;
-		info.m_OffsetY = m_Inst.m_WeapInfo[(int)type].m_OffsetY;
 		info.m_Pierce = m_Inst.m_WeapInfo[(int)type].m_Pierce;
 	}
 
@@ -68,7 +76,6 @@ public class Global : MonoBehaviour
 		info.m_FireSpeed = m_Inst.m_WeapMonsterInfo[(int)type].m_FireSpeed;
 		info.m_FireRange = m_Inst.m_WeapMonsterInfo[(int)type].m_FireRange;
 		info.m_FirstDist = m_Inst.m_WeapMonsterInfo[(int)type].m_FirstDist;
-		info.m_OffsetY = m_Inst.m_WeapMonsterInfo[(int)type].m_OffsetY;
 		info.m_Pierce = m_Inst.m_WeapMonsterInfo[(int)type].m_Pierce;
 	}
 
@@ -99,6 +106,15 @@ public class Global : MonoBehaviour
 
 		if (m_WeapMonsterInfo.Length > (int)Weapon_Type_Monster.End)
 			Debug.LogError("if (m_WeapMonsterInfo.Length > Weapon_Type_Monster.End)");
+
+		if (m_HitEffectAudio is null)
+			Debug.LogError("if (m_HitEffectAudio is null)");
+
+		if (m_DeathEffectAudio is null)
+			Debug.LogError("if (m_DeathEffectAudio is null)");
+
+		if (m_DeathAudio is null)
+			Debug.LogError("if (m_DeathAudio is null)");
 	}
 
 	private void Update()

@@ -5896,7 +5896,6 @@ MonoBehaviour:
     m_FireSpeed: 5
     m_FireRange: 5
     m_FirstDist: 0.7
-    m_OffsetY: 0.1
     m_Pierce: 0
   - m_Name: Rifle
     m_Damage: 2
@@ -5904,7 +5903,6 @@ MonoBehaviour:
     m_FireSpeed: 7
     m_FireRange: 7
     m_FirstDist: 0.9
-    m_OffsetY: 0.07
     m_Pierce: 0
   - m_Name: Sniper
     m_Damage: 10
@@ -5912,7 +5910,6 @@ MonoBehaviour:
     m_FireSpeed: 40
     m_FireRange: 15
     m_FirstDist: 0.95
-    m_OffsetY: 0.05
     m_Pierce: 1
   m_WeapMonsterInfo:
   - m_Name: Pistol
@@ -5921,7 +5918,6 @@ MonoBehaviour:
     m_FireSpeed: 5
     m_FireRange: 5
     m_FirstDist: 0.7
-    m_OffsetY: 0.2
     m_Pierce: 0
   - m_Name: Rifle
     m_Damage: 2
@@ -5929,7 +5925,6 @@ MonoBehaviour:
     m_FireSpeed: 5
     m_FireRange: 5
     m_FirstDist: 0.9
-    m_OffsetY: 0.07
     m_Pierce: 0
   - m_Name: Shotgun
     m_Damage: 2
@@ -5937,8 +5932,12 @@ MonoBehaviour:
     m_FireSpeed: 5
     m_FireRange: 5
     m_FirstDist: 0.7
-    m_OffsetY: 0
     m_Pierce: 0
+  m_HitEffectAudio: {fileID: 8300000, guid: 312d467db1e9d804aa0bb5b50a073bb7, type: 3}
+  m_DeathEffectAudio: {fileID: 8300000, guid: 076ff4d82989d5142b1789336fe8809a, type: 3}
+  m_DeathAudio:
+  - {fileID: 8300000, guid: 71df80fc01f9ae849b0dc1d71ac1c68c, type: 3}
+  - {fileID: 8300000, guid: 82d5495ad27b7db4dac7abe286b54a10, type: 3}
 --- !u!4 &2029167182
 Transform:
   m_ObjectHideFlags: 0

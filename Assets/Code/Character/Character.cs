@@ -62,7 +62,6 @@ public class Character : MonoBehaviour
 	public bool Visible { get { return m_SR.enabled; } }
 	public bool DeathAnimProc { get { return m_DeathAnimProc; } }
 
-
 	public virtual void SetDamage(float dmg)
 	{
 		m_Info.m_HP -= dmg;
@@ -94,6 +93,11 @@ public class Character : MonoBehaviour
 		m_Audio.clip = clip;
 		m_Audio.loop = isLoop;
 		m_Audio.Play();
+	}
+
+	protected void PlaySoundOneShot(AudioClip clip)
+	{
+		m_Audio.PlayOneShot(clip);
 	}
 
 	protected virtual void Awake()

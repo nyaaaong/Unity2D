@@ -38,7 +38,7 @@ public class Weapon : MonoBehaviour
 
 			m_Bullet.transform.position = m_Base.transform.position;
 			m_Bullet.Dir = Vector3.zero;
-			m_Bullet.SetInfo(m_Info, m_Base);
+			m_Bullet.SetInfo(m_Info);
 
 			float angle = 0.0f;
 
@@ -67,11 +67,10 @@ public class Weapon : MonoBehaviour
 				m_Base.FireTime = 0.0f;
 
 				m_BulletPos = transform.position + (m_TargetDir * m_Info.m_FirstDist);
-				m_BulletPos.y += m_Info.m_OffsetY;
 
 				m_Bullet.transform.position = m_BulletPos;
 				m_Bullet.Dir = m_TargetDir;
-				m_Bullet.SetInfo(m_Info, m_Base);
+				m_Bullet.SetInfo(m_Info);
 
 				switch (m_Owner)
 				{
@@ -232,7 +231,7 @@ public class Weapon : MonoBehaviour
 		else
 			Global.SetWeaponInfo(m_Info, m_WeapType);
 
-		m_Bullet.SetInfo(m_Info, m_Base);
+		m_Bullet.SetInfo(m_Info);
 
 		m_Base.FireTime = m_Info.m_FireRate;
 	}
@@ -241,7 +240,8 @@ public class Weapon : MonoBehaviour
 	{
 		SpriteCheck();
 
-		if (m_SR.enabled)
+		if (m_SR.enabled || 
+			(m_Owner == Weapon_Owner.Player && m_Base.NoHit && m_Base.HandDir == m_HandSpriteDir)) // 플레이어 무적 시 업데이트 안되는 걸 방지하기 위함
 		{
 			Calc();
 			Fire();

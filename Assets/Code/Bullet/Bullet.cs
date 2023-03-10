@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
 	public Vector3 Dir { get { return m_Dir; } set { m_Dir = value; } }
 	public float Damage { get { return m_Damage; } }
 
-	public void SetInfo(in WeaponInfo info, Character _base)
+	public void SetInfo(in WeaponInfo info)
 	{
 		m_Damage = info.m_Damage;
 		m_Speed = info.m_FireSpeed;
@@ -135,6 +135,9 @@ public class Bullet : MonoBehaviour
 
 		else if (!m_Destroy)
 		{
+			if (m_Dir == Vector3.zero)
+				Debug.LogError("if (m_Dir == Vector3.zero)");
+
 			m_MoveDist = m_Speed * Time.deltaTime;
 			m_AccRange += m_MoveDist;
 

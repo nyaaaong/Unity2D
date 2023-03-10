@@ -10,12 +10,37 @@ public class Monster : Character
 	protected delegate void Pattern();
 	protected List<Pattern>    m_PatternList = null;
 
+	protected AudioClip m_HitEffectAudio = null;
+	protected AudioClip m_DeathEffectAudio = null;
+	protected AudioClip[] m_DeathAudio = null;
+
 	protected bool m_UseAlpha = false;
 
 	private bool	m_Destroy = false;
 	private float	m_Alpha = 1.0f;
 	private float	m_FadeTime = 1.0f; // 사라질 시간
 	private Color	m_Color;
+
+	protected virtual void PlayDeathAudio()
+	{
+		int PlayIdx = Random.Range(0, 2);
+
+		PlaySoundOneShot(m_DeathAudio[PlayIdx]);
+	}
+
+	public override void SetDamage(float dmg)
+	{
+		base.SetDamage(dmg);
+
+		if (m_Death)
+		{
+			PlaySoundOneShot(m_DeathEffectAudio);
+			PlayDeathAudio();
+		}
+
+		else
+			PlaySoundOneShot(m_HitEffectAudio);
+	}
 
 	private void DestroyCheck()
 	{
@@ -148,6 +173,10 @@ public class Monster : Character
 	protected override void Start()
 	{
 		base.Start();
+
+		m_HitEffectAudio = Global.HitEffectAudio;
+		m_DeathEffectAudio = Global.DeathEffectAudio;
+		m_DeathAudio = Global.DeathAudio;
 	}
 
 	protected override void Update()
