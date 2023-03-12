@@ -45,9 +45,21 @@ public partial class Player : Character
 		return true;
 	}
 
-	public bool HasWeapon(int type)
+	public bool HasWeapon(Item_Type type)
 	{
-		return m_HasWeapon[type];
+		int idx = 0;
+
+		switch (type)
+		{
+			case Item_Type.Rifle:
+				idx = (int)Weapon_Type_Player.Rifle;
+				break;
+			case Item_Type.Sniper:
+				idx = (int)Weapon_Type_Player.Sniper;
+				break;
+		}
+
+		return m_HasWeapon[idx];
 	}
 	
 	public void AddWeapon(Weapon_Type_Player type)

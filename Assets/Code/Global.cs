@@ -29,13 +29,20 @@ public class Global : MonoBehaviour
 	private WeaponInfo[]		m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];
 	[SerializeField]
 	private WeaponInfo[]		m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
+	[SerializeField]
+	private GameObject          m_PlayerBullet = null;
+	[SerializeField]
+	private GameObject          m_EnemyBullet = null;
 
 	[SerializeField]
-	protected AudioClip m_HitEffectAudio = null;
+	private AudioClip m_HitEffectAudio = null;
 	[SerializeField]
-	protected AudioClip m_DeathEffectAudio = null;
+	private AudioClip m_DeathEffectAudio = null;
 	[SerializeField]
-	protected AudioClip[] m_DeathAudio = null;
+	private AudioClip[] m_DeathAudio = null;
+
+	[SerializeField]
+	private float   m_LootRate = 20.0f;
 
 	private static Global	m_Inst = null;
 	private GameObject	m_PlayerObj = null;
@@ -49,6 +56,9 @@ public class Global : MonoBehaviour
 	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
 	public static Player Player { get { return m_Inst.m_Player; } }
 	public static WeaponInfo Pistol { get { return m_Inst.m_WeapInfo[(int)Weapon_Type_Player.Pistol]; } }
+	public static float LootRate { get { return m_Inst.m_LootRate; } }
+	public static GameObject PlayerBullet { get { return m_Inst.m_PlayerBullet; } }
+	public static GameObject EnemyBullet { get { return m_Inst.m_EnemyBullet; } }
 
 	public static Vector2 ConvertDir(float angle)
 	{
@@ -113,6 +123,12 @@ public class Global : MonoBehaviour
 
 		if (m_DeathAudio == null)
 			Debug.LogError("if (m_DeathAudio == null)");
+
+		if (m_PlayerBullet == null)
+			Debug.LogError("if (m_PlayerBullet == null)");
+
+		if (m_EnemyBullet == null)
+			Debug.LogError("if (m_EnemyBullet == null)");
 	}
 
 	private void Update()

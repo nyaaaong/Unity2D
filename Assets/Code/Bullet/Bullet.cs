@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
 
 	private void Destroy()
 	{
-		GameObject.Destroy(gameObject);
+		Destroy(gameObject);
 	}
 
 	private void HitAnim()
@@ -57,7 +57,7 @@ public class Bullet : MonoBehaviour
 	private void NoHitAnim()
 	{
 		m_Destroy = true;
-		m_Anim.SetTrigger("Hit");
+		m_Anim.SetTrigger("NoHit");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -127,11 +127,7 @@ public class Bullet : MonoBehaviour
 	private void Update()
 	{
 		if (m_AccRange >= m_Range && !m_Destroy)
-		{
-			m_Destroy = true;
-
-			m_Anim.SetTrigger("NoHit");
-		}
+			NoHitAnim();
 
 		else if (!m_Destroy)
 		{

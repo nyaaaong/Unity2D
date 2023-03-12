@@ -20,6 +20,22 @@ public class Monster : Character
 	private float		m_FadeTime = 1.0f; // 사라질 시간
 	private Color		m_Color;
 
+	private float       m_Percent = 0.0f;
+	private bool        m_CreateItem = false;
+
+	private void CreateItem()
+	{
+		if (m_CreateItem)
+			return;
+
+		m_CreateItem = true;
+
+		m_Percent = Random.Range(0.0f, 100.0f);
+
+		if (m_Percent <= Global.LootRate)
+			ItemManager.CreateItem(transform.position);
+	}
+
 	protected virtual void PlayDeathAudio()
 	{
 		int PlayIdx = Random.Range(0, 2);
@@ -45,6 +61,8 @@ public class Monster : Character
 	{
 		if (m_Destroy)
 		{
+			CreateItem();
+
 			if (m_UseAlpha)
 			{
 				m_Color.a -= m_Alpha * m_deltaTime;

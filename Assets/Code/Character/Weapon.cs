@@ -10,10 +10,9 @@ public class Weapon : MonoBehaviour
 	private Weapon_Type_Player			m_WeapType = Weapon_Type_Player.End;
 	[SerializeField]
 	private Weapon_Type_Monster			m_WeapTypeMonster = Weapon_Type_Monster.End;
-	[SerializeField]
+
 	private GameObject			m_PlayerBullet = null;
-	[SerializeField]
-	private GameObject			m_MonsterBullet = null;
+	private GameObject			m_EnemyBullet = null;
 
 	private Character				m_Base = null;
 	private GameObject			m_NewBulletObj = null;
@@ -43,7 +42,7 @@ public class Weapon : MonoBehaviour
 
 			for (int i = 0; i < 12; ++i)
 			{
-				m_NewBulletObj = Instantiate(m_MonsterBullet);
+				m_NewBulletObj = Instantiate(m_EnemyBullet);
 
 				m_NewBulletObj.name = "Bullet";
 				m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
@@ -66,6 +65,7 @@ public class Weapon : MonoBehaviour
 				m_Base.FireTime = 0.0f;
 
 				m_BulletPos = transform.position + (m_TargetDir * m_Info.m_FirstDist);
+				m_BulletPos.z = -5.0f;
 
 				m_Bullet.transform.position = m_BulletPos;
 				m_Bullet.Dir = m_TargetDir;
@@ -83,7 +83,7 @@ public class Weapon : MonoBehaviour
 							float newAngle = 0.0f;
 							for (int i = 0; i < 5; ++i)
 							{
-								m_NewBulletObj = Instantiate(m_MonsterBullet);
+								m_NewBulletObj = Instantiate(m_EnemyBullet);
 
 								m_NewBulletObj.name = "Bullet";
 								m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
@@ -98,7 +98,7 @@ public class Weapon : MonoBehaviour
 						}
 
 						else
-							m_NewBulletObj = Instantiate(m_MonsterBullet);
+							m_NewBulletObj = Instantiate(m_EnemyBullet);
 						break;
 				}
 
@@ -184,11 +184,15 @@ public class Weapon : MonoBehaviour
 		if (m_HandSR == null)
 			Debug.LogError("if (m_HandSR == null)");
 
+		m_PlayerBullet = Global.PlayerBullet;
+
 		if (m_PlayerBullet == null)
 			Debug.LogError("if (m_PlayerBullet == null)");
 
-		if (m_MonsterBullet == null)
-			Debug.LogError("if (m_MonsterBullet == null)");
+		m_EnemyBullet = Global.EnemyBullet;
+
+		if (m_EnemyBullet == null)
+			Debug.LogError("if (m_EnemyBullet == null)");
 
 		m_Audio = GetComponent<AudioSource>();
 
@@ -214,7 +218,7 @@ public class Weapon : MonoBehaviour
 				m_Bullet.Owner = Bullet_Owner.Player;
 				break;
 			case Weapon_Owner.Monster:
-				m_Bullet = m_MonsterBullet.GetComponent<Bullet>();
+				m_Bullet = m_EnemyBullet.GetComponent<Bullet>();
 				m_Bullet.Owner = Bullet_Owner.Monster;
 				break;
 		}
