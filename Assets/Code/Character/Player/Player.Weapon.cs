@@ -37,7 +37,7 @@ public partial class Player : Character
 
 		else
 			m_Fire = false;
-}
+	}
 
 	private void WeaponKeyCheck()
 	{

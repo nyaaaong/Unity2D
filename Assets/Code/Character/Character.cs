@@ -21,31 +21,31 @@ public class CharInfo
 public class Character : MonoBehaviour
 {
 	[SerializeField]
-	protected CharInfo              m_Info = new CharInfo();
+	protected CharInfo							m_Info = new CharInfo();
 
-	protected float                 m_deltaTime = 0.0f;
-	protected float					m_TargetAngle = 0.0f;
-	protected float					m_FireTime = 0.0f;
-	protected float                 m_HitAnimTime = 0.0f;
-	protected float                 m_HitAnimTimeMax = 0.1f;
-	protected Character_Status      m_Status = Character_Status.Idle;
-	protected Weapon_Hand           m_HandDir = Weapon_Hand.None;   // 어느 쪽 손을 보일 것 인지
-	protected Weapon_RenderOrder    m_WeapRenderOrder = Weapon_RenderOrder.Front;   // 캐릭터 기준 총이 보여질지 가려질지
-	protected Weapon_Type_Player    m_WeapType = Weapon_Type_Player.End;
-	protected string                m_AnimName = "";
-	protected string                m_PrevAnimName = "";
-	protected bool                  m_Move = false;
-	protected bool                  m_NoHit = false;
-	protected bool                  m_HideWeapon = false;
-	protected bool                  m_Death = false;
-	protected bool                  m_Fire = false;
-	protected bool                  m_SpreadBullet = false; // ShotgunKin_B 전용
-	protected bool					m_HitAnim = false;
-	protected bool					m_DeathAnimProc = false;
-	protected Animator              m_Animator = null;
-	protected AudioSource           m_Audio = null;
-	protected SpriteRenderer        m_SR = null;
-	protected Vector3				m_TargetDir = Vector3.zero;
+	protected float									m_deltaTime = 0.0f;
+	protected float									m_TargetAngle = 0.0f;
+	protected float									m_FireTime = 0.0f;
+	protected float									m_HitAnimTime = 0.0f;
+	protected float									m_HitAnimTimeMax = 0.1f;
+	protected Character_Status			m_Status = Character_Status.Idle;
+	protected Weapon_Hand						m_HandDir = Weapon_Hand.None;		// 어느 쪽 손을 보일 것 인지
+	protected Weapon_RenderOrder		m_WeapRenderOrder = Weapon_RenderOrder.Front;		// 캐릭터 기준 총이 보여질지 가려질지
+	protected Weapon_Type_Player		m_WeapType = Weapon_Type_Player.End;
+	protected string								m_AnimName = "";
+	protected string								m_PrevAnimName = "";
+	protected bool									m_Move = false;
+	protected bool									m_NoHit = false;
+	protected bool									m_HideWeapon = false;
+	protected bool									m_Death = false;
+	protected bool									m_Fire = false;
+	protected bool									m_SpreadBullet = false; // ShotgunKin_B 전용
+	protected bool									m_HitAnim = false;
+	protected bool									m_DeathAnimProc = false;
+	protected Animator							m_Animator = null;
+	protected AudioSource						m_Audio = null;
+	protected SpriteRenderer				m_SR = null;
+	protected Vector3								m_TargetDir = Vector3.zero;
 
 	public Color Color { get { return m_SR.color; } }
 	public bool SpreadBullet { get { return m_SpreadBullet; } set { m_SpreadBullet = value; } }
@@ -74,21 +74,10 @@ public class Character : MonoBehaviour
 		}
 	}
 
-	public virtual void Heal(float value)
-	{
-		if (m_Death)
-			return;
-
-		m_Info.m_HP += value;
-
-		if (m_Info.m_HP > m_Info.HPMax)
-			m_Info.m_HP = m_Info.HPMax;
-	}
-
 	protected void PlaySound(AudioClip clip, bool isLoop = false)
 	{
-		if (clip is null)
-			Debug.LogError("if (clip is null)");
+		if (clip == null)
+			Debug.LogError("if (clip == null)");
 
 		m_Audio.clip = clip;
 		m_Audio.loop = isLoop;
@@ -104,18 +93,18 @@ public class Character : MonoBehaviour
 	{
 		m_Animator = GetComponent<Animator>();
 
-		if (m_Animator is null)
-			Debug.LogError("if (m_Animator is null)");
+		if (m_Animator == null)
+			Debug.LogError("if (m_Animator == null)");
 
 		m_Audio = GetComponent<AudioSource>();
 
-		if (m_Audio is null)
-			Debug.LogError("if (m_Audio is null)");
+		if (m_Audio == null)
+			Debug.LogError("if (m_Audio == null)");
 
 		m_SR = GetComponent<SpriteRenderer>();
 
-		if (m_SR is null)
-			Debug.LogError("if (m_SR is null)");
+		if (m_SR == null)
+			Debug.LogError("if (m_SR == null)");
 
 		m_Info.Init();
 	}

@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-	private Vector3         m_Dir = Vector2.zero;
-	private float           m_Damage = 1.0f;
-	private float           m_Speed = 1.0f;
-	private float           m_Range = 1.0f;
-	private float           m_AccRange = 0.0f;
-	private float           m_MoveDist = 0.0f;
-	private float           m_FirstDist = 5.0f; // 발사할 때 어디서부터 시작될 지
-	private Bullet_Owner    m_Owner = Bullet_Owner.Player;
-	private Animator        m_Anim = null;
-	private CircleCollider2D    m_Collider = null;
-	private Character       m_Target = null;
-	private bool            m_Destroy = false;
-	private bool            m_Pierce = false;
+	private Vector3					m_Dir = Vector2.zero;
+	private float						m_Damage = 1.0f;
+	private float						m_Speed = 1.0f;
+	private float						m_Range = 1.0f;
+	private float						m_AccRange = 0.0f;
+	private float						m_MoveDist = 0.0f;
+	private float						m_FirstDist = 5.0f; // 발사할 때 어디서부터 시작될 지
+	private Bullet_Owner		m_Owner = Bullet_Owner.Player;
+	private Animator				m_Anim = null;
+	private CircleCollider2D		m_Collider = null;
+	private Character				m_Target = null;
+	private bool						m_Destroy = false;
+	private bool						m_Pierce = false;
 
 	public Bullet_Owner Owner { get { return m_Owner; } set { m_Owner = value; } }
 	public Vector3 Dir { get { return m_Dir; } set { m_Dir = value; } }
@@ -74,8 +74,8 @@ public class Bullet : MonoBehaviour
 			{
 				m_Target = collision.gameObject.GetComponent<Character>();
 
-				if (m_Target is null)
-					Debug.LogError("if (m_Target is null)");
+				if (m_Target == null)
+					Debug.LogError("if (m_Target == null)");
 
 				if (m_Target.Death)
 					return;
@@ -115,13 +115,13 @@ public class Bullet : MonoBehaviour
 	{
 		m_Anim = GetComponent<Animator>();
 
-		if (m_Anim is null)
-			Debug.LogError("if (m_Anim is null)");
+		if (m_Anim == null)
+			Debug.LogError("if (m_Anim == null)");
 
 		m_Collider = GetComponent<CircleCollider2D>();
 
-		if (m_Collider is null)
-			Debug.LogError("if (m_Collider is null)");
+		if (m_Collider == null)
+			Debug.LogError("if (m_Collider == null)");
 	}
 
 	private void Update()

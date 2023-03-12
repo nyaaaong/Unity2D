@@ -61,3 +61,11 @@ public enum Bullet_Owner
 	Player,
 	Monster
 }
+
+public enum Item_Type
+{
+	Rifle,
+	Sniper,
+	Heart,
+	End
+}

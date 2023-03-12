@@ -1,14 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Monster : Character
 {
 	[SerializeField]
-	protected bool  m_DebugFire = false;
+	protected bool	m_DebugFire = false;
 
 	protected delegate void Pattern();
-	protected List<Pattern>    m_PatternList = null;
+	protected List<Pattern>		m_PatternList = null;
 
 	protected AudioClip m_HitEffectAudio = null;
 	protected AudioClip m_DeathEffectAudio = null;
@@ -16,10 +15,10 @@ public class Monster : Character
 
 	protected bool m_UseAlpha = false;
 
-	private bool	m_Destroy = false;
-	private float	m_Alpha = 1.0f;
-	private float	m_FadeTime = 1.0f; // 사라질 시간
-	private Color	m_Color;
+	private bool		m_Destroy = false;
+	private float		m_Alpha = 1.0f;
+	private float		m_FadeTime = 1.0f; // 사라질 시간
+	private Color		m_Color;
 
 	protected virtual void PlayDeathAudio()
 	{
@@ -99,10 +98,10 @@ public class Monster : Character
 
 		if (collision.tag == "Bullet")
 		{
-			Bullet  bullet = collision.gameObject.GetComponent<Bullet>();
+			Bullet	bullet = collision.gameObject.GetComponent<Bullet>();
 
-			if (bullet is null)
-				Debug.LogError("if (bullet is null)");
+			if (bullet == null)
+				Debug.LogError("if (bullet == null)");
 
 			if (bullet.Owner == Bullet_Owner.Player)
 			{
@@ -166,7 +165,7 @@ public class Monster : Character
 		m_Fire = m_DebugFire;
 
 		m_Color = m_SR.color;
-		
+
 		m_Alpha /= m_FadeTime;
 	}
 

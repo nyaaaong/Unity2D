@@ -3,12 +3,14 @@
 public class Hand : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject  m_BaseObj = null;
+	private GameObject	m_BaseObj = null;
 	[SerializeField]
 	private Weapon_Hand m_HandSpriteDir = Weapon_Hand.Right;
+	[SerializeField]
+	private Weapon_Owner		m_Owner = Weapon_Owner.Player;
 
-	private Character   m_Base = null;
-	private SpriteRenderer  m_SR = null;
+	private Character		m_Base = null;
+	private SpriteRenderer	m_SR = null;
 
 	public Character Base { get { return m_Base; } }
 	public Weapon_Hand HandSpriteDir { get { return m_HandSpriteDir; } }
@@ -18,21 +20,21 @@ public class Hand : MonoBehaviour
 	{
 		m_SR = GetComponent<SpriteRenderer>();
 
-		if (m_SR is null)
+		if (m_SR == null)
 			Debug.LogError("m_SR = GetComponent<SpriteRenderer>();");
 
-		if (m_BaseObj is null)
-			Debug.LogError("if (m_BaseObj is null)");
+		if (m_BaseObj == null)
+			Debug.LogError("if (m_BaseObj == null)");
 
 		m_Base = m_BaseObj.GetComponent<Character>();
 
-		if (m_Base is null)
+		if (m_Base == null)
 			Debug.LogError("m_Base = m_BaseObj.GetComponent<Character>();");
 	}
 
 	private void Update()
 	{
-		if (!m_Base.Visible || m_Base.DeathAnimProc || m_Base.HandDir != m_HandSpriteDir || m_Base.HandDir == Weapon_Hand.None || m_Base.HideWeapon)
+		if (!m_Base.Visible || m_Base.DeathAnimProc || m_Base.HandDir != m_HandSpriteDir || m_Base.HandDir == Weapon_Hand.None || m_Base.HideWeapon || (m_Owner == Weapon_Owner.Player && WeapType == Weapon_Type_Player.End))
 			m_SR.enabled = false;
 
 		else

@@ -1,7 +1,5 @@
-using Newtonsoft.Json.Linq;
 using System;
 using UnityEngine;
-using UnityEditor;
 
 #pragma warning disable 0414 // 사용하지 않은 변수 Warning 알림 제거
 
@@ -21,16 +19,16 @@ public class WeaponInfo
 public class Global : MonoBehaviour
 {
 	[SerializeField]
-	private Camera      m_MainCamera = null;
+	private Camera			m_MainCamera = null;
 	[SerializeField]
-	private float       m_EffectVolume = 1.0f;
+	private float				m_EffectVolume = 1.0f;
 	[SerializeField]
-	private float       m_BGMVolume = 1.0f;
+	private float				m_BGMVolume = 1.0f;
 
 	[SerializeField]
-	private WeaponInfo[]    m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];
+	private WeaponInfo[]		m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];
 	[SerializeField]
-	private WeaponInfo[]    m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
+	private WeaponInfo[]		m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
 
 	[SerializeField]
 	protected AudioClip m_HitEffectAudio = null;
@@ -39,17 +37,17 @@ public class Global : MonoBehaviour
 	[SerializeField]
 	protected AudioClip[] m_DeathAudio = null;
 
-	private static Global  m_Inst = null;
-	private GameObject  m_PlayerObj = null;
-	private Player      m_Player = null;
-	private Vector2     m_P2MDist = Vector2.zero;
-	private Vector2     m_E2PDist = Vector2.zero;
+	private static Global	m_Inst = null;
+	private GameObject	m_PlayerObj = null;
+	private Player			m_Player = null;
+	private Vector2			m_P2MDist = Vector2.zero;
+	private Vector2			m_E2PDist = Vector2.zero;
 
 	public static AudioClip HitEffectAudio { get { return m_Inst.m_HitEffectAudio; } }
 	public static AudioClip DeathEffectAudio { get { return m_Inst.m_DeathEffectAudio; } }
 	public static AudioClip[] DeathAudio { get { return m_Inst.m_DeathAudio; } }
 	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
-	public static Player Player { get { return m_Inst.m_Player; } }	
+	public static Player Player { get { return m_Inst.m_Player; } }
 	public static WeaponInfo Pistol { get { return m_Inst.m_WeapInfo[(int)Weapon_Type_Player.Pistol]; } }
 
 	public static Vector2 ConvertDir(float angle)
@@ -93,13 +91,13 @@ public class Global : MonoBehaviour
 
 		m_PlayerObj = GameObject.Find("Player");
 
-		if (m_PlayerObj is null)
-			Debug.LogError("if (m_PlayerObj is null)");
+		if (m_PlayerObj == null)
+			Debug.LogError("if (m_PlayerObj == null)");
 
 		m_Player = m_PlayerObj.GetComponent<Player>();
 
-		if (m_Player is null)
-			Debug.LogError("if (m_Player is null)");
+		if (m_Player == null)
+			Debug.LogError("if (m_Player == null)");
 
 		if (m_WeapInfo.Length > (int)Weapon_Type_Player.End)
 			Debug.LogError("if (m_WeapInfo.Length > Weapon_Type_Player.End)");
@@ -107,14 +105,14 @@ public class Global : MonoBehaviour
 		if (m_WeapMonsterInfo.Length > (int)Weapon_Type_Monster.End)
 			Debug.LogError("if (m_WeapMonsterInfo.Length > Weapon_Type_Monster.End)");
 
-		if (m_HitEffectAudio is null)
-			Debug.LogError("if (m_HitEffectAudio is null)");
+		if (m_HitEffectAudio == null)
+			Debug.LogError("if (m_HitEffectAudio == null)");
 
-		if (m_DeathEffectAudio is null)
-			Debug.LogError("if (m_DeathEffectAudio is null)");
+		if (m_DeathEffectAudio == null)
+			Debug.LogError("if (m_DeathEffectAudio == null)");
 
-		if (m_DeathAudio is null)
-			Debug.LogError("if (m_DeathAudio is null)");
+		if (m_DeathAudio == null)
+			Debug.LogError("if (m_DeathAudio == null)");
 	}
 
 	private void Update()

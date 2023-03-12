@@ -125,7 +125,7 @@ public partial class Player : Character
 		if (m_Status == Character_Status.Dodge)
 		{
 			Vector3 Movedir = Vector3.zero;
-			bool    Cross = false;
+			bool		Cross = false;
 
 			if (m_LastDir[UP])
 			{

@@ -1,34 +1,33 @@
 using UnityEngine;
-using System;
 
 public class Weapon : MonoBehaviour
 {
 	[SerializeField]
-	private Hand            m_Hand = null;
+	private Hand						m_Hand = null;
 	[SerializeField]
-	private Weapon_Owner    m_Owner = Weapon_Owner.Player;
+	private Weapon_Owner		m_Owner = Weapon_Owner.Player;
 	[SerializeField]
-	private Weapon_Type_Player     m_WeapType = Weapon_Type_Player.End;
+	private Weapon_Type_Player			m_WeapType = Weapon_Type_Player.End;
 	[SerializeField]
-	private Weapon_Type_Monster     m_WeapTypeMonster = Weapon_Type_Monster.End;
+	private Weapon_Type_Monster			m_WeapTypeMonster = Weapon_Type_Monster.End;
 	[SerializeField]
-	private GameObject      m_PlayerBullet = null;
+	private GameObject			m_PlayerBullet = null;
 	[SerializeField]
-	private GameObject      m_MonsterBullet = null;
+	private GameObject			m_MonsterBullet = null;
 
-	private Character       m_Base = null;
-	private GameObject      m_NewBulletObj = null;
-	private Bullet          m_NewBullet = null;
-	private Bullet          m_Bullet = null;
-	private SpriteRenderer  m_HandSR = null;
-	private SpriteRenderer  m_SR = null;
-	private AudioSource     m_Audio = null;
-	private WeaponInfo      m_Info = null;
-	private Weapon_Hand     m_HandSpriteDir = Weapon_Hand.Right;
-	private float           m_TargetAngle = 0.0f;
-	private Vector3         m_TargetDir = Vector3.zero;
-	private Vector3         m_Rot = Vector3.zero;
-	private Vector3         m_BulletPos = Vector3.zero;
+	private Character				m_Base = null;
+	private GameObject			m_NewBulletObj = null;
+	private Bullet					m_NewBullet = null;
+	private Bullet					m_Bullet = null;
+	private SpriteRenderer	m_HandSR = null;
+	private SpriteRenderer	m_SR = null;
+	private AudioSource			m_Audio = null;
+	private WeaponInfo			m_Info = null;
+	private Weapon_Hand			m_HandSpriteDir = Weapon_Hand.Right;
+	private float						m_TargetAngle = 0.0f;
+	private Vector3					m_TargetDir = Vector3.zero;
+	private Vector3					m_Rot = Vector3.zero;
+	private Vector3					m_BulletPos = Vector3.zero;
 
 	private void SpreadBulletCheck()
 	{
@@ -172,29 +171,29 @@ public class Weapon : MonoBehaviour
 
 	private void Awake()
 	{
-		if (m_Hand is null)
-			Debug.LogError("if (m_Hand is null)");
+		if (m_Hand == null)
+			Debug.LogError("if (m_Hand == null)");
 
 		m_SR = GetComponent<SpriteRenderer>();
 
-		if (m_SR is null)
-			Debug.LogError("if (m_SR is null)");
+		if (m_SR == null)
+			Debug.LogError("if (m_SR == null)");
 
 		m_HandSR = m_Hand.GetComponent<SpriteRenderer>();
 
-		if (m_HandSR is null)
-			Debug.LogError("if (m_HandSR is null)");
+		if (m_HandSR == null)
+			Debug.LogError("if (m_HandSR == null)");
 
-		if (m_PlayerBullet is null)
-			Debug.LogError("if (m_PlayerBullet is null)");
+		if (m_PlayerBullet == null)
+			Debug.LogError("if (m_PlayerBullet == null)");
 
-		if (m_MonsterBullet is null)
-			Debug.LogError("if (m_MonsterBullet is null)");
+		if (m_MonsterBullet == null)
+			Debug.LogError("if (m_MonsterBullet == null)");
 
 		m_Audio = GetComponent<AudioSource>();
 
-		if (m_Audio is null)
-			Debug.LogError("if (m_Audio is null)");
+		if (m_Audio == null)
+			Debug.LogError("if (m_Audio == null)");
 
 		m_Info = new WeaponInfo();
 	}
@@ -203,8 +202,8 @@ public class Weapon : MonoBehaviour
 	{
 		m_Base = m_Hand.Base;
 
-		if (m_Base is null)
-			Debug.LogError("if (m_Base is null)");
+		if (m_Base == null)
+			Debug.LogError("if (m_Base == null)");
 
 		m_HandSpriteDir = m_Hand.HandSpriteDir;
 
@@ -220,8 +219,8 @@ public class Weapon : MonoBehaviour
 				break;
 		}
 
-		if (m_Bullet is null)
-			Debug.LogError("if (m_Bullet is null)");
+		if (m_Bullet == null)
+			Debug.LogError("if (m_Bullet == null)");
 
 		m_Audio.volume = Global.EffectVolume;
 
@@ -240,12 +239,22 @@ public class Weapon : MonoBehaviour
 	{
 		SpriteCheck();
 
-		if (m_SR.enabled || 
-			(m_Owner == Weapon_Owner.Player && m_Base.NoHit && m_Base.HandDir == m_HandSpriteDir)) // 플레이어 무적 시 업데이트 안되는 걸 방지하기 위함
+		if (!m_SR.enabled)
 		{
-			Calc();
-			Fire();
+			if (m_Owner == Weapon_Owner.Player)
+			{
+				// 1. 플레이어 무적(깜빡임) 시 업데이트 안되는 걸 방지
+				// 2. 플레이어의 비활성화 된 무기가 업데이트 되는 것을 방지
+				if (!m_Base.NoHit || m_Base.HandDir != m_HandSpriteDir || m_Base.Type != m_WeapType) 
+					return;
+			}
+
+			else
+				return;
 		}
+
+		Calc();
+		Fire();
 
 		SpreadBulletCheck();
 	}

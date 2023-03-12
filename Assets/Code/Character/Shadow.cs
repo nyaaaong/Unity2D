@@ -1,24 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shadow : MonoBehaviour
 {
 	[SerializeField]
-	private Character   m_Base = null;
+	private Character		m_Base = null;
 
-	private SpriteRenderer  m_SR = null;
-	private Color   m_tempColor = Color.white;
-
+	private SpriteRenderer	m_SR = null;
+	private Color		m_tempColor = Color.white; 
+		
 	private void Awake()
 	{
-		if (m_Base is null)
-			Debug.LogError("if (m_Base is null)");
+		if (m_Base == null)
+			Debug.LogError("if (m_Base == null)");
 
 		m_SR = GetComponent<SpriteRenderer>();
 
-		if (m_SR is null)
-			Debug.LogError("if (m_SR is null)");
+		if (m_SR == null)
+			Debug.LogError("if (m_SR == null)");
 
 		m_tempColor = m_SR.color;
 	}

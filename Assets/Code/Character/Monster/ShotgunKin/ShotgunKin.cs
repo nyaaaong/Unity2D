@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShotgunKin : Monster
 {
 	[SerializeField]
-	private bool    m_Blue = false;
+	private bool		m_Blue = false;
 
 	protected override void DeathAnimEvent()
 	{
