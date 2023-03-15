@@ -4,69 +4,39 @@ public partial class Player : Character
 {
 	private void AnimDirCheck()
 	{
+		if (m_WeapType == Weapon_Type_Player.End)
+			Debug.LogError("if (m_WeapType == Weapon_Type_Player.End)");
+
 		if (m_Status == Character_Status.Dodge)
 		{
-			if (m_LastDir[UP])
+			if (UP)
 			{
-				if (m_LastDir[LEFT])
+				if (LEFT)
 					m_AnimName += "LeftUp";
 
-				else if (m_LastDir[RIGHT])
+				else if (RIGHT)
 					m_AnimName += "RightUp";
 
 				else
 					m_AnimName += "Up";
 			}
 
-			else if (m_LastDir[DOWN])
+			else if (DOWN)
 			{
-				if (m_LastDir[LEFT])
+				if (LEFT)
 					m_AnimName += "LeftDown";
 
-				else if (m_LastDir[RIGHT])
+				else if (RIGHT)
 					m_AnimName += "RightDown";
 
 				else
 					m_AnimName += "Down";
 			}
 
-			else if (m_LastDir[LEFT])
+			else if (LEFT)
 				m_AnimName += "Left";
 
-			else if (m_LastDir[RIGHT])
-				m_AnimName += "Right";
-		}
-
-		else if (m_WeapType == Weapon_Type_Player.End)
-		{
-			if (m_Dir[UP])
-			{
-				if (m_Dir[LEFT])
-					m_AnimName += "LeftUp";
-
-				else if (m_Dir[RIGHT])
-					m_AnimName += "RightUp";
-
-				else
-					m_AnimName += "Up";
-			}
-
-			else if (m_Dir[DOWN])
-			{
-				if (m_Dir[LEFT])
-					m_AnimName += "LeftDown";
-
-				else if (m_Dir[RIGHT])
-					m_AnimName += "RightDown";
-
-				else
-					m_AnimName += "Down";
-			}
-
-			else if (m_Dir[LEFT])
-				m_AnimName += "Left";
-
-			else if (m_Dir[RIGHT])
+			else if (RIGHT)
 				m_AnimName += "Right";
 		}
 
@@ -74,11 +44,7 @@ public partial class Player : Character
 		{
 			if (m_TargetAngle == 180.0f || (m_TargetAngle < 180.0f && m_TargetAngle > 105.0f))
 			{
-				if (m_WeapType != Weapon_Type_Player.End)
-					m_HandDir = Weapon_Hand.Left;
-
-				else
-					m_HandDir = Weapon_Hand.None;
+				m_HandDir = Weapon_Hand.Left;
 
 				m_WeapRenderOrder = Weapon_RenderOrder.Back;
 
@@ -87,11 +53,7 @@ public partial class Player : Character
 
 			else if (m_TargetAngle == 105.0f || (m_TargetAngle < 105.0f && m_TargetAngle > 75.0f))
 			{
-				if (m_WeapType != Weapon_Type_Player.End)
-					m_HandDir = Weapon_Hand.Left;
-
-				else
-					m_HandDir = Weapon_Hand.None;
+				m_HandDir = Weapon_Hand.Left;
 
 				m_WeapRenderOrder = Weapon_RenderOrder.Back;
 
@@ -100,11 +62,7 @@ public partial class Player : Character
 
 			else if (m_TargetAngle == 75.0f || (m_TargetAngle < 75.0f && m_TargetAngle > 0.0f))
 			{
-				if (m_WeapType != Weapon_Type_Player.End)
-					m_HandDir = Weapon_Hand.Right;
-
-				else
-					m_HandDir = Weapon_Hand.None;
+				m_HandDir = Weapon_Hand.Right;
 
 				m_WeapRenderOrder = Weapon_RenderOrder.Back;
 
@@ -113,11 +71,7 @@ public partial class Player : Character
 
 			else if (m_TargetAngle == 0.0f || (m_TargetAngle < 0.0f && m_TargetAngle > -75.0f))
 			{
-				if (m_WeapType != Weapon_Type_Player.End)
-					m_HandDir = Weapon_Hand.Right;
-
-				else
-					m_HandDir = Weapon_Hand.None;
+				m_HandDir = Weapon_Hand.Right;
 
 				m_WeapRenderOrder = Weapon_RenderOrder.Front;
 
@@ -126,11 +80,7 @@ public partial class Player : Character
 
 			else if (m_TargetAngle == -75.0f || (m_TargetAngle < -75.0f && m_TargetAngle > -105.0f))
 			{
-				if (m_WeapType != Weapon_Type_Player.End)
-					m_HandDir = Weapon_Hand.Right;
-
-				else
-					m_HandDir = Weapon_Hand.None;
+				m_HandDir = Weapon_Hand.Right;
 
 				m_WeapRenderOrder = Weapon_RenderOrder.Front;
 
@@ -139,11 +89,7 @@ public partial class Player : Character
 
 			else if (m_TargetAngle == -105.0f || (m_TargetAngle < -105.0f && m_TargetAngle > -180.0f))
 			{
-				if (m_WeapType != Weapon_Type_Player.End)
-					m_HandDir = Weapon_Hand.Left;
-
-				else
-					m_HandDir = Weapon_Hand.None;
+				m_HandDir = Weapon_Hand.Left;
 
 				m_WeapRenderOrder = Weapon_RenderOrder.Front;
 

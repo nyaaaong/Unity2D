@@ -16,19 +16,21 @@ public partial class Player : Character
 	private float                           m_HealValue = 10.0f;
 
 	private bool[]							m_Dir = null;
-	private bool[]							m_LastDir = null;
-	private bool[]							m_KeyDown = null;
 	private bool[]							m_HasWeapon = null;
 	private bool							m_KeyLock = false;
 	private bool							m_WeaponChange = false;
+	private float                           m_InputX = 0.0f;
+	private float                           m_InputXPrev = 0.0f;
+	private float                           m_InputY = 0.0f;
+	private float                           m_InputYPrev = 0.0f;
 	private float							m_BlinkTime = 0.0f;
 	private float							m_BlinkTimeMax = 0.1f;
+	private Vector3                         m_MovePos = Vector3.zero;
 
-	private const int						UP = (int)Player_Dir.Up;
-	private const int						LEFT = (int)Player_Dir.Left;
-	private const int						RIGHT = (int)Player_Dir.Right;
-	private const int						DOWN = (int)Player_Dir.Down;
-	private const int						END = (int)Player_Dir.End;
+	private bool UP { get { return m_InputYPrev == 1.0f; } }
+	private bool DOWN { get { return m_InputYPrev == -1.0f; } }
+	private bool LEFT { get { return m_InputXPrev == -1.0f; } }
+	private bool RIGHT { get { return m_InputXPrev == 1.0f; } }
 
 	public bool WeaponChange { get { return m_WeaponChange; } set { m_WeaponChange = value; } }
 
@@ -82,26 +84,12 @@ public partial class Player : Character
 		PlaySoundOneShot(m_HeartLootClip);
 	}
 
-	protected void OnTriggerEnter2D(Collider2D collision)
+	public override void SetDamage(float dmg)
 	{
-		if (m_Death || m_NoHit)
-			return;
+		base.SetDamage(dmg);
 
-		if (collision.tag == "Bullet")
-		{
-			Bullet	bullet = collision.gameObject.GetComponent<Bullet>();
-
-			if (bullet == null)
-				Debug.LogError("if (bullet == null)");
-
-			if (bullet.Owner == Bullet_Owner.Monster)
-			{
-				SetDamage(bullet.Damage);
-
-				m_NoHit = true;
-				m_HitAnim = true;
-			}
-		}
+		m_NoHit = true;
+		m_HitAnim = true;
 	}
 
 	protected override void Awake()
@@ -117,9 +105,7 @@ public partial class Player : Character
 		if (m_HeartLootClip == null)
 			Debug.LogError("if (m_HeartLootClip == null)");
 
-		m_Dir = new bool[END];
-		m_LastDir = new bool[END];
-		m_KeyDown = new bool[END];
+		m_Dir = new bool[(int)Player_Dir.End];
 		m_HasWeapon = new bool[(int)Weapon_Type_Player.End];
 
 		m_HasWeapon[(int)Weapon_Type_Player.Pistol] = true; // ±âº»À¸·Î ±ÇÃÑ ÀåÂø
@@ -133,19 +119,31 @@ public partial class Player : Character
 			}
 		}
 
-		m_Dir[RIGHT] = true;
-		m_LastDir[RIGHT] = true;
+		m_Dir[(int)Player_Dir.Right] = true;
 
 		m_HitAnimTimeMax = 2.0f;
+	}
+
+	protected override void Start()
+	{
+		base.Start();
+
+		EquipWeapon(Weapon_Type_Player.Pistol);
 	}
 
 	protected override void Update()
 	{
 		base.Update();
 
-		MoveKeyCheck();
 		WeaponKeyCheck();
 		AnimCheck();
 		HitAnimCheck();
+	}
+
+	protected override void FixedUpdate()
+	{
+		base.FixedUpdate();
+
+		MoveKeyCheck();
 	}
 }

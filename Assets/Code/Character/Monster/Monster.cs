@@ -47,6 +47,9 @@ public class Monster : Character
 	{
 		base.SetDamage(dmg);
 
+		m_HitAnim = true;
+		m_HitAnimTime = 0.0f;
+
 		if (m_Death)
 		{
 			PlaySoundOneShot(m_DeathEffectAudio);
@@ -106,28 +109,6 @@ public class Monster : Character
 				m_Animator.SetTrigger("Death_Right");
 
 			m_DeathAnimProc = true;
-		}
-	}
-
-	protected virtual void OnTriggerEnter2D(Collider2D collision)
-	{
-		if (m_Death || m_NoHit)
-			return;
-
-		if (collision.tag == "Bullet")
-		{
-			Bullet	bullet = collision.gameObject.GetComponent<Bullet>();
-
-			if (bullet == null)
-				Debug.LogError("if (bullet == null)");
-
-			if (bullet.Owner == Bullet_Owner.Player)
-			{
-				SetDamage(bullet.Damage);
-
-				m_HitAnim = true;
-				m_HitAnimTime = 0.0f;
-			}
 		}
 	}
 

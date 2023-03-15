@@ -10,9 +10,6 @@ public partial class Player : Character
 
 			m_WeaponChange = true;
 		}
-
-		else
-			m_WeapType = Weapon_Type_Player.End;
 	}
 
 	private void ChangeWeapon()
@@ -29,7 +26,7 @@ public partial class Player : Character
 
 	private void FireCheck()
 	{
-		if (m_WeapType == Weapon_Type_Player.End)
+		if (m_KeyLock)
 			return;
 
 		if (Input.GetMouseButton((int)Mouse_Click.Left))

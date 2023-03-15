@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-#pragma warning disable 0414 // 사용하지 않은 변수 Warning 알림 제거
-
 [Serializable]
 public class WeaponInfo
 {
