@@ -41,7 +41,7 @@ public partial class Player : Character
 
 	private void Dodge()
 	{
-		if (Input.GetMouseButtonDown((int)Mouse_Click.Right))
+		if (Input.GetMouseButton((int)Mouse_Click.Right))
 		{
 			if (m_KeyLock || !m_Move)
 				return;

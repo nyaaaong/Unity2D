@@ -93,7 +93,7 @@ public class Bullet : MonoBehaviour
 			else if (collision.CompareTag("Player"))
 				return;
 
-			else // 오브젝트 충돌
+			else if (collision.CompareTag("Wall"))
 				NoHitAnim();
 		}
 
@@ -113,7 +113,7 @@ public class Bullet : MonoBehaviour
 			else if (collision.CompareTag("Monster"))
 				return;
 
-			else // 오브젝트 충돌
+			else if (collision.CompareTag("Wall"))
 				NoHitAnim();
 		}
 	}

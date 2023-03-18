@@ -131,6 +131,13 @@ public partial class Player : Character
 		EquipWeapon(Weapon_Type_Player.Pistol);
 	}
 
+	protected override void FixedUpdate()
+	{
+		base.FixedUpdate();
+
+		MoveKeyCheck();
+	}
+
 	protected override void Update()
 	{
 		base.Update();
@@ -138,12 +145,5 @@ public partial class Player : Character
 		WeaponKeyCheck();
 		AnimCheck();
 		HitAnimCheck();
-	}
-
-	protected override void FixedUpdate()
-	{
-		base.FixedUpdate();
-
-		MoveKeyCheck();
 	}
 }

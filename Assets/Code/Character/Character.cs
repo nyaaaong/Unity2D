@@ -19,32 +19,32 @@ public class CharInfo
 public class Character : MonoBehaviour
 {
 	[SerializeField]
-	protected CharInfo								m_Info = new CharInfo();
+	protected CharInfo                              m_Info = new CharInfo();
 
-	protected float									m_deltaTime = 0.0f;
-	protected float									m_TargetAngle = 0.0f;
-	protected float									m_FireTime = 0.0f;
-	protected float									m_HitAnimTime = 0.0f;
-	protected float									m_HitAnimTimeMax = 0.1f;
-	protected Character_Status						m_Status = Character_Status.Idle;
-	protected Weapon_Hand							m_HandDir = Weapon_Hand.None;		// 어느 쪽 손을 보일 것 인지
-	protected Weapon_RenderOrder					m_WeapRenderOrder = Weapon_RenderOrder.Front;		// 캐릭터 기준 총이 보여질지 가려질지
-	protected Weapon_Type_Player					m_WeapType = Weapon_Type_Player.End;
-	protected string								m_AnimName = "";
-	protected string								m_PrevAnimName = "";
-	protected bool									m_Move = false;
-	protected bool									m_NoHit = false;
-	protected bool									m_HideWeapon = false;
-	protected bool									m_Death = false;
-	protected bool									m_Fire = false;
-	protected bool									m_SpreadBullet = false; // ShotgunKin_B 전용
-	protected bool									m_HitAnim = false;
-	protected bool									m_DeathAnimProc = false;
-	protected Animator								m_Animator = null;
-	protected AudioSource							m_Audio = null;
-	protected SpriteRenderer						m_SR = null;
-	protected Rigidbody2D							m_Rig = null;
-	protected Vector3								m_TargetDir = Vector3.zero;
+	protected float                                 m_deltaTime = 0.0f;
+	protected float                                 m_TargetAngle = 0.0f;
+	protected float                                 m_FireTime = 0.0f;
+	protected float                                 m_HitAnimTime = 0.0f;
+	protected float                                 m_HitAnimTimeMax = 0.1f;
+	protected Character_Status                      m_Status = Character_Status.Idle;
+	protected Weapon_Hand                           m_HandDir = Weapon_Hand.None;       // 어느 쪽 손을 보일 것 인지
+	protected Weapon_RenderOrder                    m_WeapRenderOrder = Weapon_RenderOrder.Front;       // 캐릭터 기준 총이 보여질지 가려질지
+	protected Weapon_Type_Player                    m_WeapType = Weapon_Type_Player.End;
+	protected string                                m_AnimName = "";
+	protected string                                m_PrevAnimName = "";
+	protected bool                                  m_Move = false;
+	protected bool                                  m_NoHit = false;
+	protected bool                                  m_HideWeapon = false;
+	protected bool                                  m_Death = false;
+	protected bool                                  m_Fire = false;
+	protected bool                                  m_SpreadBullet = false; // ShotgunKin_B 전용
+	protected bool                                  m_HitAnim = false;
+	protected bool                                  m_DeathAnimProc = false;
+	protected Animator                              m_Animator = null;
+	protected AudioSource                           m_Audio = null;
+	protected SpriteRenderer                        m_SR = null;
+	protected Rigidbody2D                           m_Rig = null;
+	protected Vector3                               m_TargetDir = Vector3.zero;
 
 	public Color Color { get { return m_SR.color; } }
 	public bool SpreadBullet { get { return m_SpreadBullet; } set { m_SpreadBullet = value; } }
@@ -60,6 +60,8 @@ public class Character : MonoBehaviour
 	public float FireTime { get { return m_FireTime; } set { m_FireTime = value; } }
 	public bool Visible { get { return m_SR.enabled; } }
 	public bool DeathAnimProc { get { return m_DeathAnimProc; } }
+	public Vector2 RigidBodyPos { get { return m_Rig.position; } }
+	public bool IsMove { get { return m_Move; } }
 
 	public virtual void SetDamage(float dmg)
 	{
@@ -139,6 +141,11 @@ public class Character : MonoBehaviour
 	}
 
 	protected virtual void FixedUpdate()
+	{
+
+	}
+
+	protected virtual void LateUpdate()
 	{
 
 	}

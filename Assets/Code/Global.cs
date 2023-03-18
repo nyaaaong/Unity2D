@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 [Serializable]
 public class WeaponInfo
@@ -17,7 +18,7 @@ public class WeaponInfo
 public class Global : MonoBehaviour
 {
 	[SerializeField]
-	private Camera			m_MainCamera = null;
+	private Camera				m_MainCamera = null;
 	[SerializeField]
 	private float				m_EffectVolume = 1.0f;
 	[SerializeField]
@@ -42,11 +43,16 @@ public class Global : MonoBehaviour
 	[SerializeField]
 	private float   m_LootRate = 20.0f;
 
+	[SerializeField]
+	private Tilemap m_TileMap = null;
+
 	private static Global	m_Inst = null;
-	private GameObject	m_PlayerObj = null;
+	private GameObject		m_PlayerObj = null;
 	private Player			m_Player = null;
 	private Vector2			m_P2MDist = Vector2.zero;
 	private Vector2			m_E2PDist = Vector2.zero;
+	private Vector2         m_MousePos = Vector2.zero;
+	private Cam             m_Cam = null;
 
 	public static AudioClip HitEffectAudio { get { return m_Inst.m_HitEffectAudio; } }
 	public static AudioClip DeathEffectAudio { get { return m_Inst.m_DeathEffectAudio; } }
@@ -57,6 +63,9 @@ public class Global : MonoBehaviour
 	public static float LootRate { get { return m_Inst.m_LootRate; } }
 	public static GameObject PlayerBullet { get { return m_Inst.m_PlayerBullet; } }
 	public static GameObject EnemyBullet { get { return m_Inst.m_EnemyBullet; } }
+	public static Vector2 MousePos { get { return m_Inst.m_MousePos; } }
+	public static Cam Camera { get { return m_Inst.m_Cam; } }
+	public static Tilemap TileMap { get { return m_Inst.m_TileMap; } }
 
 	public static Vector2 ConvertDir(float angle)
 	{
@@ -127,11 +136,21 @@ public class Global : MonoBehaviour
 
 		if (m_EnemyBullet == null)
 			Debug.LogError("if (m_EnemyBullet == null)");
+
+		m_Cam = m_MainCamera.GetComponent<Cam>();
+
+		if (m_Cam == null)
+			Debug.Log("if (m_Cam == null)");
+
+		if (m_TileMap == null)
+			Debug.Log("if (m_TileMap == null)");
 	}
 
 	private void Update()
 	{
-		m_P2MDist = m_MainCamera.ScreenToWorldPoint(Input.mousePosition) - m_Player.transform.position;
+		m_MousePos = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
+		//Debug.Log("m_MousePos : " + m_MousePos);
+		m_P2MDist = m_MousePos - m_Player.RigidBodyPos;
 		m_Player.TargetDir = m_P2MDist.normalized;
 
 		m_Player.TargetAngle = Mathf.Atan2(m_P2MDist.y, m_P2MDist.x) * Mathf.Rad2Deg;
