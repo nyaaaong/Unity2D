@@ -7,6 +7,9 @@ TagManager:
   - Bullet
   - Monster
   - Wall
+  - PortalOut
+  - PortalIn
+  - FakeLine
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Wall
   - 
   - 
   - 

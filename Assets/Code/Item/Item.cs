@@ -3,18 +3,18 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
 	private AudioSource m_Audio = null;
-	protected Item_Type		m_Type = Item_Type.End;
+	protected Item_Type m_Type = Item_Type.End;
 
-	private float   m_deltaTime = 0.0f;
-	private bool    m_DropAnim = true;
-	private bool    m_FirstAnim = true;
-	private bool    m_SecondAnim = false;
-	private bool    m_ThirdAnim = false;
+	private float m_deltaTime = 0.0f;
+	private bool m_DropAnim = true;
+	private bool m_FirstAnim = true;
+	private bool m_SecondAnim = false;
+	private bool m_ThirdAnim = false;
 
-	private float   m_DropHeight = 0.0f;
-	private float   m_DropHeightMax = 0.0f;
-	private float   m_DropSecondHeightMax = 0.0f;
-	private float   m_DropSpeed = 0.0f;
+	private float m_DropHeight = 0.0f;
+	private float m_DropHeightMax = 0.0f;
+	private float m_DropSecondHeightMax = 0.0f;
+	private float m_DropSpeed = 0.0f;
 
 	public Item_Type Type { get { return m_Type; } }
 

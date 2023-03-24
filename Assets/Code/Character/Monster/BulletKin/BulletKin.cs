@@ -1,15 +1,13 @@
 public class BulletKin : Monster
 {
-	protected void MovePattern()
-	{
-
-	}
 
 	protected override void Awake()
 	{
 		base.Awake();
 
 		m_UseAlpha = true;
+
+		m_PatternList.Add(MovePattern);
 	}
 
 	protected override void Start()

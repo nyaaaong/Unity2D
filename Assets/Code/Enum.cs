@@ -1,4 +1,4 @@
-﻿public enum Character_Status
+﻿public enum Player_Status
 {
 	Idle,
 	Walk,
@@ -12,6 +12,19 @@ public enum Player_Dir
 	Left,
 	Right,
 	Down,
+	End
+}
+
+public enum Monster_Dir
+{
+	Up,
+	Left,
+	Right,
+	Down,
+	UpLeft,
+	UpRight,
+	DownLeft,
+	DownRight,
 	End
 }
 

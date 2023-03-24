@@ -1,6 +1,5 @@
-using UnityEngine;
-using UnityEngine.Tilemaps;
 using System;
+using UnityEngine;
 
 public class Cam : MonoBehaviour
 {
@@ -14,13 +13,13 @@ public class Cam : MonoBehaviour
 	}
 
 	[SerializeField]
-	private Camera  m_Cam = null;
+	private Camera m_Cam = null;
 	[SerializeField]
-	private float  m_Speed = 2f;
+	private float m_Speed = 2f;
 	[SerializeField]
 	private DIR m_PlayerOffset = null;
 	[SerializeField]
-	private Transform   m_Border = null;
+	private Transform m_Border = null;
 
 	private float m_CamZ = 0f;
 	private Vector3 m_Pos = Vector2.zero;
@@ -32,16 +31,16 @@ public class Cam : MonoBehaviour
 
 	private Vector2 m_PlayerLT = Vector2.zero;
 	private Vector2 m_PlayerRB = Vector2.zero;
-	private float   m_P2SDist = 0f;
+	private float m_P2SDist = 0f;
 
-	private Vector2 m_hRS = Vector2.zero;	// Half Resolution
+	private Vector2 m_hRS = Vector2.zero;   // Half Resolution
 	private Vector2 m_ScreenLT = Vector2.zero;
 	private Vector2 m_ScreenRB = Vector2.zero;
 	private Vector2 m_Center = Vector2.zero;
 
 	private Vector2 m_BorderLT = Vector2.zero;
 	private Vector2 m_BorderRB = Vector2.zero;
-	private float   m_BorderDist = 0f;
+	private float m_BorderDist = 0f;
 
 	private void Calc()
 	{

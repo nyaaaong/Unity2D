@@ -7,7 +7,7 @@ public partial class Player : Character
 		if (m_WeapType == Weapon_Type_Player.End)
 			Debug.LogError("if (m_WeapType == Weapon_Type_Player.End)");
 
-		if (m_Status == Character_Status.Dodge)
+		if (m_Status == Player_Status.Dodge)
 		{
 			if (UP)
 			{
@@ -100,7 +100,7 @@ public partial class Player : Character
 
 	private void DodgeAnimEnd()
 	{
-		m_Status = Character_Status.Idle;
+		m_Status = Player_Status.Idle;
 
 		m_NoHit = false;
 		m_Move = false;
@@ -112,17 +112,17 @@ public partial class Player : Character
 	{
 		switch (m_Status)
 		{
-			case Character_Status.Idle:
+			case Player_Status.Idle:
 				m_AnimName = "Idle_";
 				break;
-			case Character_Status.Walk:
+			case Player_Status.Walk:
 				m_AnimName = "Walk_";
 				break;
-			case Character_Status.Dodge:
+			case Player_Status.Dodge:
 				m_AnimName = "Dodge_";
 				break;
-			case Character_Status.End:
-				Debug.LogError("case Character_Status.End:");
+			case Player_Status.End:
+				Debug.LogError("case Player_Status.End:");
 				break;
 		}
 

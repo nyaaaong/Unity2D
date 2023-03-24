@@ -19,32 +19,35 @@ public class CharInfo
 public class Character : MonoBehaviour
 {
 	[SerializeField]
-	protected CharInfo                              m_Info = new CharInfo();
+	protected CharInfo m_Info = new CharInfo();
 
-	protected float                                 m_deltaTime = 0.0f;
-	protected float                                 m_TargetAngle = 0.0f;
-	protected float                                 m_FireTime = 0.0f;
-	protected float                                 m_HitAnimTime = 0.0f;
-	protected float                                 m_HitAnimTimeMax = 0.1f;
-	protected Character_Status                      m_Status = Character_Status.Idle;
-	protected Weapon_Hand                           m_HandDir = Weapon_Hand.None;       // 어느 쪽 손을 보일 것 인지
-	protected Weapon_RenderOrder                    m_WeapRenderOrder = Weapon_RenderOrder.Front;       // 캐릭터 기준 총이 보여질지 가려질지
-	protected Weapon_Type_Player                    m_WeapType = Weapon_Type_Player.End;
-	protected string                                m_AnimName = "";
-	protected string                                m_PrevAnimName = "";
-	protected bool                                  m_Move = false;
-	protected bool                                  m_NoHit = false;
-	protected bool                                  m_HideWeapon = false;
-	protected bool                                  m_Death = false;
-	protected bool                                  m_Fire = false;
-	protected bool                                  m_SpreadBullet = false; // ShotgunKin_B 전용
-	protected bool                                  m_HitAnim = false;
-	protected bool                                  m_DeathAnimProc = false;
-	protected Animator                              m_Animator = null;
-	protected AudioSource                           m_Audio = null;
-	protected SpriteRenderer                        m_SR = null;
-	protected Rigidbody2D                           m_Rig = null;
-	protected Vector3                               m_TargetDir = Vector3.zero;
+	protected float m_deltaTime = 0.0f;
+	protected float m_TargetAngle = 0.0f;
+	protected float m_FireTime = 0.0f;
+	protected float m_HitAnimTime = 0.0f;
+	protected float m_HitAnimTimeMax = 0.1f;
+	protected float m_TargetDist = 0f;
+	protected float m_WeapRange = 0f;
+	protected Weapon_Hand m_HandDir = Weapon_Hand.None;             // 어느 쪽 손을 보일 것 인지
+	protected Weapon_RenderOrder m_WeapRenderOrder = Weapon_RenderOrder.Front;              // 캐릭터 기준 총이 보여질지 가려질지
+	protected Weapon_Type_Player m_WeapType = Weapon_Type_Player.End;
+	protected string m_AnimName = "";
+	protected string m_PrevAnimName = "";
+	protected bool m_Move = false;
+	protected bool m_NoHit = false;
+	protected bool m_HideWeapon = false;
+	protected bool m_Death = false;
+	protected bool m_Fire = false;
+	protected bool m_SpreadBullet = false; // ShotgunKin_B 전용
+	protected bool m_HitAnim = false;
+	protected bool m_DeathAnimProc = false;
+	protected bool m_IsWall = false;    // 몬스터와 플레이어 사이 벽이 있는 경우 (몬스터 전용)
+	protected Animator m_Animator = null;
+	protected AudioSource m_Audio = null;
+	protected SpriteRenderer m_SR = null;
+	protected Rigidbody2D m_Rig = null;
+	protected Vector3 m_TargetDir = Vector3.zero;
+	protected Vector3 m_TargetPos = Vector3.zero;
 
 	public Color Color { get { return m_SR.color; } }
 	public bool SpreadBullet { get { return m_SpreadBullet; } set { m_SpreadBullet = value; } }
@@ -57,11 +60,15 @@ public class Character : MonoBehaviour
 	public bool Fire { get { return m_Fire; } }
 	public float TargetAngle { get { return m_TargetAngle; } set { m_TargetAngle = value; } }
 	public Vector3 TargetDir { get { return m_TargetDir; } set { m_TargetDir = value; } }
+	public Vector3 TargetPos { get { return m_TargetPos; } set { m_TargetPos = value; } }
+	public float TargetDist { get { return m_TargetDist; } set { m_TargetDist = value; } }
 	public float FireTime { get { return m_FireTime; } set { m_FireTime = value; } }
 	public bool Visible { get { return m_SR.enabled; } }
 	public bool DeathAnimProc { get { return m_DeathAnimProc; } }
 	public Vector2 RigidBodyPos { get { return m_Rig.position; } }
 	public bool IsMove { get { return m_Move; } }
+	public float WeapRange { set { m_WeapRange = value; } }
+	public bool IsWall { get { return m_IsWall; } set { m_IsWall = value; } }
 
 	public virtual void SetDamage(float dmg)
 	{
@@ -123,7 +130,7 @@ public class Character : MonoBehaviour
 		m_Rig = GetComponent<Rigidbody2D>();
 
 		if (m_Rig == null)
-			Debug.LogError("if (m_rigid  == null)");
+			Debug.LogError("if (m_rigid	== null)");
 
 		m_Info.Init();
 	}

@@ -3,11 +3,11 @@ using UnityEngine;
 public class Shadow : MonoBehaviour
 {
 	[SerializeField]
-	private Character		m_Base = null;
+	private Character m_Base = null;
 
-	private SpriteRenderer	m_SR = null;
-	private Color		m_tempColor = Color.white; 
-		
+	private SpriteRenderer m_SR = null;
+	private Color m_tempColor = Color.white;
+
 	private void Awake()
 	{
 		if (m_Base == null)

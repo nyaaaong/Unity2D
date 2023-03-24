@@ -3,14 +3,14 @@
 public class Hand : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject	m_BaseObj = null;
+	private GameObject m_BaseObj = null;
 	[SerializeField]
 	private Weapon_Hand m_HandSpriteDir = Weapon_Hand.Right;
 	[SerializeField]
-	private Weapon_Owner		m_Owner = Weapon_Owner.Player;
+	private Weapon_Owner m_Owner = Weapon_Owner.Player;
 
-	private Character		m_Base = null;
-	private SpriteRenderer	m_SR = null;
+	private Character m_Base = null;
+	private SpriteRenderer m_SR = null;
 
 	public Character Base { get { return m_Base; } }
 	public Weapon_Hand HandSpriteDir { get { return m_HandSpriteDir; } }

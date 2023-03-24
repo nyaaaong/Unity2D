@@ -1,9 +1,5 @@
 public class Bandana : Monster
 {
-	protected void MovePattern()
-	{
-
-	}
 
 	protected override void Awake()
 	{

@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-	private Vector3						m_Dir = Vector2.zero;
-	private float						m_Damage = 1.0f;
-	private float						m_Speed = 1.0f;
-	private float						m_Range = 1.0f;
-	private float						m_AccRange = 0.0f;
-	private float						m_FirstDist = 5.0f; // 발사할 때 어디서부터 시작될 지
-	private Bullet_Owner				m_Owner = Bullet_Owner.Player;
-	private Animator					m_Anim = null;
-	private CircleCollider2D			m_Collider = null;
-	private Character					m_Target = null;
-	private Rigidbody2D					m_Rig = null;
-	private bool						m_Destroy = false;
-	private bool						m_Pierce = false;
-	private bool                        m_HitAnim = false;
+	private Vector3 m_Dir = Vector2.zero;
+	private float m_Damage = 1.0f;
+	private float m_Speed = 1.0f;
+	private float m_Range = 1.0f;
+	private float m_AccRange = 0.0f;
+	private float m_FirstDist = 5.0f; // 발사할 때 어디서부터 시작될 지
+	private Bullet_Owner m_Owner = Bullet_Owner.Player;
+	private Animator m_Anim = null;
+	private CircleCollider2D m_Collider = null;
+	private Character m_Target = null;
+	private Rigidbody2D m_Rig = null;
+	private bool m_Destroy = false;
+	private bool m_Pierce = false;
+	private bool m_HitAnim = false;
 
 	public Bullet_Owner Owner { get { return m_Owner; } set { m_Owner = value; } }
 	public Vector3 Dir { get { return m_Dir; } set { m_Dir = value; } }

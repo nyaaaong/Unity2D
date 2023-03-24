@@ -18,20 +18,20 @@ public class WeaponInfo
 public class Global : MonoBehaviour
 {
 	[SerializeField]
-	private Camera				m_MainCamera = null;
+	private Camera m_MainCamera = null;
 	[SerializeField]
-	private float				m_EffectVolume = 1.0f;
+	private float m_EffectVolume = 1.0f;
 	[SerializeField]
-	private float				m_BGMVolume = 1.0f;
+	private float m_BGMVolume = 1.0f;
 
 	[SerializeField]
-	private WeaponInfo[]		m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];
+	private WeaponInfo[] m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];
 	[SerializeField]
-	private WeaponInfo[]		m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
+	private WeaponInfo[] m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
 	[SerializeField]
-	private GameObject          m_PlayerBullet = null;
+	private GameObject m_PlayerBullet = null;
 	[SerializeField]
-	private GameObject          m_EnemyBullet = null;
+	private GameObject m_EnemyBullet = null;
 
 	[SerializeField]
 	private AudioClip m_HitEffectAudio = null;
@@ -41,18 +41,21 @@ public class Global : MonoBehaviour
 	private AudioClip[] m_DeathAudio = null;
 
 	[SerializeField]
-	private float   m_LootRate = 20.0f;
+	private float m_LootRate = 20.0f;
 
 	[SerializeField]
 	private Tilemap m_TileMap = null;
 
-	private static Global	m_Inst = null;
-	private GameObject		m_PlayerObj = null;
-	private Player			m_Player = null;
-	private Vector2			m_P2MDist = Vector2.zero;
-	private Vector2			m_E2PDist = Vector2.zero;
-	private Vector2         m_MousePos = Vector2.zero;
-	private Cam             m_Cam = null;
+	[SerializeField]
+	private float m_UpdateDist = 5f;
+
+	private static Global m_Inst = null;
+	private GameObject m_PlayerObj = null;
+	private Player m_Player = null;
+	private Vector2 m_P2MDist = Vector2.zero;
+	private Vector2 m_E2PDist = Vector2.zero;
+	private Vector2 m_MousePos = Vector2.zero;
+	private Cam m_Cam = null;
 
 	public static AudioClip HitEffectAudio { get { return m_Inst.m_HitEffectAudio; } }
 	public static AudioClip DeathEffectAudio { get { return m_Inst.m_DeathEffectAudio; } }
@@ -66,6 +69,7 @@ public class Global : MonoBehaviour
 	public static Vector2 MousePos { get { return m_Inst.m_MousePos; } }
 	public static Cam Camera { get { return m_Inst.m_Cam; } }
 	public static Tilemap TileMap { get { return m_Inst.m_TileMap; } }
+	public static float UpdateDist { get { return m_Inst.m_UpdateDist; } }
 
 	public static Vector2 ConvertDir(float angle)
 	{
@@ -96,10 +100,15 @@ public class Global : MonoBehaviour
 
 	public static void E2PData(Character enemy)
 	{
-		m_Inst.m_E2PDist = m_Inst.m_Player.transform.position - enemy.transform.position;
+		Vector2 PlayerPos = m_Inst.m_Player.RigidBodyPos;
+		Vector2 EnemyPos = enemy.RigidBodyPos;
 
+		m_Inst.m_E2PDist = PlayerPos - EnemyPos;
+
+		enemy.TargetPos = PlayerPos;
 		enemy.TargetDir = m_Inst.m_E2PDist.normalized;
-		enemy.TargetAngle = Mathf.Atan2(m_Inst.m_E2PDist.y, m_Inst.m_E2PDist.x) * Mathf.Rad2Deg;
+		enemy.TargetAngle = Mathf.Atan2(enemy.TargetDir.y, enemy.TargetDir.x) * Mathf.Rad2Deg;
+		enemy.TargetDist = Vector2.Distance(PlayerPos, EnemyPos);
 	}
 
 	private void Awake()
@@ -140,16 +149,15 @@ public class Global : MonoBehaviour
 		m_Cam = m_MainCamera.GetComponent<Cam>();
 
 		if (m_Cam == null)
-			Debug.Log("if (m_Cam == null)");
+			Debug.LogError("if (m_Cam == null)");
 
 		if (m_TileMap == null)
-			Debug.Log("if (m_TileMap == null)");
+			Debug.LogError("if (m_TileMap == null)");
 	}
 
 	private void Update()
 	{
 		m_MousePos = m_MainCamera.ScreenToWorldPoint(Input.mousePosition);
-		//Debug.Log("m_MousePos : " + m_MousePos);
 		m_P2MDist = m_MousePos - m_Player.RigidBodyPos;
 		m_Player.TargetDir = m_P2MDist.normalized;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShotgunKin : Monster
 {
 	[SerializeField]
-	private bool		m_Blue = false;
+	private bool m_Blue = false;
 
 	protected override void DeathAnimEvent()
 	{
@@ -19,11 +19,6 @@ public class ShotgunKin : Monster
 
 			m_DeathAnimProc = true;
 		}
-	}
-
-	protected void MovePattern()
-	{
-
 	}
 
 	protected override void Awake()

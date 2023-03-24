@@ -3,30 +3,46 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 	[SerializeField]
-	private Hand						m_Hand = null;
+	private Hand m_Hand = null;
 	[SerializeField]
-	private Weapon_Owner		m_Owner = Weapon_Owner.Player;
+	private Weapon_Owner m_Owner = Weapon_Owner.Player;
 	[SerializeField]
-	private Weapon_Type_Player			m_WeapType = Weapon_Type_Player.End;
+	private Weapon_Type_Player m_WeapType = Weapon_Type_Player.End;
 	[SerializeField]
-	private Weapon_Type_Monster			m_WeapTypeMonster = Weapon_Type_Monster.End;
+	private Weapon_Type_Monster m_WeapTypeMonster = Weapon_Type_Monster.End;
 
-	private GameObject			m_PlayerBullet = null;
-	private GameObject			m_EnemyBullet = null;
+	private GameObject m_PlayerBullet = null;
+	private GameObject m_EnemyBullet = null;
 
-	private Character				m_Base = null;
-	private GameObject			m_NewBulletObj = null;
-	private Bullet					m_NewBullet = null;
-	private Bullet					m_Bullet = null;
-	private SpriteRenderer	m_HandSR = null;
-	private SpriteRenderer	m_SR = null;
-	private AudioSource			m_Audio = null;
-	private WeaponInfo			m_Info = null;
-	private Weapon_Hand			m_HandSpriteDir = Weapon_Hand.Right;
-	private float						m_TargetAngle = 0.0f;
-	private Vector3					m_TargetDir = Vector3.zero;
-	private Vector3					m_Rot = Vector3.zero;
-	private Vector3					m_BulletPos = Vector3.zero;
+	private Character m_Base = null;
+	private GameObject m_NewBulletObj = null;
+	private Bullet m_NewBullet = null;
+	private Bullet m_Bullet = null;
+	private SpriteRenderer m_HandSR = null;
+	private SpriteRenderer m_SR = null;
+	private AudioSource m_Audio = null;
+	private WeaponInfo m_Info = null;
+	private Weapon_Hand m_HandSpriteDir = Weapon_Hand.Right;
+	private float m_TargetAngle = 0.0f;
+	private Vector3 m_TargetDir = Vector3.zero;
+	private Vector3 m_Rot = Vector3.zero;
+	private Vector3 m_BulletPos = Vector3.zero;
+
+	protected LayerMask m_WallMask;
+	protected Vector3 m_LineStart = Vector2.zero;
+	protected Vector3 m_LineEnd = Vector2.zero;
+
+	protected void FakeLine()
+	{
+		if (m_Owner == Weapon_Owner.Monster)
+		{
+			m_LineStart = transform.position;
+			m_LineEnd = m_Base.TargetPos;
+			Debug.DrawLine(m_LineStart, m_LineEnd, Color.green);
+
+			m_Base.IsWall = Physics2D.Linecast(m_LineStart, m_LineEnd, m_WallMask);
+		}
+	}
 
 	private void SpreadBulletCheck()
 	{
@@ -64,7 +80,7 @@ public class Weapon : MonoBehaviour
 			{
 				m_Base.FireTime = 0.0f;
 
-				m_BulletPos = transform.position + (m_TargetDir * m_Info.m_FirstDist);
+				m_BulletPos = m_LineStart + m_TargetDir * m_Info.m_FirstDist;
 				m_BulletPos.z = -5.0f;
 
 				m_Bullet.transform.position = m_BulletPos;
@@ -200,6 +216,8 @@ public class Weapon : MonoBehaviour
 			Debug.LogError("if (m_Audio == null)");
 
 		m_Info = new WeaponInfo();
+
+		m_WallMask = LayerMask.GetMask("Wall");
 	}
 
 	private void Start()
@@ -237,6 +255,14 @@ public class Weapon : MonoBehaviour
 		m_Bullet.SetInfo(m_Info);
 
 		m_Base.FireTime = m_Info.m_FireRate;
+
+		m_Base.WeapRange = m_Info.m_FireRange;
+	}
+
+	private void FixedUpdate()
+	{
+		if (m_SR.enabled)
+			FakeLine();
 	}
 
 	private void Update()
@@ -249,7 +275,7 @@ public class Weapon : MonoBehaviour
 			{
 				// 1. 플레이어 무적(깜빡임) 시 업데이트 안되는 걸 방지
 				// 2. 플레이어의 비활성화 된 무기가 업데이트 되는 것을 방지
-				if (!m_Base.NoHit || m_Base.HandDir != m_HandSpriteDir || m_Base.Type != m_WeapType) 
+				if (!m_Base.NoHit || m_Base.HandDir != m_HandSpriteDir || m_Base.Type != m_WeapType)
 					return;
 			}
 

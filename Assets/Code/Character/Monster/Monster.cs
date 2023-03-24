@@ -4,10 +4,10 @@ using UnityEngine;
 public class Monster : Character
 {
 	[SerializeField]
-	protected bool	m_DebugFire = false;
+	protected bool m_DebugFire = false;
 
 	protected delegate void Pattern();
-	protected List<Pattern>		m_PatternList = null;
+	protected List<Pattern> m_PatternList = null;
 
 	protected AudioClip m_HitEffectAudio = null;
 	protected AudioClip m_DeathEffectAudio = null;
@@ -15,13 +15,143 @@ public class Monster : Character
 
 	protected bool m_UseAlpha = false;
 
-	private bool		m_Destroy = false;
-	private float		m_Alpha = 1.0f;
-	private float		m_FadeTime = 1.0f; // 사라질 시간
-	private Color		m_Color;
+	private bool m_Destroy = false;
+	private float m_Alpha = 1.0f;
+	private float m_FadeTime = 1.0f; // 사라질 시간
+	private Color m_Color;
 
-	private float       m_Percent = 0.0f;
-	private bool        m_CreateItem = false;
+	private float m_Percent = 0.0f;
+	private bool m_CreateItem = false;
+
+	protected float m_UpdateDist = 3f;
+	protected bool m_Update = false;
+
+	protected bool m_PatternProc = false;
+	protected bool m_PatternDelay = false;
+	protected float m_PatternDelayTime = 2f;
+	protected float m_PatternDelayTimeMax = 2f;
+
+	protected float m_MoveTime = 0f;
+	protected float m_MoveTimeMax = 1f;
+	protected Monster_Dir m_MoveDir = Monster_Dir.End;
+	protected Vector2 m_Dir = Vector2.zero;
+	protected bool m_MovePattern = false;
+
+	protected float m_FirePatternTime = 0f;
+	protected float m_FirePatternTimeMax = 0f;
+	protected bool m_FirePattern = false;
+
+	protected bool m_FollowPlayer = false;
+
+	protected void ChangeAnim(string anim)
+	{
+		if (m_HandDir == Weapon_Hand.Left)
+			m_AnimName = anim + "_Left";
+
+		else
+			m_AnimName = anim + "_Right";
+
+		if (m_PrevAnimName != m_AnimName) // 이걸 하지 않으면 애니메이션이 굉장히 빨라진다.
+		{
+			m_Animator.SetTrigger(m_AnimName);
+
+			m_PrevAnimName = m_AnimName;
+		}
+	}
+
+	protected void MovePattern()
+	{
+		m_PatternProc = true;
+		m_MovePattern = true;
+
+		m_MoveDir = (Monster_Dir)Random.Range(0, (int)Monster_Dir.End);
+		m_MoveTimeMax = Random.Range(0.5f, 1.5f);
+
+		ChangeAnim("Walk");
+	}
+
+	protected void RangeCheck()
+	{
+		if (m_IsWall || m_TargetDist > m_WeapRange)
+		{
+			m_FollowPlayer = true;
+			m_Fire = false;
+		}
+
+		else
+		{
+			m_FollowPlayer = false;
+			m_Fire = true;
+		}
+	}
+
+	protected void FollowPlayer()
+	{
+		if (m_FollowPlayer)
+		{
+			m_Rig.velocity = m_TargetDir * m_Info.m_MoveSpeed;
+
+			ChangeAnim("Walk");
+		}
+
+		else
+		{
+			m_Rig.velocity = Vector2.zero;
+
+			ChangeAnim("Idle");
+		}
+	}
+
+	protected void UpdateMovePattern()
+	{
+		if (m_MovePattern)
+		{
+			m_MoveTime += m_deltaTime;
+
+			switch (m_MoveDir)
+			{
+				case Monster_Dir.Up:
+					m_Dir = Vector2.up;
+					break;
+				case Monster_Dir.Left:
+					m_Dir = Vector2.left;
+					break;
+				case Monster_Dir.Right:
+					m_Dir = Vector2.right;
+					break;
+				case Monster_Dir.Down:
+					m_Dir = Vector2.down;
+					break;
+				case Monster_Dir.UpLeft:
+					m_Dir = Vector2.up + Vector2.left;
+					break;
+				case Monster_Dir.UpRight:
+					m_Dir = Vector2.up + Vector2.right;
+					break;
+				case Monster_Dir.DownLeft:
+					m_Dir = Vector2.down + Vector2.left;
+					break;
+				case Monster_Dir.DownRight:
+					m_Dir = Vector2.down + Vector2.right;
+					break;
+			}
+
+			m_Rig.velocity = m_Dir * m_Info.m_MoveSpeed;
+
+			if (m_MoveTime >= m_MoveTimeMax)
+			{
+				m_PatternDelay = true;
+
+				m_PatternProc = false;
+				m_MovePattern = false;
+
+				m_MoveTime = 0f;
+				m_Rig.velocity = Vector2.zero;
+
+				ChangeAnim("Idle");
+			}
+		}
+	}
 
 	private void CreateItem()
 	{
@@ -76,12 +206,24 @@ public class Monster : Character
 				m_SR.color = m_Color;
 
 				if (m_Color.a <= 0.0f)
-					Destroy(gameObject);
+					DestroyObject();
 			}
 
 			else
-				Destroy(gameObject);
+				DestroyObject();
 		}
+	}
+
+	private void DestroyObject()
+	{
+		int Size = transform.childCount;
+
+		for (int i = 0; i < Size; ++i)
+		{
+			Destroy(transform.GetChild(i).gameObject);
+		}
+
+		Destroy(gameObject);
 	}
 
 	private void Destroy()
@@ -102,11 +244,7 @@ public class Monster : Character
 	{
 		if (m_Death && !m_DeathAnimProc)
 		{
-			if (m_HandDir == Weapon_Hand.Left)
-				m_Animator.SetTrigger("Death_Left");
-
-			else
-				m_Animator.SetTrigger("Death_Right");
+			ChangeAnim("Death");
 
 			m_DeathAnimProc = true;
 		}
@@ -134,8 +272,22 @@ public class Monster : Character
 		}
 	}
 
+	private void PatternDelay()
+	{
+		m_PatternDelayTime += m_deltaTime;
+
+		if (m_PatternDelayTime >= m_PatternDelayTimeMax)
+		{
+			m_PatternDelay = false;
+			m_PatternDelayTime = 0f;
+		}
+	}
+
 	private void PatternExec()
 	{
+		if (m_PatternProc)
+			return;
+
 		int idx = m_PatternList.Count;
 
 		if (idx == 0)
@@ -144,6 +296,11 @@ public class Monster : Character
 		idx = Random.Range(0, idx);
 
 		m_PatternList[idx]();
+	}
+
+	private void UpdatePattern()
+	{
+		UpdateMovePattern();
 	}
 
 	private void HandCheck()
@@ -166,6 +323,8 @@ public class Monster : Character
 		m_Color = m_SR.color;
 
 		m_Alpha /= m_FadeTime;
+
+		m_UpdateDist = Global.UpdateDist;
 	}
 
 	protected override void Start()
@@ -177,16 +336,41 @@ public class Monster : Character
 		m_DeathAudio = Global.DeathAudio;
 	}
 
+	protected override void FixedUpdate()
+	{
+		base.FixedUpdate();
+
+		Global.E2PData(this);
+
+		RangeCheck();
+	}
+
 	protected override void Update()
 	{
 		base.Update();
 
-		Global.E2PData(this);
+		if (m_UpdateDist >= m_TargetDist || m_Update)
+		{
+			m_Update = true;
 
-		HandCheck();
-		PatternExec();
-		HitAnimCheck();
-		DeathAnimCheck();
-		DestroyCheck();
+			FollowPlayer();
+
+			if (!m_FollowPlayer)
+			{
+				if (m_PatternDelay)
+					PatternDelay();
+
+				else
+				{
+					PatternExec();
+					UpdatePattern();
+				}
+			}
+
+			HandCheck();
+			HitAnimCheck();
+			DeathAnimCheck();
+			DestroyCheck();
+		}
 	}
 }

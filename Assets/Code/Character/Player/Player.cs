@@ -3,29 +3,30 @@ using UnityEngine;
 public partial class Player : Character
 {
 	[SerializeField]
-	private bool							m_DebugHasAllWeap = false;
+	private bool m_DebugHasAllWeap = false;
 	[SerializeField]
-	private float							m_DodgeSpeed = 5.0f;
+	private float m_DodgeSpeed = 5.0f;
 	[SerializeField]
-	AudioClip								m_DodgeClip = null;
+	AudioClip m_DodgeClip = null;
 	[SerializeField]
-	AudioClip                               m_WeapLootClip = null;
+	AudioClip m_WeapLootClip = null;
 	[SerializeField]
-	AudioClip                               m_HeartLootClip = null;
+	AudioClip m_HeartLootClip = null;
 	[SerializeField]
-	private float                           m_HealValue = 10.0f;
+	private float m_HealValue = 10.0f;
 
-	private bool[]							m_Dir = null;
-	private bool[]							m_HasWeapon = null;
-	private bool							m_KeyLock = false;
-	private bool							m_WeaponChange = false;
-	private float                           m_InputX = 0.0f;
-	private float                           m_InputXPrev = 0.0f;
-	private float                           m_InputY = 0.0f;
-	private float                           m_InputYPrev = 0.0f;
-	private float							m_BlinkTime = 0.0f;
-	private float							m_BlinkTimeMax = 0.1f;
-	private Vector3                         m_MovePos = Vector3.zero;
+	private Player_Status m_Status = Player_Status.Idle;
+	private bool[] m_Dir = null;
+	private bool[] m_HasWeapon = null;
+	private bool m_KeyLock = false;
+	private bool m_WeaponChange = false;
+	private float m_InputX = 0.0f;
+	private float m_InputXPrev = 0.0f;
+	private float m_InputY = 0.0f;
+	private float m_InputYPrev = 0.0f;
+	private float m_BlinkTime = 0.0f;
+	private float m_BlinkTimeMax = 0.1f;
+	private Vector3 m_MovePos = Vector3.zero;
 
 	private bool UP { get { return m_InputYPrev == 1.0f; } }
 	private bool DOWN { get { return m_InputYPrev == -1.0f; } }
@@ -63,7 +64,7 @@ public partial class Player : Character
 
 		return m_HasWeapon[idx];
 	}
-	
+
 	public void AddWeapon(Weapon_Type_Player type)
 	{
 		m_HasWeapon[(int)type] = true;

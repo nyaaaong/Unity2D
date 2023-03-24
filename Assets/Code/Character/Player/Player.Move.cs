@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
 public partial class Player : Character
 {
@@ -13,7 +12,7 @@ public partial class Player : Character
 
 		m_Move = m_InputX == 0f && m_InputY == 0f ? false : true;
 
-		if (m_Status == Character_Status.Dodge)
+		if (m_Status == Player_Status.Dodge)
 		{
 			m_MovePos.x = m_InputXPrev;
 			m_MovePos.y = m_InputYPrev;
@@ -33,7 +32,7 @@ public partial class Player : Character
 	}
 
 	private void Move()
-{
+	{
 		InputCheck();
 
 		m_Rig.velocity = m_MovePos;
@@ -46,7 +45,7 @@ public partial class Player : Character
 			if (m_KeyLock || !m_Move)
 				return;
 
-			m_Status = Character_Status.Dodge;
+			m_Status = Player_Status.Dodge;
 
 			m_NoHit = true;
 			m_Move = true;

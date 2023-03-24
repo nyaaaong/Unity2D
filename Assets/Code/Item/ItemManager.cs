@@ -4,26 +4,26 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
 	[SerializeField]
-	private GameObject  m_RiflePrefeb = null;
+	private GameObject m_RiflePrefeb = null;
 	[SerializeField]
-	private GameObject  m_SniperPrefeb = null;
+	private GameObject m_SniperPrefeb = null;
 	[SerializeField]
-	private GameObject  m_HeartPrefeb = null;
+	private GameObject m_HeartPrefeb = null;
 	[SerializeField]
-	private GameObject  m_LootEffectPrefeb = null;
+	private GameObject m_LootEffectPrefeb = null;
 	[SerializeField]
-	private float       m_DropOffsetY = 0.5f;
+	private float m_DropOffsetY = 0.5f;
 	[SerializeField]
-	private float   m_DropHeight = 1.0f;
+	private float m_DropHeight = 1.0f;
 	[SerializeField]
-	private float   m_DropSpeed = 5.0f;
+	private float m_DropSpeed = 5.0f;
 
 	private static ItemManager m_Inst = null;
-	private GameObject[]    m_Item = null;
-	private float   m_DropSecondHeight = 0.0f;
+	private GameObject[] m_Item = null;
+	private float m_DropSecondHeight = 0.0f;
 
-	private bool    m_DroppedRifle = false;
-	private bool    m_DroppedSniper = false;
+	private bool m_DroppedRifle = false;
+	private bool m_DroppedSniper = false;
 
 	public static GameObject LootEffectPrefeb { get { return m_Inst.m_LootEffectPrefeb; } }
 	public static float DropHeight { get { return m_Inst.m_DropHeight; } }
@@ -55,7 +55,7 @@ public class ItemManager : MonoBehaviour
 	public static void CreateItem(Vector3 pos)
 	{
 		int idx = (int)Item_Type.Heart;
-		Item_Type   type = Item_Type.Heart;
+		Item_Type type = Item_Type.Heart;
 
 		if (!Global.Player.HasWeaponAll() || !IsDroppedWeapAll())
 		{
@@ -90,7 +90,7 @@ public class ItemManager : MonoBehaviour
 
 			} while (Loop);
 		}
-		
+
 		GameObject item = Instantiate(m_Inst.m_Item[idx].gameObject);
 
 		Vector3 resPos = pos;
