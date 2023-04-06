@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
 	public Bullet_Owner Owner { get { return m_Owner; } set { m_Owner = value; } }
 	public Vector3 Dir { get { return m_Dir; } set { m_Dir = value; } }
 	public float Damage { get { return m_Damage; } }
+	public float Speed { set { m_Speed = value; } }
 
 	public void SetInfo(in WeaponInfo info)
 	{
@@ -74,7 +75,8 @@ public class Bullet : MonoBehaviour
 
 		if (m_Owner == Bullet_Owner.Player) // 플레이어 총기
 		{
-			if (collision.CompareTag("Monster"))
+			if (collision.CompareTag("Monster") ||
+				collision.CompareTag("Boss"))
 			{
 				m_Target = collision.gameObject.GetComponent<Character>();
 
@@ -104,7 +106,10 @@ public class Bullet : MonoBehaviour
 				m_Target = collision.gameObject.GetComponent<Player>();
 
 				if (m_Target.NoHit)
+				{
+					NoHitAnim();
 					return;
+				}
 
 				m_Target.SetDamage(m_Damage);
 				HitAnim();

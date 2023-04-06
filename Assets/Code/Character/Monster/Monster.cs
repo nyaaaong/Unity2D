@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class Monster : Character
@@ -13,18 +14,17 @@ public class Monster : Character
 	protected AudioClip m_DeathEffectAudio = null;
 	protected AudioClip[] m_DeathAudio = null;
 
-	protected bool m_UseAlpha = false;
+	protected bool m_UseAlpha = true;
 
 	private bool m_Destroy = false;
 	private float m_Alpha = 1.0f;
-	private float m_FadeTime = 1.0f; // 사라질 시간
+	private float m_FadeTime = 2.0f; // 사라질 시간
 	private Color m_Color;
 
 	private float m_Percent = 0.0f;
 	private bool m_CreateItem = false;
 
 	protected float m_UpdateDist = 3f;
-	protected bool m_Update = false;
 
 	protected bool m_PatternProc = false;
 	protected bool m_PatternDelay = false;
@@ -43,13 +43,35 @@ public class Monster : Character
 
 	protected bool m_FollowPlayer = false;
 
+	protected bool m_Boss = false;
+	protected float m_FollowDist = 12f; // 보스와 플레이어의 사이 거리, 만약 이 거리를 빠져나가면 보스가 추적한다
+
+	public bool PlayAnim(string name)
+	{
+		AnimatorStateInfo curAnim = m_Animator.GetCurrentAnimatorStateInfo(0);
+
+		if (!curAnim.IsName(name))
+			return false;
+
+		else if (curAnim.normalizedTime < 1)
+			return false;
+
+		return true;
+	}
+
 	protected void ChangeAnim(string anim)
 	{
-		if (m_HandDir == Weapon_Hand.Left)
-			m_AnimName = anim + "_Left";
+		if (!m_Boss)
+		{
+			if (m_HandDir == Weapon_Hand.Left)
+				m_AnimName = anim + "_Left";
+
+			else
+				m_AnimName = anim + "_Right";
+		}
 
 		else
-			m_AnimName = anim + "_Right";
+			m_AnimName = anim;
 
 		if (m_PrevAnimName != m_AnimName) // 이걸 하지 않으면 애니메이션이 굉장히 빨라진다.
 		{
@@ -72,16 +94,28 @@ public class Monster : Character
 
 	protected void RangeCheck()
 	{
-		if (m_IsWall || m_TargetDist > m_WeapRange)
+		if (!m_Boss)
 		{
-			m_FollowPlayer = true;
-			m_Fire = false;
+			if (m_IsWall || m_TargetDist > m_WeapRange)
+			{
+				m_FollowPlayer = true;
+				m_Fire = false;
+			}
+
+			else
+			{
+				m_FollowPlayer = false;
+				m_Fire = true;
+			}
 		}
 
 		else
 		{
-			m_FollowPlayer = false;
-			m_Fire = true;
+			if (m_TargetDist > m_FollowDist)
+				m_FollowPlayer = true;
+
+			else
+				m_FollowPlayer = false;
 		}
 	}
 
@@ -91,14 +125,16 @@ public class Monster : Character
 		{
 			m_Rig.velocity = m_TargetDir * m_Info.m_MoveSpeed;
 
-			ChangeAnim("Walk");
+			if (!m_Boss)
+				ChangeAnim("Walk");
 		}
 
 		else
 		{
 			m_Rig.velocity = Vector2.zero;
 
-			ChangeAnim("Idle");
+			if (!m_Boss)
+				ChangeAnim("Idle");
 		}
 	}
 
@@ -182,7 +218,11 @@ public class Monster : Character
 
 		if (m_Death)
 		{
-			PlaySoundOneShot(m_DeathEffectAudio);
+			StopSound();
+
+			if (!m_Boss)
+				PlaySoundOneShot(m_DeathEffectAudio);
+
 			PlayDeathAudio();
 		}
 
@@ -194,11 +234,13 @@ public class Monster : Character
 	{
 		if (m_Destroy)
 		{
-			CreateItem();
+			if (!m_Boss)
+				CreateItem();
 
 			if (m_UseAlpha)
 			{
-				m_Color.a -= m_Alpha * m_deltaTime;
+				m_Color = m_SR.color;
+				m_Color.a -= m_Alpha;
 
 				if (m_Color.a < 0.0f)
 					m_Color.a = 0.0f;
@@ -226,7 +268,7 @@ public class Monster : Character
 		Destroy(gameObject);
 	}
 
-	private void Destroy()
+	protected void Destroy()
 	{
 		m_Destroy = true;
 	}
@@ -320,9 +362,7 @@ public class Monster : Character
 
 		m_Fire = m_DebugFire;
 
-		m_Color = m_SR.color;
-
-		m_Alpha /= m_FadeTime;
+		m_Alpha = m_deltaTime / m_FadeTime;
 
 		m_UpdateDist = Global.UpdateDist;
 	}
@@ -333,7 +373,12 @@ public class Monster : Character
 
 		m_HitEffectAudio = Global.HitEffectAudio;
 		m_DeathEffectAudio = Global.DeathEffectAudio;
-		m_DeathAudio = Global.DeathAudio;
+
+		if (!m_Boss)
+			m_DeathAudio = Global.DeathAudio;
+
+		else
+			m_PatternDelayTime = 0f;
 	}
 
 	protected override void FixedUpdate()
@@ -353,12 +398,32 @@ public class Monster : Character
 		{
 			m_Update = true;
 
-			FollowPlayer();
+			if (!m_Boss)
+			{
+				FollowPlayer();
 
-			if (!m_FollowPlayer)
+				if (!m_FollowPlayer)
+				{
+					if (m_PatternDelay)
+						PatternDelay();
+
+					else
+					{
+						PatternExec();
+						UpdatePattern();
+					}
+				}
+
+				HandCheck();
+			}
+
+			else
 			{
 				if (m_PatternDelay)
+				{
 					PatternDelay();
+					FollowPlayer(); // 패턴이 실행중이지 않을 때만 플레이어 추적
+				}
 
 				else
 				{
@@ -367,7 +432,6 @@ public class Monster : Character
 				}
 			}
 
-			HandCheck();
 			HitAnimCheck();
 			DeathAnimCheck();
 			DestroyCheck();

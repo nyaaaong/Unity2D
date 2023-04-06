@@ -34,6 +34,9 @@ public class Hand : MonoBehaviour
 
 	private void Update()
 	{
+		if (m_Owner == Weapon_Owner.Monster && !m_Base.IsUpdate)
+			return;
+
 		if (!m_Base.Visible || m_Base.DeathAnimProc || m_Base.HandDir != m_HandSpriteDir || m_Base.HideWeapon || (m_Owner == Weapon_Owner.Player && WeapType == Weapon_Type_Player.End))
 			m_SR.enabled = false;
 

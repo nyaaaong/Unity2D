@@ -82,3 +82,16 @@ public enum Item_Type
 	Heart,
 	End
 }
+
+public enum Boss_Pattern3_Dir
+{
+	Normal,
+	Cross
+}
+
+public enum Boss_Pattern3
+{
+	None,
+	Continue,
+	Complete
+}

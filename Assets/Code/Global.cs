@@ -29,6 +29,8 @@ public class Global : MonoBehaviour
 	[SerializeField]
 	private WeaponInfo[] m_WeapMonsterInfo = new WeaponInfo[(int)Weapon_Type_Monster.End];
 	[SerializeField]
+	private WeaponInfo m_WeapBossInfo = null;
+	[SerializeField]
 	private GameObject m_PlayerBullet = null;
 	[SerializeField]
 	private GameObject m_EnemyBullet = null;
@@ -48,6 +50,15 @@ public class Global : MonoBehaviour
 
 	[SerializeField]
 	private float m_UpdateDist = 5f;
+
+	[SerializeField]
+	private AudioClip m_BossPattern1 = null;
+	[SerializeField]
+	private AudioClip m_BossPattern2 = null;
+	[SerializeField]
+	private AudioClip m_BossPattern3 = null;
+	[SerializeField]
+	private AudioClip m_BossDie = null;
 
 	private static Global m_Inst = null;
 	private GameObject m_PlayerObj = null;
@@ -70,12 +81,22 @@ public class Global : MonoBehaviour
 	public static Cam Camera { get { return m_Inst.m_Cam; } }
 	public static Tilemap TileMap { get { return m_Inst.m_TileMap; } }
 	public static float UpdateDist { get { return m_Inst.m_UpdateDist; } }
+	public static WeaponInfo BossWeapInfo { get { return m_Inst.m_WeapBossInfo; } }
+	public static AudioClip BossPattern1 { get { return m_Inst.m_BossPattern1; } }
+	public static AudioClip BossPattern2 { get { return m_Inst.m_BossPattern2; } }
+	public static AudioClip BossPattern3 { get { return m_Inst.m_BossPattern3; } }
+	public static AudioClip BossDie { get { return m_Inst.m_BossDie; } }
 
 	public static Vector2 ConvertDir(float angle)
 	{
+		Vector2 Result;
+
 		angle *= Mathf.Deg2Rad;
 
-		return new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+		Result = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
+		Result.Normalize();
+
+		return Result;
 	}
 
 	public static void SetWeaponInfo(in WeaponInfo info, Weapon_Type_Player type)
@@ -96,6 +117,19 @@ public class Global : MonoBehaviour
 		info.m_FireRange = m_Inst.m_WeapMonsterInfo[(int)type].m_FireRange;
 		info.m_FirstDist = m_Inst.m_WeapMonsterInfo[(int)type].m_FirstDist;
 		info.m_Pierce = m_Inst.m_WeapMonsterInfo[(int)type].m_Pierce;
+	}
+
+	public static void SetBossWeapInfo(in WeaponInfo info)
+	{
+		if (m_Inst.m_WeapBossInfo == null)
+			Debug.LogError("if (m_Inst.m_WeapBossInfo == null)");
+
+		info.m_Damage = m_Inst.m_WeapBossInfo.m_Damage;
+		info.m_FireRate = m_Inst.m_WeapBossInfo.m_FireRate;
+		info.m_FireSpeed = m_Inst.m_WeapBossInfo.m_FireSpeed;
+		info.m_FireRange = m_Inst.m_WeapBossInfo.m_FireRange;
+		info.m_FirstDist = m_Inst.m_WeapBossInfo.m_FirstDist;
+		info.m_Pierce = m_Inst.m_WeapBossInfo.m_Pierce;
 	}
 
 	public static void E2PData(Character enemy)
@@ -153,6 +187,18 @@ public class Global : MonoBehaviour
 
 		if (m_TileMap == null)
 			Debug.LogError("if (m_TileMap == null)");
+
+		if (m_BossPattern1 == null)
+			Debug.LogError("if (m_BossPattern1 == null)");
+
+		if (m_BossPattern2 == null)
+			Debug.LogError("if (m_BossPattern2 == null)");
+
+		if (m_BossPattern3 == null)
+			Debug.LogError("if (m_BossPattern3 == null)");
+
+		if (m_BossDie == null)
+			Debug.LogError("if (m_BossDie == null)");
 	}
 
 	private void Update()

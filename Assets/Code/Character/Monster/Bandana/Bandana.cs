@@ -5,7 +5,7 @@ public class Bandana : Monster
 	{
 		base.Awake();
 
-		m_UseAlpha = true;
+		m_PatternList.Add(MovePattern);
 	}
 
 	protected override void Start()

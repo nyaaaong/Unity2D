@@ -32,6 +32,9 @@ public class Weapon : MonoBehaviour
 	protected Vector3 m_LineStart = Vector2.zero;
 	protected Vector3 m_LineEnd = Vector2.zero;
 
+	private float m_ShotgunAngle = 0f;
+	private float m_ShotgunNewAngle = 0f;
+
 	protected void FakeLine()
 	{
 		if (m_Owner == Weapon_Owner.Monster)
@@ -67,7 +70,8 @@ public class Weapon : MonoBehaviour
 				angle += 30.0f;
 			}
 
-			m_Audio.Play();
+			if (!m_Audio.isPlaying)
+				m_Audio.Play();
 			return;
 		}
 	}
@@ -80,7 +84,12 @@ public class Weapon : MonoBehaviour
 			{
 				m_Base.FireTime = 0.0f;
 
-				m_BulletPos = m_LineStart + m_TargetDir * m_Info.m_FirstDist;
+				if (m_Owner == Weapon_Owner.Monster)
+					m_BulletPos = m_LineStart + m_TargetDir * m_Info.m_FirstDist;
+
+				else
+					m_BulletPos = transform.position + m_TargetDir * m_Info.m_FirstDist;
+
 				m_BulletPos.z = -5.0f;
 
 				m_Bullet.transform.position = m_BulletPos;
@@ -95,8 +104,8 @@ public class Weapon : MonoBehaviour
 					case Weapon_Owner.Monster:
 						if (m_WeapTypeMonster == Weapon_Type_Monster.Shotgun)
 						{
-							float angle = -20.0f;
-							float newAngle = 0.0f;
+							m_ShotgunAngle = -20.0f;
+							m_ShotgunNewAngle = 0.0f;
 							for (int i = 0; i < 5; ++i)
 							{
 								m_NewBulletObj = Instantiate(m_EnemyBullet);
@@ -104,12 +113,13 @@ public class Weapon : MonoBehaviour
 								m_NewBulletObj.name = "Bullet";
 								m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
 								m_NewBullet.SetInfo(m_Bullet);
-								newAngle = m_TargetAngle + angle;
-								m_NewBullet.Dir = Global.ConvertDir(newAngle);
-								angle += 10.0f;
+								m_ShotgunNewAngle = m_TargetAngle + m_ShotgunAngle;
+								m_NewBullet.Dir = Global.ConvertDir(m_ShotgunNewAngle);
+								m_ShotgunAngle += 10.0f;
 							}
 
-							m_Audio.Play();
+							if (!m_Audio.isPlaying)
+								m_Audio.Play();
 							return;
 						}
 
@@ -122,7 +132,8 @@ public class Weapon : MonoBehaviour
 				m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
 				m_NewBullet.SetInfo(m_Bullet);
 
-				m_Audio.Play();
+				if (!m_Audio.isPlaying)
+					m_Audio.Play();
 			}
 		}
 	}
@@ -261,12 +272,15 @@ public class Weapon : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (m_SR.enabled)
+		if (m_Owner == Weapon_Owner.Monster && m_Base.IsUpdate && m_SR.enabled)
 			FakeLine();
 	}
 
 	private void Update()
 	{
+		if (m_Owner == Weapon_Owner.Monster && !m_Base.IsUpdate)
+			return;
+
 		SpriteCheck();
 
 		if (!m_SR.enabled)

@@ -48,6 +48,7 @@ public class Character : MonoBehaviour
 	protected Rigidbody2D m_Rig = null;
 	protected Vector3 m_TargetDir = Vector3.zero;
 	protected Vector3 m_TargetPos = Vector3.zero;
+	protected bool m_Update = false;
 
 	public Color Color { get { return m_SR.color; } }
 	public bool SpreadBullet { get { return m_SpreadBullet; } set { m_SpreadBullet = value; } }
@@ -66,9 +67,13 @@ public class Character : MonoBehaviour
 	public bool Visible { get { return m_SR.enabled; } }
 	public bool DeathAnimProc { get { return m_DeathAnimProc; } }
 	public Vector2 RigidBodyPos { get { return m_Rig.position; } }
+	public Vector3 RigidBodyPos3D { get { return m_Rig.position; } }
 	public bool IsMove { get { return m_Move; } }
 	public float WeapRange { set { m_WeapRange = value; } }
 	public bool IsWall { get { return m_IsWall; } set { m_IsWall = value; } }
+	public bool IsUpdate { get { return m_Update; } }
+	public CharInfo CharInfo { get { return m_Info; } }
+	public float HP { get { return m_Info.m_HP; } }
 
 	public virtual void SetDamage(float dmg)
 	{
@@ -97,6 +102,11 @@ public class Character : MonoBehaviour
 		}
 
 		m_Audio.Play();
+	}
+
+	protected void StopSound()
+	{
+		m_Audio.Stop();
 	}
 
 	protected void PlaySoundOneShot(AudioClip clip)
@@ -133,11 +143,15 @@ public class Character : MonoBehaviour
 			Debug.LogError("if (m_rigid	== null)");
 
 		m_Info.Init();
+
+		m_deltaTime = Time.deltaTime;
 	}
 
 	protected virtual void Start()
 	{
 		m_Audio.volume = Global.EffectVolume;
+
+		m_deltaTime = Time.deltaTime;
 	}
 
 	protected virtual void Update()
@@ -149,11 +163,6 @@ public class Character : MonoBehaviour
 
 	protected virtual void FixedUpdate()
 	{
-
-	}
-
-	protected virtual void LateUpdate()
-	{
-
+		m_deltaTime = Time.deltaTime;
 	}
 }

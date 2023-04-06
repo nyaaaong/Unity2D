@@ -26,6 +26,8 @@ public class ShotgunKin : Monster
 		base.Awake();
 
 		m_UseAlpha = false;
+
+		m_PatternList.Add(MovePattern);
 	}
 
 	protected override void Start()

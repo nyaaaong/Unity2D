@@ -5,8 +5,6 @@ public class BulletKin : Monster
 	{
 		base.Awake();
 
-		m_UseAlpha = true;
-
 		m_PatternList.Add(MovePattern);
 	}
 
