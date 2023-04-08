@@ -130,6 +130,8 @@ public partial class Player : Character
 		base.Start();
 
 		EquipWeapon(Weapon_Type_Player.Pistol);
+
+		Global.Camera.PlayBGM(BGM_Type.Main);
 	}
 
 	protected override void FixedUpdate()

@@ -95,3 +95,13 @@ public enum Boss_Pattern3
 	Continue,
 	Complete
 }
+
+public enum BGM_Type
+{
+	None,
+	Title,
+	Main,
+	Boss,
+	Boss_Clear,
+	Ending
+}

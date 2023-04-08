@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Cam : MonoBehaviour
@@ -41,6 +42,44 @@ public class Cam : MonoBehaviour
 	private Vector2 m_BorderLT = Vector2.zero;
 	private Vector2 m_BorderRB = Vector2.zero;
 	private float m_BorderDist = 0f;
+
+	private AudioSource m_Audio = null;
+	private AudioClip m_BGMTitle = null;
+	private AudioClip m_BGMMain = null;
+	private AudioClip m_BGMBoss = null;
+	private AudioClip m_BGMBossClear = null;
+	private AudioClip m_BGMEnding = null;
+	private BGM_Type m_BGMType = BGM_Type.None;
+
+	public void PlayBGM(BGM_Type type)
+	{
+		if (m_BGMType == type)
+			return;
+
+		m_BGMType = type;
+		m_Audio.Stop();
+
+		switch (m_BGMType)
+		{
+			case BGM_Type.Title:
+				m_Audio.clip = m_BGMTitle;
+				break;
+			case BGM_Type.Main:
+				m_Audio.clip = m_BGMMain;
+				break;
+			case BGM_Type.Boss:
+				m_Audio.clip = m_BGMBoss;
+				break;
+			case BGM_Type.Boss_Clear:
+				m_Audio.clip = m_BGMBossClear;
+				break;
+			case BGM_Type.Ending:
+				m_Audio.clip = m_BGMEnding;
+				break;
+		}
+
+		m_Audio.Play();
+	}
 
 	private void Calc()
 	{
@@ -159,6 +198,20 @@ public class Cam : MonoBehaviour
 
 		m_BorderRB.x = m_Border.position.x + m_Border.localScale.x * 0.5f;
 		m_BorderRB.y = m_Border.position.y - m_Border.localScale.y * 0.5f;
+
+		m_Audio = GetComponent<AudioSource>();
+
+		if (m_Audio == null)
+			Debug.LogError("if (m_Audio == null)");
+
+		m_Audio.volume = Global.BGMVolume;
+		m_Audio.loop = true;
+
+		m_BGMTitle = Global.BGMTitle;
+		m_BGMMain = Global.BGMMain;
+		m_BGMBoss = Global.BGMBoss;
+		m_BGMBossClear = Global.BGMBossClear;
+		m_BGMEnding = Global.BGMBossEnding;
 	}
 
 	private void FixedUpdate()

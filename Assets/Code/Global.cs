@@ -60,6 +60,17 @@ public class Global : MonoBehaviour
 	[SerializeField]
 	private AudioClip m_BossDie = null;
 
+	[SerializeField]
+	private AudioClip m_BGMTitle = null;
+	[SerializeField]
+	private AudioClip m_BGMMain = null;
+	[SerializeField]
+	private AudioClip m_BGMBoss = null;
+	[SerializeField]
+	private AudioClip m_BGMBossClear = null;
+	[SerializeField]
+	private AudioClip m_BGMEnding = null;
+
 	private static Global m_Inst = null;
 	private GameObject m_PlayerObj = null;
 	private Player m_Player = null;
@@ -72,6 +83,7 @@ public class Global : MonoBehaviour
 	public static AudioClip DeathEffectAudio { get { return m_Inst.m_DeathEffectAudio; } }
 	public static AudioClip[] DeathAudio { get { return m_Inst.m_DeathAudio; } }
 	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
+	public static float BGMVolume { get { return m_Inst.m_BGMVolume; } }
 	public static Player Player { get { return m_Inst.m_Player; } }
 	public static WeaponInfo Pistol { get { return m_Inst.m_WeapInfo[(int)Weapon_Type_Player.Pistol]; } }
 	public static float LootRate { get { return m_Inst.m_LootRate; } }
@@ -86,6 +98,11 @@ public class Global : MonoBehaviour
 	public static AudioClip BossPattern2 { get { return m_Inst.m_BossPattern2; } }
 	public static AudioClip BossPattern3 { get { return m_Inst.m_BossPattern3; } }
 	public static AudioClip BossDie { get { return m_Inst.m_BossDie; } }
+	public static AudioClip BGMTitle { get { return m_Inst.m_BGMTitle; } }
+	public static AudioClip BGMMain { get { return m_Inst.m_BGMMain; } }
+	public static AudioClip BGMBoss { get { return m_Inst.m_BGMBoss; } }
+	public static AudioClip BGMBossClear { get { return m_Inst.m_BGMBossClear; } }
+	public static AudioClip BGMBossEnding { get { return m_Inst.m_BGMEnding; } }
 
 	public static Vector2 ConvertDir(float angle)
 	{
@@ -199,6 +216,21 @@ public class Global : MonoBehaviour
 
 		if (m_BossDie == null)
 			Debug.LogError("if (m_BossDie == null)");
+
+		if (m_BGMTitle == null)
+			Debug.LogError("if (m_BGMTitle == null)");
+
+		if (m_BGMMain == null)
+			Debug.LogError("if (m_BGMMain == null)");
+
+		if (m_BGMBoss == null)
+			Debug.LogError("if (m_BGMBoss == null)");
+
+		if (m_BGMBossClear == null)
+			Debug.LogError("if (m_BGMBossClear == null)");
+
+		if (m_BGMEnding == null)
+			Debug.LogError("if (m_BGMEnding == null)");
 	}
 
 	private void Update()
