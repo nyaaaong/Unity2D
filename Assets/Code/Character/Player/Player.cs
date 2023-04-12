@@ -27,6 +27,7 @@ public partial class Player : Character
 	private float m_BlinkTime = 0.0f;
 	private float m_BlinkTimeMax = 0.1f;
 	private Vector3 m_MovePos = Vector3.zero;
+	private Vector2 m_P2MDist = Vector2.zero;
 
 	private bool UP { get { return m_InputYPrev == 1.0f; } }
 	private bool DOWN { get { return m_InputYPrev == -1.0f; } }
@@ -93,6 +94,13 @@ public partial class Player : Character
 		m_HitAnim = true;
 	}
 
+	private void Calc()
+	{
+		m_P2MDist = InputManager.MouseScreenPos - m_Rig.position;
+		m_TargetDir = m_P2MDist.normalized;
+		m_TargetAngle = Mathf.Atan2(m_P2MDist.y, m_P2MDist.x) * Mathf.Rad2Deg;
+	}
+
 	protected override void Awake()
 	{
 		base.Awake();
@@ -131,7 +139,7 @@ public partial class Player : Character
 
 		EquipWeapon(Weapon_Type_Player.Pistol);
 
-		Global.Camera.PlayBGM(BGM_Type.Main);
+		AudioManager.PlayBGM(BGM_Type.Main);
 	}
 
 	protected override void FixedUpdate()
@@ -145,8 +153,12 @@ public partial class Player : Character
 	{
 		base.Update();
 
-		WeaponKeyCheck();
-		AnimCheck();
-		HitAnimCheck();
+		if (!m_Death)
+		{
+			Calc();
+			WeaponKeyCheck();
+			AnimCheck();
+			HitAnimCheck();
+		}
 	}
 }

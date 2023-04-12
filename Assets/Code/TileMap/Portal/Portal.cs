@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public class Portal : MonoBehaviour
+public class Portal : Global
 {
 }

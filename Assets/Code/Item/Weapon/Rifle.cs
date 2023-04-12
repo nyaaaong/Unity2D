@@ -2,7 +2,7 @@
 {
 	protected override void LootingEvent()
 	{
-		Global.Player.AddWeapon(Weapon_Type_Player.Rifle);
+		CharacterManager.PlayerAddWeapon(Weapon_Type_Player.Rifle);
 
 		base.LootingEvent();
 	}

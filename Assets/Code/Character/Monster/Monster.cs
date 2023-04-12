@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 
 public class Monster : Character
@@ -20,6 +19,7 @@ public class Monster : Character
 	private float m_Alpha = 1.0f;
 	private float m_FadeTime = 2.0f; // 사라질 시간
 	private Color m_Color;
+	private bool m_IsRed = false;
 
 	private float m_Percent = 0.0f;
 	private bool m_CreateItem = false;
@@ -45,6 +45,12 @@ public class Monster : Character
 
 	protected bool m_Boss = false;
 	protected float m_FollowDist = 12f; // 보스와 플레이어의 사이 거리, 만약 이 거리를 빠져나가면 보스가 추적한다
+
+	public bool IsRed { get { return m_IsRed; } }
+
+	protected virtual void TargetFound()
+	{
+	}
 
 	public bool PlayAnim(string name)
 	{
@@ -198,7 +204,7 @@ public class Monster : Character
 
 		m_Percent = Random.Range(0.0f, 100.0f);
 
-		if (m_Percent <= Global.LootRate)
+		if (m_Percent <= ItemManager.LootRate)
 			ItemManager.CreateItem(transform.position);
 	}
 
@@ -297,7 +303,11 @@ public class Monster : Character
 		if (m_HitAnim)
 		{
 			if (m_SR.color == Color.white)
+			{
+				m_IsRed = true;
+
 				m_SR.color = Color.red;
+			}
 
 			else
 			{
@@ -305,6 +315,8 @@ public class Monster : Character
 
 				if (m_HitAnimTime >= m_HitAnimTimeMax)
 				{
+					m_IsRed = false;
+
 					m_HitAnimTime = 0.0f;
 					m_SR.color = Color.white;
 
@@ -364,18 +376,18 @@ public class Monster : Character
 
 		m_Alpha = m_deltaTime / m_FadeTime;
 
-		m_UpdateDist = Global.UpdateDist;
+		m_UpdateDist = CharacterManager.UpdateDist;
 	}
 
 	protected override void Start()
 	{
 		base.Start();
 
-		m_HitEffectAudio = Global.HitEffectAudio;
-		m_DeathEffectAudio = Global.DeathEffectAudio;
+		m_HitEffectAudio = AudioManager.HitEffectAudio;
+		m_DeathEffectAudio = AudioManager.DeathEffectAudio;
 
 		if (!m_Boss)
-			m_DeathAudio = Global.DeathAudio;
+			m_DeathAudio = AudioManager.DeathAudio;
 
 		else
 			m_PatternDelayTime = 0f;
@@ -385,7 +397,7 @@ public class Monster : Character
 	{
 		base.FixedUpdate();
 
-		Global.E2PData(this);
+		CharacterManager.E2PData(this);
 
 		RangeCheck();
 	}
@@ -396,7 +408,12 @@ public class Monster : Character
 
 		if (m_UpdateDist >= m_TargetDist || m_Update)
 		{
-			m_Update = true;
+			if (!m_Update)
+			{
+				TargetFound();
+
+				m_Update = true;
+			}
 
 			if (!m_Boss)
 			{

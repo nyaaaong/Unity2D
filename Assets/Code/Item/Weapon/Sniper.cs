@@ -2,7 +2,7 @@
 {
 	protected override void LootingEvent()
 	{
-		Global.Player.AddWeapon(Weapon_Type_Player.Sniper);
+		CharacterManager.PlayerAddWeapon(Weapon_Type_Player.Sniper);
 
 		base.LootingEvent();
 	}

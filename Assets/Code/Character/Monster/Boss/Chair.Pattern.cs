@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public partial class Chair : Monster
+﻿public partial class Chair : Monster
 {
 	private void ChangeBulletSpeed(bool IsP3)
 	{
@@ -20,7 +18,7 @@ public partial class Chair : Monster
 
 		m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
 		m_NewBullet.SetInfo(m_Bullet);
-		m_NewBullet.Dir = Global.ConvertDir(m_NewAngle);
+		m_NewBullet.Dir = ConvertDir(m_NewAngle);
 
 		if (firstDist != 0f)
 		{

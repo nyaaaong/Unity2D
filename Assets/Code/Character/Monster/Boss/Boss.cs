@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class Boss : Monster
 {
@@ -118,8 +117,6 @@ public class Boss : Monster
 		if (m_Chair == null)
 			Debug.LogError("if (m_Chair == null)");
 
-		m_Info = m_Chair.CharInfo;
-
 		m_Renderer = GetComponent<Renderer>();
 
 		if (m_Renderer == null)
@@ -129,14 +126,20 @@ public class Boss : Monster
 	protected override void Start()
 	{
 		base.Start();
+
+		m_Info = m_Chair.CharInfo;
 	}
 
 	protected override void Update()
 	{
 		base.Update();
-		
-		m_Info.m_HP = m_Chair.HP;
-		m_Death = m_Chair.Death;
+
+		if (!m_Death)
+		{
+			m_Info.m_HP = m_Chair.HP;
+			m_Death = m_Chair.Death;
+			m_SR.color = m_Chair.IsRed ? Color.red : Color.white;
+		}
 
 		DieAnimCheck();
 		DieEndAnimCheck();

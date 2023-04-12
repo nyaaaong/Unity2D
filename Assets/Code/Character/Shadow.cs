@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shadow : MonoBehaviour
+public class Shadow : Global
 {
 	[SerializeField]
 	private Character m_Base = null;

@@ -2,7 +2,7 @@
 {
 	protected override void LootingEvent()
 	{
-		Global.Player.AddHeart();
+		CharacterManager.PlayerAddHeart();
 
 		base.LootingEvent();
 	}

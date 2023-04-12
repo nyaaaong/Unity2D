@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class LootEffect : MonoBehaviour
+public class LootEffect : Global
 {
 	private void EffectAnimEnd()
 	{

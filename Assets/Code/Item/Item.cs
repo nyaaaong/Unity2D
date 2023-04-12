@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : Global
 {
 	private AudioSource m_Audio = null;
 	protected Item_Type m_Type = Item_Type.End;
@@ -40,7 +40,7 @@ public class Item : MonoBehaviour
 		if (m_Audio == null)
 			Debug.LogError("if (m_Audio == null)");
 
-		m_Audio.volume = Global.EffectVolume;
+		m_Audio.volume = AudioManager.EffectVolume;
 
 		m_DropSpeed = ItemManager.DropSpeed;
 		m_DropHeightMax = ItemManager.DropHeight;

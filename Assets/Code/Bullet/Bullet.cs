@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Global
 {
 	private Vector3 m_Dir = Vector2.zero;
 	private float m_Damage = 1.0f;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : Global
 {
 	[SerializeField]
 	private Hand m_Hand = null;
@@ -66,7 +66,7 @@ public class Weapon : MonoBehaviour
 				m_NewBulletObj.name = "Bullet";
 				m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
 				m_NewBullet.SetInfo(m_Bullet);
-				m_NewBullet.Dir = Global.ConvertDir(angle);
+				m_NewBullet.Dir = ConvertDir(angle);
 				angle += 30.0f;
 			}
 
@@ -114,7 +114,7 @@ public class Weapon : MonoBehaviour
 								m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
 								m_NewBullet.SetInfo(m_Bullet);
 								m_ShotgunNewAngle = m_TargetAngle + m_ShotgunAngle;
-								m_NewBullet.Dir = Global.ConvertDir(m_ShotgunNewAngle);
+								m_NewBullet.Dir = ConvertDir(m_ShotgunNewAngle);
 								m_ShotgunAngle += 10.0f;
 							}
 
@@ -211,12 +211,12 @@ public class Weapon : MonoBehaviour
 		if (m_HandSR == null)
 			Debug.LogError("if (m_HandSR == null)");
 
-		m_PlayerBullet = Global.PlayerBullet;
+		m_PlayerBullet = WeaponManager.PlayerBullet;
 
 		if (m_PlayerBullet == null)
 			Debug.LogError("if (m_PlayerBullet == null)");
 
-		m_EnemyBullet = Global.EnemyBullet;
+		m_EnemyBullet = WeaponManager.EnemyBullet;
 
 		if (m_EnemyBullet == null)
 			Debug.LogError("if (m_EnemyBullet == null)");
@@ -255,13 +255,13 @@ public class Weapon : MonoBehaviour
 		if (m_Bullet == null)
 			Debug.LogError("if (m_Bullet == null)");
 
-		m_Audio.volume = Global.EffectVolume;
+		m_Audio.volume = AudioManager.EffectVolume;
 
 		if (m_WeapTypeMonster != Weapon_Type_Monster.End)
-			Global.SetWeaponInfo(m_Info, m_WeapTypeMonster);
+			WeaponManager.SetWeaponInfo(m_Info, m_WeapTypeMonster);
 
 		else
-			Global.SetWeaponInfo(m_Info, m_WeapType);
+			WeaponManager.SetWeaponInfo(m_Info, m_WeapType);
 
 		m_Bullet.SetInfo(m_Info);
 

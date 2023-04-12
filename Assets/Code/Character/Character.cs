@@ -16,7 +16,7 @@ public class CharInfo
 	}
 }
 
-public class Character : MonoBehaviour
+public class Character : Global
 {
 	[SerializeField]
 	protected CharInfo m_Info = new CharInfo();
@@ -74,6 +74,7 @@ public class Character : MonoBehaviour
 	public bool IsUpdate { get { return m_Update; } }
 	public CharInfo CharInfo { get { return m_Info; } }
 	public float HP { get { return m_Info.m_HP; } }
+	public float HPMax { get { return m_Info.HPMax; } }
 
 	public virtual void SetDamage(float dmg)
 	{
@@ -149,7 +150,7 @@ public class Character : MonoBehaviour
 
 	protected virtual void Start()
 	{
-		m_Audio.volume = Global.EffectVolume;
+		m_Audio.volume = AudioManager.EffectVolume;
 
 		m_deltaTime = Time.deltaTime;
 	}

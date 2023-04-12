@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public partial class Chair	:	Monster
 {
@@ -29,10 +28,10 @@ public partial class Chair	:	Monster
 	private AudioClip m_DieAudio = null;
 	private GameObject m_EnemyBullet = null;
 	private GameObject m_NewBulletObj = null;
+	private GameObject m_BossObj = null;
 	private Bullet m_NewBullet = null;
 	private Bullet m_Bullet = null;
 	private WeaponInfo m_WeapInfo = null;
-	private GameObject m_BossObj = null;
 	private Boss m_BossComponent = null;
 	private Vector3 m_BulletPos = Vector3.zero;
 	private float m_Angle = 0.0f;
@@ -64,6 +63,11 @@ public partial class Chair	:	Monster
 	private float m_P3SpeedMultiplier = 0.05f; // 총알 속도
 	private int m_P3Bullets = 0;
 	private Boss_Pattern3_Dir m_P3Dir = Boss_Pattern3_Dir.Normal;
+
+	protected override void TargetFound()
+	{
+		UIManager.EnableHealthBar(true);
+	}
 
 	private void ExplosionTimer()
 	{
@@ -128,6 +132,8 @@ public partial class Chair	:	Monster
 
 			m_BossComponent.SetEnable(true);
 			m_BossComponent.Die();
+
+			UIManager.EnableHealthBar(false);
 		}
 	}
 
@@ -142,8 +148,8 @@ public partial class Chair	:	Monster
 
 		m_Boss = true;
 
-		m_WeapInfo = Global.BossWeapInfo;
-		m_EnemyBullet = Global.EnemyBullet;
+		m_WeapInfo = WeaponManager.BossWeapInfo;
+		m_EnemyBullet = WeaponManager.EnemyBullet;
 
 		Transform bossTrs = null;
 		int ChildMax = transform.childCount;
@@ -171,10 +177,10 @@ public partial class Chair	:	Monster
 		m_P3Bullets = m_P2Bullets;
 		m_P3AngleSteps = m_P2AngleSteps;
 
-		m_Pattern1Audio = Global.BossPattern1;
-		m_Pattern2Audio = Global.BossPattern2;
-		m_Pattern3Audio = Global.BossPattern3;
-		m_DieAudio = Global.BossDie;
+		m_Pattern1Audio = AudioManager.BossPattern1;
+		m_Pattern2Audio = AudioManager.BossPattern2;
+		m_Pattern3Audio = AudioManager.BossPattern3;
+		m_DieAudio = AudioManager.BossDie;
 
 		m_PatternDelayTimeMax = 3f;
 
@@ -194,7 +200,7 @@ public partial class Chair	:	Monster
 	{
 		base.Start();
 
-		Global.SetBossWeapInfo(m_WeapInfo);
+		WeaponManager.SetBossWeapInfo(m_WeapInfo);
 
 		m_Bullet = m_EnemyBullet.GetComponent<Bullet>();
 
@@ -214,8 +220,6 @@ public partial class Chair	:	Monster
 			PatternProgress();
 
 		else
-		{
 			ExplosionTimer();
-		}
 	}
 }
