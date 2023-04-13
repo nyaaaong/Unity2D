@@ -140,6 +140,8 @@ public partial class Player : Character
 		EquipWeapon(Weapon_Type_Player.Pistol);
 
 		AudioManager.PlayBGM(BGM_Type.Main);
+
+		UIManager.FadeOut();
 	}
 
 	protected override void FixedUpdate()

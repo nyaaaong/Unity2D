@@ -64,6 +64,13 @@ public partial class Chair	:	Monster
 	private int m_P3Bullets = 0;
 	private Boss_Pattern3_Dir m_P3Dir = Boss_Pattern3_Dir.Normal;
 
+	protected override void DestroyObject()
+	{
+		base.DestroyObject();
+
+		UIManager.FadeIn();
+	}
+
 	protected override void TargetFound()
 	{
 		UIManager.EnableHealthBar(true);

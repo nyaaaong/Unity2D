@@ -262,7 +262,7 @@ public class Monster : Character
 		}
 	}
 
-	private void DestroyObject()
+	protected virtual void DestroyObject()
 	{
 		int Size = transform.childCount;
 
