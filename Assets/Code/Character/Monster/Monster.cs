@@ -108,21 +108,21 @@ public class Monster : Character
 				m_Fire = false;
 			}
 
-			else
+			else if (!m_IsWall && m_TargetDist <= m_WeapRange)
 			{
 				m_FollowPlayer = false;
 				m_Fire = true;
 			}
 		}
 
-		else
-		{
-			if (m_TargetDist > m_FollowDist)
-				m_FollowPlayer = true;
+		//else
+		//{
+		//	if (m_TargetDist > m_FollowDist)
+		//		m_FollowPlayer = true;
 
-			else
-				m_FollowPlayer = false;
-		}
+		//	else
+		//		m_FollowPlayer = false;
+		//}
 	}
 
 	protected void FollowPlayer()
@@ -417,21 +417,40 @@ public class Monster : Character
 
 			if (!m_Boss)
 			{
-				FollowPlayer();
-
-				if (!m_FollowPlayer)
+				if (!m_Death)
 				{
-					if (m_PatternDelay)
-						PatternDelay();
+					FollowPlayer();
 
-					else
+					if (!m_FollowPlayer)
 					{
-						PatternExec();
-						UpdatePattern();
+						if (m_PatternDelay)
+							PatternDelay();
+
+						else
+						{
+							PatternExec();
+							UpdatePattern();
+						}
 					}
+
+					HandCheck();
 				}
 
-				HandCheck();
+				else
+				{
+					if (m_MovePattern)
+					{
+						m_PatternDelay = true;
+
+						m_PatternProc = false;
+						m_MovePattern = false;
+
+						m_MoveTime = 0f;
+						m_Rig.velocity = Vector2.zero;
+
+						ChangeAnim("Idle");
+					}
+				}
 			}
 
 			else

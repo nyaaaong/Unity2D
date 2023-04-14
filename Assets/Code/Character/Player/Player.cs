@@ -14,6 +14,8 @@ public partial class Player : Character
 	AudioClip m_HeartLootClip = null;
 	[SerializeField]
 	private float m_HealValue = 10.0f;
+	[SerializeField]
+	private bool m_BossStart = false;
 
 	private Player_Status m_Status = Player_Status.Idle;
 	private bool[] m_Dir = null;
@@ -131,6 +133,17 @@ public partial class Player : Character
 		m_Dir[(int)Player_Dir.Right] = true;
 
 		m_HitAnimTimeMax = 2.0f;
+
+		Vector3 playerPos = new Vector3();
+
+		if (m_BossStart)
+		{
+			playerPos.x = 66.58f;
+			playerPos.y = 1.63f;
+		}
+
+		else
+			gameObject.transform.position = playerPos;
 	}
 
 	protected override void Start()

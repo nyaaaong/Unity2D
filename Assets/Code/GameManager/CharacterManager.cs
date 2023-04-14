@@ -18,6 +18,7 @@ public class CharacterManager : MonoBehaviour
 	public static float UpdateDist { get { return m_Inst.m_UpdateDist; } }
 	public static Vector3 PlayerPos3D { get { return m_Inst.m_PlayerPos3D; } }
 	public static GameObject Boss { get { return m_Inst.m_Boss; } }
+	public static Player Player { get { return m_Inst.m_Player; } }
 
 	public static bool PlayerHasWeapon(Item_Type type)
 	{

@@ -27,6 +27,7 @@ public class Weapon : Global
 	private Vector3 m_TargetDir = Vector3.zero;
 	private Vector3 m_Rot = Vector3.zero;
 	private Vector3 m_BulletPos = Vector3.zero;
+	private AudioClip m_AudioClip = null;
 
 	protected LayerMask m_WallMask;
 	protected Vector3 m_LineStart = Vector2.zero;
@@ -70,8 +71,7 @@ public class Weapon : Global
 				angle += 30.0f;
 			}
 
-			if (!m_Audio.isPlaying)
-				m_Audio.Play();
+			m_Audio.PlayOneShot(m_AudioClip);
 			return;
 		}
 	}
@@ -118,8 +118,7 @@ public class Weapon : Global
 								m_ShotgunAngle += 10.0f;
 							}
 
-							if (!m_Audio.isPlaying)
-								m_Audio.Play();
+							m_Audio.PlayOneShot(m_AudioClip);
 							return;
 						}
 
@@ -132,8 +131,7 @@ public class Weapon : Global
 				m_NewBullet = m_NewBulletObj.GetComponent<Bullet>();
 				m_NewBullet.SetInfo(m_Bullet);
 
-				if (!m_Audio.isPlaying)
-					m_Audio.Play();
+				m_Audio.PlayOneShot(m_AudioClip);
 			}
 		}
 	}
@@ -229,6 +227,8 @@ public class Weapon : Global
 		m_Info = new WeaponInfo();
 
 		m_WallMask = LayerMask.GetMask("Wall");
+
+		m_AudioClip = m_Audio.clip;
 	}
 
 	private void Start()
@@ -267,7 +267,7 @@ public class Weapon : Global
 
 		m_Base.FireTime = m_Info.m_FireRate;
 
-		m_Base.WeapRange = m_Info.m_FireRange;
+		m_Base.WeapRange = m_Info.m_FireRange + m_Info.m_FirstDist;
 	}
 
 	private void FixedUpdate()

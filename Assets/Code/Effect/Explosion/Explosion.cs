@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Explosion : Global
 {
 	private void Destroy()

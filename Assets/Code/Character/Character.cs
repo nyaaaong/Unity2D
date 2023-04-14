@@ -4,6 +4,7 @@ using UnityEngine;
 [Serializable]
 public class CharInfo
 {
+	public Character_Type m_Type = Character_Type.None;
 	public float m_HP = 100.0f;
 	private float m_HPMax = 100.0f;
 	public float m_MoveSpeed = 1.0f;
@@ -41,7 +42,7 @@ public class Character : Global
 	protected bool m_SpreadBullet = false; // ShotgunKin_B 전용
 	protected bool m_HitAnim = false;
 	protected bool m_DeathAnimProc = false;
-	protected bool m_IsWall = false;    // 몬스터와 플레이어 사이 벽이 있는 경우 (몬스터 전용)
+	protected bool m_IsWall = true;    // 몬스터와 플레이어 사이 벽이 있는 경우 (몬스터 전용)
 	protected Animator m_Animator = null;
 	protected AudioSource m_Audio = null;
 	protected SpriteRenderer m_SR = null;
@@ -83,11 +84,20 @@ public class Character : Global
 
 		m_Info.m_HP -= dmg;
 
-		if (m_Info.m_HP <= 0.0f)
+		if (m_Info.m_Type == Character_Type.Player)
 		{
-			m_Info.m_HP = 0.0f;
-			m_Death = true;
-			m_Fire = false;
+			if (m_Info.m_HP < 1f)
+				m_Info.m_HP = 1f;
+		}
+
+		else
+		{
+			if (m_Info.m_HP <= 0.0f)
+			{
+				m_Info.m_HP = 0.0f;
+				m_Death = true;
+				m_Fire = false;
+			}
 		}
 	}
 

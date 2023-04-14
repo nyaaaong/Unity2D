@@ -1,6 +1,5 @@
 public class BulletKin : Monster
 {
-
 	protected override void Awake()
 	{
 		base.Awake();

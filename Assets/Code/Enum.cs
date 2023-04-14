@@ -105,3 +105,10 @@ public enum BGM_Type
 	Boss_Clear,
 	Ending
 }
+
+public enum Character_Type
+{
+	None,
+	Player,
+	Monster
+}
