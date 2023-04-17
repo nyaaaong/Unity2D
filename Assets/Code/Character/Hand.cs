@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Hand : Global
+public class Hand : MonoBehaviour
 {
 	[SerializeField]
 	private GameObject m_BaseObj = null;

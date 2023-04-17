@@ -1,4 +1,6 @@
-public class Explosion : Global
+using UnityEngine;
+
+public class Explosion : MonoBehaviour
 {
 	private void Destroy()
 	{

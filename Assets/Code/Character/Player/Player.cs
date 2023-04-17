@@ -37,6 +37,7 @@ public partial class Player : Character
 	private bool RIGHT { get { return m_InputXPrev == 1.0f; } }
 
 	public bool WeaponChange { get { return m_WeaponChange; } set { m_WeaponChange = value; } }
+	public Vector3 MovePos { set { gameObject.transform.position = value; } }
 
 	public bool HasWeaponAll()
 	{

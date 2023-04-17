@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Item : Global
+public class Item : MonoBehaviour
 {
 	private AudioSource m_Audio = null;
 	protected Item_Type m_Type = Item_Type.End;
