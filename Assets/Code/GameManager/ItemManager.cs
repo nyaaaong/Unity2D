@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : Global
 {
 	[SerializeField]
 	private GameObject m_RiflePrefeb = null;
@@ -126,10 +126,5 @@ public class ItemManager : MonoBehaviour
 		m_Item[(int)Item_Type.Heart] = m_HeartPrefeb;
 
 		m_DropSecondHeight = m_DropHeight * 0.65f;
-	}
-
-	public void Update()
-	{
-
 	}
 }

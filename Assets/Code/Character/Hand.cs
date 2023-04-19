@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Hand : MonoBehaviour
+public class Hand : Global
 {
 	[SerializeField]
 	private GameObject m_BaseObj = null;
@@ -32,8 +32,10 @@ public class Hand : MonoBehaviour
 			Debug.LogError("m_Base = m_BaseObj.GetComponent<Character>();");
 	}
 
-	private void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		if (m_Owner == Weapon_Owner.Monster && !m_Base.IsUpdate)
 			return;
 

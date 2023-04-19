@@ -114,15 +114,6 @@ public class Monster : Character
 				m_Fire = true;
 			}
 		}
-
-		//else
-		//{
-		//	if (m_TargetDist > m_FollowDist)
-		//		m_FollowPlayer = true;
-
-		//	else
-		//		m_FollowPlayer = false;
-		//}
 	}
 
 	protected void FollowPlayer()
@@ -393,18 +384,18 @@ public class Monster : Character
 			m_PatternDelayTime = 0f;
 	}
 
-	protected override void FixedUpdate()
+	protected override void BeforeUpdate()
 	{
-		base.FixedUpdate();
+		base.BeforeUpdate();
 
 		CharacterManager.E2PData(this);
 
 		RangeCheck();
 	}
 
-	protected override void Update()
+	protected override void MiddleUpdate()
 	{
-		base.Update();
+		base.MiddleUpdate();
 
 		if (m_UpdateDist >= m_TargetDist || m_Update)
 		{

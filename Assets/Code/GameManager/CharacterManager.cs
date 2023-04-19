@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterManager : MonoBehaviour
+public class CharacterManager : Global
 {
 	[SerializeField]
 	private float m_UpdateDist = 10f;
@@ -69,8 +69,10 @@ public class CharacterManager : MonoBehaviour
 			Debug.LogError("if (m_Boss == null)");
 	}
 
-	private void FixedUpdate()
+	protected override void BeforeUpdate()
 	{
+		base.BeforeUpdate();
+
 		m_PlayerPos3D = m_Player.RigidBodyPos3D;
 		m_PlayerPos = m_PlayerPos3D;
 	}

@@ -270,14 +270,18 @@ public class Weapon : Global
 		m_Base.WeapRange = m_Info.m_FireRange + m_Info.m_FirstDist;
 	}
 
-	private void FixedUpdate()
+	protected override void BeforeUpdate()
 	{
+		base.BeforeUpdate();
+
 		if (m_Owner == Weapon_Owner.Monster && m_Base.IsUpdate && m_SR.enabled)
 			FakeLine();
 	}
 
-	private void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		if (m_Owner == Weapon_Owner.Monster && !m_Base.IsUpdate)
 			return;
 

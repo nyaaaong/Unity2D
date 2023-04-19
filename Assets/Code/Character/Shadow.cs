@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Shadow : MonoBehaviour
+public class Shadow : Global
 {
 	[SerializeField]
 	private Character m_Base = null;
@@ -21,8 +21,10 @@ public class Shadow : MonoBehaviour
 		m_tempColor = m_SR.color;
 	}
 
-	void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		if (m_Base.DeathAnimProc)
 		{
 			m_tempColor.a = m_Base.Color.a;

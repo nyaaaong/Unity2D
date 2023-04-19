@@ -130,9 +130,9 @@ public class Boss : Monster
 		m_Info = m_Chair.CharInfo;
 	}
 
-	protected override void Update()
+	protected override void MiddleUpdate()
 	{
-		base.Update();
+		base.MiddleUpdate();
 
 		if (!m_Death)
 		{

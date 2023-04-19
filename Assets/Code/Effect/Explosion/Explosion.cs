@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class Explosion : Global
 {
 	private void Destroy()
 	{

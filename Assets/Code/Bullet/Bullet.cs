@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Global
 {
 	private Vector3 m_Dir = Vector2.zero;
 	private float m_Damage = 1.0f;
@@ -141,8 +141,10 @@ public class Bullet : MonoBehaviour
 			Debug.LogError("if (m_Rig == null)");
 	}
 
-	private void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		if (m_AccRange >= m_Range && !m_Destroy && !m_HitAnim)
 			NoHitAnim();
 
@@ -155,7 +157,7 @@ public class Bullet : MonoBehaviour
 		}
 	}
 
-	private void FixedUpdate()
+	protected override void FixedUpdate()
 	{
 		if (!m_Destroy && !m_HitAnim)
 			m_Rig.velocity = m_Dir * m_Speed;

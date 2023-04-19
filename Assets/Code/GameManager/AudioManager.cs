@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Global
 {
 	[SerializeField]
 	private float m_EffectVolume = 0.1f;

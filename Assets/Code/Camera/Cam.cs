@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Cam : MonoBehaviour
+public class Cam : Global
 {
 	[Serializable]
 	private class DIR
@@ -137,14 +137,6 @@ public class Cam : MonoBehaviour
 		m_NextPos = m_Pos + new Vector3(m_Dir.x, m_Dir.y, 0f) * m_Speed;
 	}
 
-	private void FollowPlayerCenter()
-	{
-		m_Pos = CharacterManager.PlayerPos3D;
-		m_Pos.z = m_CamZ;
-
-		Calc();
-	}
-
 	private void Awake()
 	{
 		if (m_Cam == null)
@@ -165,15 +157,15 @@ public class Cam : MonoBehaviour
 		m_BorderRB.y = m_Border.position.y - m_Border.localScale.y * 0.5f;
 	}
 
-	private void FixedUpdate()
+	protected override void MiddleUpdate()
 	{
-		FollowPlayerCenter();
+		base.MiddleUpdate();
+
+		m_Pos = CharacterManager.PlayerPos3D;
+		m_Pos.z = m_CamZ;
+
+		Calc();
 		FollowMouse();
-
 		BorderCheck();
-	}
-
-	private void LateUpdate()
-	{
 	}
 }

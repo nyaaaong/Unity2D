@@ -219,9 +219,9 @@ public partial class Chair	:	Monster
 		m_P3Speed = m_WeapInfo.m_FireSpeed * m_P3SpeedMultiplier;
 	}
 
-	protected override void Update()
+	protected override void MiddleUpdate()
 	{
-		base.Update();
+		base.MiddleUpdate();
 
 		if (!m_Death)
 			PatternProgress();

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Global
 {
 	[SerializeField]
 	private GameObject m_HealthBarPrefeb = null;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManager : Global
 {
 	[SerializeField]
 	private Camera m_MainCamera = null;
@@ -21,8 +21,10 @@ public class InputManager : MonoBehaviour
 			Debug.LogError("if (m_MainCamera == null)");
 	}
 
-	private void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		m_MouseWorldPos = Input.mousePosition;
 		m_MouseScreenPos = m_MainCamera.ScreenToWorldPoint(m_MouseWorldPos);
 	}

@@ -14,7 +14,7 @@ public class WeaponInfo
 	public bool m_Pierce;
 }
 
-public class WeaponManager : MonoBehaviour
+public class WeaponManager : Global
 {
 	[SerializeField]
 	private WeaponInfo[] m_WeapInfo = new WeaponInfo[(int)Weapon_Type_Player.End];

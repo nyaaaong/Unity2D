@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealthBar : MonoBehaviour
+public class PlayerHealthBar : Global
 {
 	private float m_HPAmount = 1f;
 	private float m_HPMax = 1f;
@@ -26,8 +26,10 @@ public class PlayerHealthBar : MonoBehaviour
 			Debug.LogError("if (m_HPMax == 0)");
 	}
 
-	private void FixedUpdate()
+	protected override void BeforeUpdate()
 	{
+		base.BeforeUpdate();
+
 		if (m_Player.HP > 0f)
 			m_HPAmount = m_Player.HP / m_HPMax;
 

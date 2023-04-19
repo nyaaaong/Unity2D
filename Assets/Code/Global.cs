@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Global : MonoBehaviour
 {
+	protected float m_deltaTime = 0.0f;
+
 	public Vector2 ConvertDir(float angle)
 	{
 		Vector2 Result;
@@ -12,5 +14,32 @@ public class Global : MonoBehaviour
 		Result.Normalize();
 
 		return Result;
+	}
+
+	protected virtual void BeforeUpdate()
+	{
+		m_deltaTime = Time.deltaTime;
+	}
+
+	protected virtual void MiddleUpdate()
+	{
+
+	}
+
+	protected virtual void LastUpdate()
+	{
+
+	}
+
+	protected virtual void FixedUpdate()
+	{
+		m_deltaTime = Time.deltaTime;
+	}
+
+	protected virtual void Update()
+	{
+		BeforeUpdate();
+		MiddleUpdate();
+		LastUpdate();
 	}
 }

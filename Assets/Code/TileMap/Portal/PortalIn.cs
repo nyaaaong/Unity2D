@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PortalIn : MonoBehaviour
+public class PortalIn : Global
 {
 	private void OnTriggerEnter2D(Collider2D collision)
 	{

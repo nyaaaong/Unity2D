@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PortalOut : MonoBehaviour
+public class PortalOut : Global
 {
 	private SpriteRenderer m_SR = null;
 

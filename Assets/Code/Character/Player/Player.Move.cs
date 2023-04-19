@@ -33,8 +33,6 @@ public partial class Player : Character
 
 	private void Move()
 	{
-		InputCheck();
-
 		m_Rig.velocity = m_MovePos;
 	}
 
@@ -57,11 +55,5 @@ public partial class Player : Character
 
 			PlaySound(m_DodgeClip);
 		}
-	}
-
-	private void MoveKeyCheck()
-	{
-		Move();
-		Dodge();
 	}
 }

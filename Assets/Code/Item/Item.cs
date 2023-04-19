@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : Global
 {
 	private AudioSource m_Audio = null;
 	protected Item_Type m_Type = Item_Type.End;
 
-	private float m_deltaTime = 0.0f;
 	private bool m_DropAnim = true;
 	private bool m_FirstAnim = true;
 	private bool m_SecondAnim = false;
@@ -47,8 +46,10 @@ public class Item : MonoBehaviour
 		m_DropSecondHeightMax = ItemManager.DropSecondHeight;
 	}
 
-	protected virtual void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		if (m_DropAnim)
 		{
 			m_deltaTime = Time.deltaTime;

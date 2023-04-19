@@ -162,12 +162,20 @@ public partial class Player : Character
 	{
 		base.FixedUpdate();
 
-		MoveKeyCheck();
+		Move();
 	}
 
-	protected override void Update()
+	protected override void BeforeUpdate()
 	{
-		base.Update();
+		base.BeforeUpdate();
+
+		InputCheck();
+		Dodge();
+	}
+
+	protected override void MiddleUpdate()
+	{
+		base.MiddleUpdate();
 
 		if (!m_Death)
 		{

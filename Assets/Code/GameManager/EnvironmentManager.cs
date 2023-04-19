@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnvironmentManager : MonoBehaviour
+public class EnvironmentManager : Global
 {
 	[SerializeField]
 	private GameObject m_PortalOutObj = null;

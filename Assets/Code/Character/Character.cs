@@ -22,7 +22,6 @@ public class Character : Global
 	[SerializeField]
 	protected CharInfo m_Info = new CharInfo();
 
-	protected float m_deltaTime = 0.0f;
 	protected float m_TargetAngle = 0.0f;
 	protected float m_FireTime = 0.0f;
 	protected float m_HitAnimTime = 0.0f;
@@ -162,18 +161,6 @@ public class Character : Global
 	{
 		m_Audio.volume = AudioManager.EffectVolume;
 
-		m_deltaTime = Time.deltaTime;
-	}
-
-	protected virtual void Update()
-	{
-		m_deltaTime = Time.deltaTime;
-
-		m_FireTime += m_deltaTime;
-	}
-
-	protected virtual void FixedUpdate()
-	{
 		m_deltaTime = Time.deltaTime;
 	}
 }

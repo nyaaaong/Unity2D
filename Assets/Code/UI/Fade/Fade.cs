@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Fade : MonoBehaviour
+public class Fade : Global
 {
 	private Image m_Image = null;
 	private float m_FadeSpeed = 1f;
@@ -58,8 +58,10 @@ public class Fade : MonoBehaviour
 		m_FadeSpeed = UIManager.FadeSpeed;
 	}
 
-	private void Update()
+	protected override void MiddleUpdate()
 	{
+		base.MiddleUpdate();
+
 		if (m_FadeInComplete || m_FadeOutComplete)
 		{
 			StopAllCoroutines();
