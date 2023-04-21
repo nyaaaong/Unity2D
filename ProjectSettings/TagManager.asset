@@ -7,10 +7,11 @@ TagManager:
   - Bullet
   - Monster
   - Wall
-  - PortalOut
-  - PortalIn
   - FakeLine
   - Boss
+  - Portal
+  - BossHealthBar
+  - Fade
   layers:
   - Default
   - TransparentFX

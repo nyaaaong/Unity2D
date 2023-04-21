@@ -30,6 +30,10 @@ public class AudioManager : Global
 	private AudioClip m_BossPattern3 = null;
 	[SerializeField]
 	private AudioClip m_BossDie = null;
+	[SerializeField]
+	private AudioClip m_UIMenuHighlight = null;
+	[SerializeField]
+	private AudioClip m_UIMenuPress = null;
 
 	static private AudioManager m_Inst = null;
 
@@ -45,6 +49,13 @@ public class AudioManager : Global
 	public static AudioClip BossPattern2 { get { return m_Inst.m_BossPattern2; } }
 	public static AudioClip BossPattern3 { get { return m_Inst.m_BossPattern3; } }
 	public static AudioClip BossDie { get { return m_Inst.m_BossDie; } }
+	public static AudioClip UIMenuHighlight { get { return m_Inst.m_UIMenuHighlight; } }
+	public static AudioClip UIMenuPress { get { return m_Inst.m_UIMenuPress; } }
+
+	static public void StopBGM()
+	{
+		m_Inst.m_Audio.Stop();
+	}
 
 	static public void PlayBGM(BGM_Type type)
 	{
@@ -120,6 +131,12 @@ public class AudioManager : Global
 
 		if (m_BossDie == null)
 			Debug.LogError("if (m_BossDie == null)");
+
+		if (m_UIMenuHighlight == null)
+			Debug.LogError("if (m_UIMenuHighlight == null)");
+
+		if (m_UIMenuPress == null)
+			Debug.LogError("if (m_UIMenuPress == null)");
 
 		m_Audio.volume = AudioManager.BGMVolume;
 		m_Audio.loop = true;

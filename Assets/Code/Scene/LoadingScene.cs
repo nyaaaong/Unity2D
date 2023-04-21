@@ -1,6 +1,6 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class LoadingScene : Global
 {
@@ -16,6 +16,7 @@ public class LoadingScene : Global
 		m_NextScene = nextScene;
 
 		SceneManager.LoadScene("LoadingScene");
+		AudioManager.StopBGM();
 	}
 
 	IEnumerator Loading()

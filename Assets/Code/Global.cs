@@ -26,7 +26,7 @@ public class Global : MonoBehaviour
 
 	}
 
-	protected virtual void LastUpdate()
+	protected virtual void AfterUpdate()
 	{
 
 	}
@@ -40,6 +40,6 @@ public class Global : MonoBehaviour
 	{
 		BeforeUpdate();
 		MiddleUpdate();
-		LastUpdate();
+		AfterUpdate();
 	}
 }

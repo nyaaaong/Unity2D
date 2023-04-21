@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class InputManager : Global
 {
-	[SerializeField]
-	private Camera m_MainCamera = null;
-
 	static private InputManager m_Inst = null;
 
+	private Camera m_MainCamera = null;
 	private Vector2 m_MouseWorldPos = Vector2.zero;
 	private Vector2 m_MouseScreenPos = Vector2.zero;
 
@@ -17,8 +15,7 @@ public class InputManager : Global
 	{
 		m_Inst = this;
 
-		if (m_MainCamera == null)
-			Debug.LogError("if (m_MainCamera == null)");
+		m_MainCamera = Camera.main;
 	}
 
 	protected override void MiddleUpdate()

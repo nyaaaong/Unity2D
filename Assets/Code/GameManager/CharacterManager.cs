@@ -3,21 +3,23 @@ using UnityEngine;
 public class CharacterManager : Global
 {
 	[SerializeField]
-	private float m_UpdateDist = 10f;
+	private GameObject m_PlayerObj = null;
 	[SerializeField]
-	private GameObject m_Boss = null;
+	private GameObject m_BossObj = null;
 
 	static private CharacterManager m_Inst = null;
 
 	private Player m_Player = null;
+	private Boss m_Boss = null;
 	private Vector2 m_PlayerPos = Vector2.zero;
 	private Vector3 m_PlayerPos3D = Vector3.zero;
 	private Vector2 m_EnemyPos = Vector2.zero;
 	private Vector2 m_E2PDist = Vector2.zero;
+	private float m_UpdateDist = 10f;
 
 	public static float UpdateDist { get { return m_Inst.m_UpdateDist; } }
 	public static Vector3 PlayerPos3D { get { return m_Inst.m_PlayerPos3D; } }
-	public static GameObject Boss { get { return m_Inst.m_Boss; } }
+	public static Boss Boss { get { return m_Inst.m_Boss; } }
 	public static Player Player { get { return m_Inst.m_Player; } }
 
 	public static bool PlayerHasWeapon(Item_Type type)
@@ -55,18 +57,18 @@ public class CharacterManager : Global
 	{
 		m_Inst = this;
 
-		GameObject PlayerObj = GameObject.FindGameObjectWithTag("Player");
+		if (m_PlayerObj == null)
+			Debug.LogError("if (m_PlayerObj == null)");
 
-		if (PlayerObj == null)
-			Debug.LogError("if (PlayerObj == null)");
-
-		m_Player = PlayerObj.GetComponent<Player>();
+		m_Player = m_PlayerObj.GetComponent<Player>();
 
 		if (m_Player == null)
 			Debug.LogError("if (m_Player == null)");
 
-		if (m_Boss == null)
-			Debug.LogError("if (m_Boss == null)");
+		if (m_BossObj == null)
+			Debug.LogError("if (m_BossObj == null)");
+
+		m_Boss = m_BossObj.GetComponent<Boss>();
 	}
 
 	protected override void BeforeUpdate()

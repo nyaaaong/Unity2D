@@ -6,6 +6,7 @@ public class EnvironmentManager : Global
 	private GameObject m_PortalOutObj = null;
 
 	static private EnvironmentManager m_Inst = null;
+
 	private bool m_UsedPortal = false;
 	private Vector3 m_PortalOutPos = Vector3.zero;
 
