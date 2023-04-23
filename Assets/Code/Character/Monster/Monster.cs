@@ -17,7 +17,7 @@ public class Monster : Character
 
 	private bool m_Destroy = false;
 	private float m_Alpha = 1.0f;
-	private float m_FadeTime = 2.0f; // 사라질 시간
+	private float m_FadeTime = 1.3f; // 사라질 시간
 	private Color m_Color;
 	private bool m_IsRed = false;
 
@@ -98,7 +98,7 @@ public class Monster : Character
 		ChangeAnim("Walk");
 	}
 
-	protected void RangeCheck()
+	protected virtual void RangeCheck()
 	{
 		if (!m_Boss)
 		{

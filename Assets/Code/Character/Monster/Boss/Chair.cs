@@ -20,7 +20,6 @@ public partial class Chair	:	Monster
 	[SerializeField]
 	private float m_Pattern3TimeMax = 3f;
 
-	private BoxCollider2D m_Collider = null;
 	private ChairBody m_Body = null;
 	private AudioClip m_Pattern1Audio = null;
 	private AudioClip m_Pattern2Audio = null;
@@ -194,13 +193,8 @@ public partial class Chair	:	Monster
 		if (m_Explosion == null)
 			Debug.LogError("if (m_Explosion == null)");
 
-		m_Collider = GetComponent<BoxCollider2D>();
-
-		if (m_Collider == null)
-			Debug.LogError("if (m_Collider == null)");
-
 		m_Body = new ChairBody();
-		m_Body.SetBodySize(m_Collider.bounds.size);
+		m_Body.SetBodySize(m_Collider[0].bounds.size);
 	}
 
 	protected override void Start()

@@ -42,10 +42,12 @@ public class Character : Global
 	protected bool m_HitAnim = false;
 	protected bool m_DeathAnimProc = false;
 	protected bool m_IsWall = true;    // 몬스터와 플레이어 사이 벽이 있는 경우 (몬스터 전용)
+	protected int m_ColliderCount = 0;
 	protected Animator m_Animator = null;
 	protected AudioSource m_Audio = null;
 	protected SpriteRenderer m_SR = null;
 	protected Rigidbody2D m_Rig = null;
+	protected BoxCollider2D[] m_Collider = null;
 	protected Vector3 m_TargetDir = Vector3.zero;
 	protected Vector3 m_TargetPos = Vector3.zero;
 	protected bool m_Update = false;
@@ -96,6 +98,14 @@ public class Character : Global
 				m_Info.m_HP = 0.0f;
 				m_Death = true;
 				m_Fire = false;
+
+				if (m_ColliderCount > 0)
+				{
+					for (int i = 0; i < m_ColliderCount; ++i)
+					{
+						m_Collider[i].enabled = false;
+					}
+				}
 			}
 		}
 	}
@@ -152,6 +162,9 @@ public class Character : Global
 		if (m_Rig == null)
 			Debug.LogError("if (m_rigid	== null)");
 
+		m_Collider = GetComponents<BoxCollider2D>();
+		m_ColliderCount = m_Collider.Length;
+
 		m_Info.Init();
 
 		m_deltaTime = Time.deltaTime;
@@ -162,5 +175,12 @@ public class Character : Global
 		m_Audio.volume = AudioManager.EffectVolume;
 
 		m_deltaTime = Time.deltaTime;
+	}
+
+	protected override void MiddleUpdate()
+	{
+		base.MiddleUpdate();
+
+		m_FireTime += m_deltaTime;
 	}
 }
