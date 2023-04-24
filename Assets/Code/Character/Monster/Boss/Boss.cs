@@ -58,6 +58,8 @@ public class Boss : Monster
 
 			m_DieAnim = true;
 			m_DeathAnimProc = true;
+
+			AudioManager.PlayBGM(BGM_Type.Boss_Clear);
 		}
 	}
 

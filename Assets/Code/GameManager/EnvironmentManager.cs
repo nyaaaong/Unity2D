@@ -17,6 +17,8 @@ public class EnvironmentManager : Global
 
 		m_Inst.m_UsedPortal = true;
 		CharacterManager.Player.MovePos = m_Inst.m_PortalOutPos;
+
+		AudioManager.PlayBGM(BGM_Type.Boss);
 	}
 
 	private void Awake()

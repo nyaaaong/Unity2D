@@ -268,6 +268,9 @@ public class Weapon : Global
 		m_Base.FireTime = m_Info.m_FireRate;
 
 		m_Base.WeapRange = m_Info.m_FireRange + m_Info.m_FirstDist;
+
+		if (m_WeapTypeMonster == Weapon_Type_Monster.Shotgun)
+			m_Audio.volume = AudioManager.ShotgunEffectVolume;
 	}
 
 	protected override void BeforeUpdate()
@@ -281,6 +284,8 @@ public class Weapon : Global
 	protected override void MiddleUpdate()
 	{
 		base.MiddleUpdate();
+
+		SpreadBulletCheck();
 
 		if (m_Owner == Weapon_Owner.Monster && !m_Base.IsUpdate)
 			return;
@@ -303,7 +308,5 @@ public class Weapon : Global
 
 		Calc();
 		Fire();
-
-		SpreadBulletCheck();
 	}
 }

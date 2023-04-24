@@ -5,6 +5,8 @@ public class AudioManager : Global
 	[SerializeField]
 	private float m_EffectVolume = 0.1f;
 	[SerializeField]
+	private float m_ShotgunEffectVolume = 0.5f;
+	[SerializeField]
 	private float m_BGMVolume = 0.05f;
 	[SerializeField]
 	private AudioClip m_BGMTitle = null;
@@ -41,6 +43,7 @@ public class AudioManager : Global
 	private BGM_Type m_BGMType = BGM_Type.None;
 
 	public static float EffectVolume { get { return m_Inst.m_EffectVolume; } }
+	public static float ShotgunEffectVolume { get { return m_Inst.m_ShotgunEffectVolume; } }
 	public static float BGMVolume { get { return m_Inst.m_BGMVolume; } }
 	public static AudioClip HitEffectAudio { get { return m_Inst.m_HitEffectAudio; } }
 	public static AudioClip DeathEffectAudio { get { return m_Inst.m_DeathEffectAudio; } }
