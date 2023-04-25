@@ -59,7 +59,7 @@ public partial class Chair	:	Monster
 	private float m_P3ChangeTimeMax = 0.2f; // 총알 방향이 바뀔 간격 속도
 	private float m_P3AngleSteps = 0f;
 	private float m_P3Speed = 0f;
-	private float m_P3SpeedMultiplier = 0.02f; // 총알 속도
+	private float m_P3SpeedMultiplier = 0.6f; // 총알 속도
 	private int m_P3Bullets = 0;
 	private Boss_Pattern3_Dir m_P3Dir = Boss_Pattern3_Dir.Normal;
 

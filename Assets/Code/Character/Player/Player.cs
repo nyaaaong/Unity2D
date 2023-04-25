@@ -1,11 +1,10 @@
 using UnityEngine;
+using System.Collections;
 
 public partial class Player : Character
 {
 	[SerializeField]
 	private bool m_DebugHasAllWeap = false;
-	[SerializeField]
-	private float m_DodgeSpeed = 5.0f;
 	[SerializeField]
 	AudioClip m_DodgeClip = null;
 	[SerializeField]
@@ -22,6 +21,7 @@ public partial class Player : Character
 	private bool[] m_HasWeapon = null;
 	private bool m_KeyLock = false;
 	private bool m_WeaponChange = false;
+	private float m_DodgeSpeed = 5.0f;
 	private float m_InputX = 0.0f;
 	private float m_InputXPrev = 0.0f;
 	private float m_InputY = 0.0f;
@@ -143,8 +143,9 @@ public partial class Player : Character
 			playerPos.y = 1.63f;
 		}
 
-		else
-			gameObject.transform.position = playerPos;
+		gameObject.transform.position = playerPos;
+
+		m_DodgeSpeed = m_Info.m_MoveSpeed * 1.3f;
 	}
 
 	protected override void Start()
@@ -154,8 +155,6 @@ public partial class Player : Character
 		EquipWeapon(Weapon_Type_Player.Pistol);
 
 		AudioManager.PlayBGM(BGM_Type.Main);
-
-		UIManager.FadeOut();
 	}
 
 	protected override void FixedUpdate()

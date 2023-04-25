@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Cam : Global
@@ -13,14 +14,15 @@ public class Cam : Global
 	}
 
 	[SerializeField]
-	private Camera m_Cam = null;
-	[SerializeField]
 	private float m_Speed = 2f;
 	[SerializeField]
 	private DIR m_PlayerOffset = null;
 	[SerializeField]
 	private Transform m_Border = null;
+	[SerializeField]
+	private GameObject m_PlayerUIObj = null;
 
+	private Camera m_Cam = null;
 	private float m_CamZ = 0f;
 	private Vector3 m_Pos = Vector2.zero;
 	private Vector3 m_NextPos = Vector2.zero;
@@ -139,8 +141,7 @@ public class Cam : Global
 
 	private void Awake()
 	{
-		if (m_Cam == null)
-			Debug.LogError("if (m_Cam == null)");
+		m_Cam = Camera.main;
 
 		m_Center.x = Screen.width * 0.5f;
 		m_Center.y = Screen.height * 0.5f;
@@ -155,6 +156,9 @@ public class Cam : Global
 
 		m_BorderRB.x = m_Border.position.x + m_Border.localScale.x * 0.5f;
 		m_BorderRB.y = m_Border.position.y - m_Border.localScale.y * 0.5f;
+
+		if (m_PlayerUIObj == null)
+			Debug.LogError("if (m_PlayerUIObj == null)");
 	}
 
 	protected override void MiddleUpdate()

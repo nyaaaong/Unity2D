@@ -2,13 +2,27 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+public delegate void FadeCompleteFunc();
+
 public class Fade : Global
 {
+	private FadeCompleteFunc m_FadeInFunc = null;
+	private FadeCompleteFunc m_FadeOutFunc = null;
 	private Image m_Image = null;
 	private float m_FadeSpeed = 1f;
 	private float m_Alpha = 0f;
 	private bool m_FadeInComplete = false;
 	private bool m_FadeOutComplete = false;
+
+	public void SetFadeInFunc(FadeCompleteFunc func)
+	{
+		m_FadeInFunc = func;
+	}
+
+	public void SetFadeOutFunc(FadeCompleteFunc func)
+	{
+		m_FadeOutFunc = func;
+	}
 
 	public void FadeIn()
 	{
@@ -33,6 +47,9 @@ public class Fade : Global
 		}
 
 		m_FadeInComplete = true;
+
+		if (m_FadeInFunc != null)
+			m_FadeInFunc();
 	}
 
 	private IEnumerator FadeOutLoop()
@@ -46,6 +63,9 @@ public class Fade : Global
 		}
 
 		m_FadeOutComplete = true;
+
+		if (m_FadeOutFunc != null)
+			m_FadeOutFunc();
 	}
 
 	private void Awake()
@@ -66,8 +86,7 @@ public class Fade : Global
 		{
 			StopAllCoroutines();
 
-			if (m_FadeOutComplete)
-				transform.parent.gameObject.SetActive(false);
+			transform.parent.gameObject.SetActive(false);
 
 			m_FadeInComplete = false;
 			m_FadeOutComplete = false;

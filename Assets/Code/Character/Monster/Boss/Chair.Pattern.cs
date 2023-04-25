@@ -1,8 +1,8 @@
 ﻿public partial class Chair : Monster
 {
-	private void ChangeBulletSpeed(bool IsP3)
+	private void ChangeBulletSpeed()
 	{
-		if (!IsP3)
+		if (!m_P3)
 			m_Bullet.Speed = m_WeapInfo.m_FireSpeed;
 
 		else
@@ -133,8 +133,6 @@
 	{
 		m_PatternProc = true;
 
-		ChangeBulletSpeed(true);
-
 		ChangeAnim("Pattern3_Start");
 
 		m_BossComponent.Pattern3_Start();
@@ -148,6 +146,8 @@
 
 		m_BossComponent.SetEnable(false);
 		ChangeAnim("Pattern3_Progress");
+
+		ChangeBulletSpeed();
 	}
 
 	private void Pattern3Progress()
@@ -201,7 +201,7 @@
 				m_P3EndNeedUpdate = true;
 				m_IsPlayedP3Audio = false;
 
-				ChangeBulletSpeed(false);
+				ChangeBulletSpeed();
 
 				m_BossComponent.SetEnable(true);
 				ChangeAnim("Pattern3_End");

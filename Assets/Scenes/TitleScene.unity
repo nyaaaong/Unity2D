@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 1411720546}
   - component: {fileID: 1411720545}
   - component: {fileID: 1411720551}
+  - component: {fileID: 1411720552}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -842,15 +843,15 @@ MonoBehaviour:
   - m_Name: Rifle
     m_Damage: 5
     m_FireRate: 0.1
-    m_FireSpeed: 7
+    m_FireSpeed: 10
     m_FireRange: 30
     m_FirstDist: 0.9
     m_Pierce: 0
   - m_Name: Sniper
-    m_Damage: 10
+    m_Damage: 20
     m_FireRate: 1.5
     m_FireSpeed: 40
-    m_FireRange: 15
+    m_FireRange: 30
     m_FirstDist: 0.95
     m_Pierce: 1
   m_WeapMonsterInfo:
@@ -879,7 +880,7 @@ MonoBehaviour:
     m_Name: Boss
     m_Damage: 7
     m_FireRate: 0.1
-    m_FireSpeed: 10
+    m_FireSpeed: 7
     m_FireRange: 20
     m_FirstDist: 2
     m_Pierce: 0
@@ -898,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectVolume: 0.1
+  m_ShotgunEffectVolume: 0.5
   m_BGMVolume: 0.05
   m_BGMTitle: {fileID: 8300000, guid: 2fa0c56a78c9f2e49aecff07287d897e, type: 3}
   m_BGMMain: {fileID: 8300000, guid: 882987b7e90be3840b4411706e0da8d2, type: 3}
@@ -1058,6 +1060,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f555c59abe505f4c9ed318d5f44b82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1411720552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411720541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f47790c0664c24c9152ddaab45f608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthBarPrefeb: {fileID: 7205717282860470704, guid: 1575aa5b77055ba4c85e15b1b933e45c, type: 3}
+  m_FadeSpeed: 1
 --- !u!1 &1774383945
 GameObject:
   m_ObjectHideFlags: 0
