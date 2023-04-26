@@ -1,7 +1,23 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public partial class Player : Character
 {
+	private IEnumerator CheckDodgeEnd()
+	{
+		while (true)
+		{
+			yield return null;
+
+			if (m_PrevAnimName[0] == 'I') // Idle의 맨 앞 글자 I
+			{
+				m_DodgeEnd = false;
+
+				yield break;
+			}
+		}
+	}
+
 	private void AnimDirCheck()
 	{
 		if (m_WeapType == Weapon_Type_Player.End)
@@ -102,10 +118,13 @@ public partial class Player : Character
 	{
 		m_Status = Player_Status.Idle;
 
+		m_DodgeEnd = true;
 		m_NoHit = false;
 		m_Move = false;
 		m_KeyLock = false;
 		m_HideWeapon = false;
+
+		StartCoroutine(CheckDodgeEnd());
 	}
 
 	private void AnimCheck()

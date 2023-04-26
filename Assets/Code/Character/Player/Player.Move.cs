@@ -40,7 +40,7 @@ public partial class Player : Character
 	{
 		if (Input.GetMouseButton((int)Mouse_Click.Right))
 		{
-			if (m_KeyLock || !m_Move)
+			if (m_KeyLock || !m_Move || m_DodgeEnd)
 				return;
 
 			m_Status = Player_Status.Dodge;

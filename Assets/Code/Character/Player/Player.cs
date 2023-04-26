@@ -21,6 +21,7 @@ public partial class Player : Character
 	private bool[] m_HasWeapon = null;
 	private bool m_KeyLock = false;
 	private bool m_WeaponChange = false;
+	private bool m_DodgeEnd = false; // 닷지가 끝나기 직전
 	private float m_DodgeSpeed = 5.0f;
 	private float m_InputX = 0.0f;
 	private float m_InputXPrev = 0.0f;
