@@ -46,9 +46,9 @@ public class Item : Global
 		m_DropSecondHeightMax = ItemManager.DropSecondHeight;
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (m_DropAnim)
 		{

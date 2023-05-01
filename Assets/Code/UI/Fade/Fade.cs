@@ -78,9 +78,9 @@ public class Fade : Global
 		m_FadeSpeed = UIManager.FadeSpeed;
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (m_FadeInComplete || m_FadeOutComplete)
 		{

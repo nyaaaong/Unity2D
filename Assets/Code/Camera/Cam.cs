@@ -160,9 +160,9 @@ public class Cam : Global
 			Debug.LogError("if (m_PlayerUIObj == null)");
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		m_Pos = CharacterManager.PlayerPos3D;
 		m_Pos.z = m_CamZ;

@@ -172,9 +172,9 @@ public partial class Player : Character
 		Dodge();
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (!m_Death)
 		{

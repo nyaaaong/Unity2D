@@ -281,9 +281,9 @@ public class Weapon : Global
 			FakeLine();
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		SpreadBulletCheck();
 

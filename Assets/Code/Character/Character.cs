@@ -177,9 +177,9 @@ public class Character : Global
 		m_deltaTime = Time.deltaTime;
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		m_FireTime += m_deltaTime;
 	}

@@ -18,9 +18,9 @@ public class InputManager : Global
 		m_MainCamera = Camera.main;
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		m_MouseWorldPos = Input.mousePosition;
 		m_MouseScreenPos = m_MainCamera.ScreenToWorldPoint(m_MouseWorldPos);

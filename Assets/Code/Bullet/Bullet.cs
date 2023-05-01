@@ -141,9 +141,9 @@ public class Bullet : Global
 			Debug.LogError("if (m_Rig == null)");
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (m_AccRange >= m_Range && !m_Destroy && !m_HitAnim)
 			NoHitAnim();

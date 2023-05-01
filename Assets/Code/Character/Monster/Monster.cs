@@ -393,9 +393,9 @@ public class Monster : Character
 		RangeCheck();
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (m_UpdateDist >= m_TargetDist || m_Update)
 		{

@@ -21,11 +21,6 @@ public class Global : MonoBehaviour
 		m_deltaTime = Time.deltaTime;
 	}
 
-	protected virtual void MiddleUpdate()
-	{
-
-	}
-
 	protected virtual void AfterUpdate()
 	{
 
@@ -39,7 +34,6 @@ public class Global : MonoBehaviour
 	protected virtual void Update()
 	{
 		BeforeUpdate();
-		MiddleUpdate();
 		AfterUpdate();
 	}
 }

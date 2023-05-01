@@ -21,9 +21,9 @@ public class Shadow : Global
 		m_tempColor = m_SR.color;
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (m_Base.DeathAnimProc)
 		{

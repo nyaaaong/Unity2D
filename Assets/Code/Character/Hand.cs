@@ -32,9 +32,9 @@ public class Hand : Global
 			Debug.LogError("m_Base = m_BaseObj.GetComponent<Character>();");
 	}
 
-	protected override void MiddleUpdate()
+	protected override void AfterUpdate()
 	{
-		base.MiddleUpdate();
+		base.AfterUpdate();
 
 		if (m_Owner == Weapon_Owner.Monster && !m_Base.IsUpdate)
 			return;
