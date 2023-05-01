@@ -51,6 +51,8 @@ public class Character : Global
 	protected Vector3 m_TargetDir = Vector3.zero;
 	protected Vector3 m_TargetPos = Vector3.zero;
 	protected bool m_Update = false;
+	protected Vector2 m_Pos = Vector2.zero;
+	protected Vector3 m_Pos3D = Vector3.zero;
 
 	public Color Color { get { return m_SR.color; } }
 	public bool SpreadBullet { get { return m_SpreadBullet; } set { m_SpreadBullet = value; } }
@@ -68,8 +70,8 @@ public class Character : Global
 	public float FireTime { get { return m_FireTime; } set { m_FireTime = value; } }
 	public bool Visible { get { return m_SR.enabled; } }
 	public bool DeathAnimProc { get { return m_DeathAnimProc; } }
-	public Vector2 RigidBodyPos { get { return m_Rig.position; } }
-	public Vector3 RigidBodyPos3D { get { return m_Rig.position; } }
+	public Vector2 RigidBodyPos { get { return m_Pos; } }
+	public Vector3 RigidBodyPos3D { get { return m_Pos3D; } }
 	public bool IsMove { get { return m_Move; } }
 	public float WeapRange { set { m_WeapRange = value; } }
 	public bool IsWall { get { return m_IsWall; } set { m_IsWall = value; } }
@@ -175,6 +177,14 @@ public class Character : Global
 		m_Audio.volume = AudioManager.EffectVolume;
 
 		m_deltaTime = Time.deltaTime;
+	}
+
+	protected override void FixedUpdate()
+	{
+		base.FixedUpdate();
+
+		m_Pos = m_Rig.position;
+		m_Pos3D = m_Pos;
 	}
 
 	protected override void AfterUpdate()

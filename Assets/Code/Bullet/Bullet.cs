@@ -159,6 +159,8 @@ public class Bullet : Global
 
 	protected override void FixedUpdate()
 	{
+		base.FixedUpdate();
+
 		if (!m_Destroy && !m_HitAnim)
 			m_Rig.velocity = m_Dir * m_Speed;
 	}
