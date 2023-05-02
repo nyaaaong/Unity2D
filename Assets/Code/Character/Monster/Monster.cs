@@ -390,22 +390,25 @@ public class Monster : Character
 
 		CharacterManager.E2PData(this);
 
-		RangeCheck();
-	}
-
-	protected override void AfterUpdate()
-	{
-		base.AfterUpdate();
-
 		if (m_UpdateDist >= m_TargetDist || m_Update)
 		{
+			RangeCheck();
+
 			if (!m_Update)
 			{
 				TargetFound();
 
 				m_Update = true;
 			}
+		}
+	}
 
+	protected override void AfterUpdate()
+	{
+		base.AfterUpdate();
+
+		if (m_Update)
+		{
 			if (!m_Boss)
 			{
 				if (!m_Death)
