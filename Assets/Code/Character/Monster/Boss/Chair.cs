@@ -100,8 +100,8 @@ public partial class Chair	:	Monster
 
 	private void CalcBodyPos()
 	{
-		m_Body.m_LeftTop = new Vector2(m_Rig.position.x - m_Body.m_BodyHalfSize.x, m_Rig.position.y + m_Body.m_BodyHalfSize.y);
-		m_Body.m_RightBottom = new Vector2(m_Rig.position.x + m_Body.m_BodyHalfSize.x, m_Rig.position.y - m_Body.m_BodyHalfSize.y);
+		m_Body.m_LeftTop = new Vector2(m_Pos.x - m_Body.m_BodyHalfSize.x, m_Pos.y + m_Body.m_BodyHalfSize.y);
+		m_Body.m_RightBottom = new Vector2(m_Pos.x + m_Body.m_BodyHalfSize.x, m_Pos.y - m_Body.m_BodyHalfSize.y);
 	}
 
 	private void ExplosionRandom()

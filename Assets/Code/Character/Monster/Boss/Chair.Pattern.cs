@@ -38,7 +38,7 @@
 		}
 
 		else
-			m_BulletPos = m_Rig.position;
+			m_BulletPos = m_Pos;
 
 		m_BulletPos.z = -5.0f;
 
