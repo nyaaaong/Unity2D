@@ -22,7 +22,7 @@ public class InputManager : Global
 	{
 		base.AfterUpdate();
 
-		m_MouseWorldPos = Input.mousePosition;
-		m_MouseScreenPos = m_MainCamera.ScreenToWorldPoint(m_MouseWorldPos);
+		m_MouseScreenPos = Input.mousePosition;
+		m_MouseWorldPos = m_MainCamera.ScreenToWorldPoint(m_MouseScreenPos);
 	}
 }

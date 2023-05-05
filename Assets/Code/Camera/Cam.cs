@@ -43,7 +43,7 @@ public class Cam : Global
 	private Vector2 m_BorderRB = Vector2.zero;
 	private float m_BorderDist = 0f;
 
-	private Vector2 m_MouseWorldPos = Vector2.zero;
+	private Vector2 m_MouseScreenPos = Vector2.zero;
 
 	private void Calc()
 	{
@@ -127,10 +127,10 @@ public class Cam : Global
 
 	private void FollowMouse()
 	{
-		m_MouseWorldPos = InputManager.MouseWorldPos;
+		m_MouseScreenPos = InputManager.MouseScreenPos;
 
-		m_Dist.x = m_MouseWorldPos.x - m_Center.x;
-		m_Dist.y = m_MouseWorldPos.y - m_Center.y;
+		m_Dist.x = m_MouseScreenPos.x - m_Center.x;
+		m_Dist.y = m_MouseScreenPos.y - m_Center.y;
 
 		m_Dir.x = m_Dist.x / m_Center.x;
 		m_Dir.y = m_Dist.y / m_Center.y;

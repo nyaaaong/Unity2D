@@ -99,7 +99,7 @@ public partial class Player : Character
 
 	private void Calc()
 	{
-		m_P2MDist = InputManager.MouseScreenPos - m_Pos;
+		m_P2MDist = InputManager.MouseWorldPos - m_Pos;
 		m_TargetDir = m_P2MDist.normalized;
 		m_TargetAngle = Mathf.Atan2(m_P2MDist.y, m_P2MDist.x) * Mathf.Rad2Deg;
 	}
