@@ -56,8 +56,25 @@ public class UIManager : Global
 		m_Inst.m_Fade.FadeOut();
 	}
 
+	private static void CheckNull()
+	{
+		if (m_Inst.m_HealthBarObj == null)
+		{
+			m_Inst.m_HealthBarObj = GameObject.FindGameObjectWithTag("BossHealthBar");
+
+			if (m_Inst.m_HealthBarObj == null)
+				m_Inst.HealthBarInit();
+		}
+
+		if (m_Inst.m_FadeObj == null)
+			m_Inst.FadeInit();
+	}
+
 	public static void EnableHealthBar(bool isEnable)
 	{
+		// 가끔 터지는 버그 체크하기 위함
+		CheckNull();
+
 		if (isEnable)
 			m_Inst.m_HealthBarObj.SetActive(true);
 
