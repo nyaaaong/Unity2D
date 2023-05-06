@@ -55,10 +55,6 @@ public class Cam : Global
 		m_PlayerRB.x = m_Pos.x + m_PlayerOffset.RIGHT;
 		m_PlayerRB.y = m_Pos.y - m_PlayerOffset.DOWN;
 
-		//
-		m_hRS.x = m_Cam.aspect * m_Cam.orthographicSize;
-		m_hRS.y = m_Cam.orthographicSize;
-
 		m_ScreenLT = m_Res + new Vector3(-m_hRS.x, m_hRS.y, 0);
 		m_ScreenRB = m_Res + new Vector3(m_hRS.x, -m_hRS.y, 0);
 	}
@@ -144,6 +140,9 @@ public class Cam : Global
 		m_Center.x = Screen.width * 0.5f;
 		m_Center.y = Screen.height * 0.5f;
 
+		m_hRS.x = m_Cam.aspect * m_Cam.orthographicSize;
+		m_hRS.y = m_Cam.orthographicSize;
+
 		m_CamZ = gameObject.transform.position.z;
 
 		if (m_Border == null)
@@ -166,8 +165,8 @@ public class Cam : Global
 		m_Pos = CharacterManager.PlayerPos3D;
 		m_Pos.z = m_CamZ;
 
-		Calc();
 		FollowMouse();
+		Calc();
 		BorderCheck();
 	}
 }

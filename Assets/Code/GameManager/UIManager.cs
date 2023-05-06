@@ -58,6 +58,9 @@ public class UIManager : Global
 
 	public static void EnableHealthBar(bool isEnable)
 	{
+		if (m_Inst.m_HealthBarObj == null)
+			Debug.LogError("if (m_Inst.m_HealthBarObj == null)");
+
 		if (isEnable)
 			m_Inst.m_HealthBarObj.SetActive(true);
 
