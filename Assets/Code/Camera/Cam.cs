@@ -132,8 +132,7 @@ public class Cam : Global
 		m_Dist.x = m_MouseScreenPos.x - m_Center.x;
 		m_Dist.y = m_MouseScreenPos.y - m_Center.y;
 
-		m_Dir.x = m_Dist.x / m_Center.x;
-		m_Dir.y = m_Dist.y / m_Center.y;
+		m_Dir = m_Dist.normalized;
 
 		m_NextPos = m_Pos + new Vector3(m_Dir.x, m_Dir.y, 0f) * m_Speed;
 	}
