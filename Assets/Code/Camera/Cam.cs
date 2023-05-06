@@ -159,9 +159,9 @@ public class Cam : Global
 			Debug.LogError("if (m_PlayerUIObj == null)");
 	}
 
-	protected override void AfterUpdate()
+	protected override void LateUpdate()
 	{
-		base.AfterUpdate();
+		base.LateUpdate();
 
 		m_Pos = CharacterManager.PlayerPos3D;
 		m_Pos.z = m_CamZ;
