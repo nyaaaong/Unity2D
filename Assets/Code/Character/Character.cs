@@ -164,6 +164,9 @@ public class Character : Global
 		if (m_Rig == null)
 			Debug.LogError("if (m_rigid	== null)");
 
+		m_Pos = m_Rig.position;
+		m_Pos3D = m_Pos;
+
 		m_Collider = GetComponents<BoxCollider2D>();
 		m_ColliderCount = m_Collider.Length;
 
