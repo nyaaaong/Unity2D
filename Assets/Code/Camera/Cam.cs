@@ -166,8 +166,8 @@ public class Cam : Global
 		m_Pos = CharacterManager.PlayerPos3D;
 		m_Pos.z = m_CamZ;
 
-		Calc();
 		FollowMouse();
+		Calc();
 		BorderCheck();
 	}
 }
