@@ -49,18 +49,18 @@ public class Cam : Global
 	{
 		m_Res = Vector3.Lerp(transform.position, m_NextPos, Time.deltaTime);
 
-		m_PlayerLT.x = m_Pos.x - m_PlayerOffset.LEFT;
-		m_PlayerLT.y = m_Pos.y + m_PlayerOffset.UP;
-
-		m_PlayerRB.x = m_Pos.x + m_PlayerOffset.RIGHT;
-		m_PlayerRB.y = m_Pos.y - m_PlayerOffset.DOWN;
-
 		m_ScreenLT = m_Res + new Vector3(-m_hRS.x, m_hRS.y, 0);
 		m_ScreenRB = m_Res + new Vector3(m_hRS.x, -m_hRS.y, 0);
 	}
 
 	private void PlayerCheck()
 	{
+		m_PlayerLT.x = m_Pos.x - m_PlayerOffset.LEFT;
+		m_PlayerLT.y = m_Pos.y + m_PlayerOffset.UP;
+
+		m_PlayerRB.x = m_Pos.x + m_PlayerOffset.RIGHT;
+		m_PlayerRB.y = m_Pos.y - m_PlayerOffset.DOWN;
+
 		if (m_ScreenLT.x > m_PlayerLT.x)
 		{
 			m_P2SDist = m_PlayerLT.x - m_ScreenLT.x;
