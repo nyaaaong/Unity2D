@@ -37,6 +37,8 @@ public class Cam : Global
 	private Vector2 m_hRS = Vector2.zero;   // Half Resolution
 	private Vector2 m_ScreenLT = Vector2.zero;
 	private Vector2 m_ScreenRB = Vector2.zero;
+	private Vector2 m_ScreenLTNext = Vector2.zero;
+	private Vector2 m_ScreenRBNext = Vector2.zero;
 	private Vector2 m_Center = Vector2.zero;
 
 	private Vector2 m_BorderLT = Vector2.zero;
@@ -45,12 +47,9 @@ public class Cam : Global
 
 	private Vector2 m_MouseScreenPos = Vector2.zero;
 
-	private void Calc()
+	private void Lerp()
 	{
 		m_Res = Vector3.Lerp(transform.position, m_NextPos, Time.deltaTime);
-
-		m_ScreenLT = m_Res + new Vector3(-m_hRS.x, m_hRS.y, 0);
-		m_ScreenRB = m_Res + new Vector3(m_hRS.x, -m_hRS.y, 0);
 	}
 
 	private void PlayerCheck()
@@ -61,54 +60,60 @@ public class Cam : Global
 		m_PlayerRB.x = m_Pos.x + m_PlayerOffset.RIGHT;
 		m_PlayerRB.y = m_Pos.y - m_PlayerOffset.DOWN;
 
-		if (m_ScreenLT.x > m_PlayerLT.x)
+		m_ScreenLTNext.x = m_Res.x + m_ScreenLT.x;
+		m_ScreenLTNext.y = m_Res.y + m_ScreenLT.y;
+
+		m_ScreenRBNext.x = m_Res.x + m_ScreenRB.x;
+		m_ScreenRBNext.y = m_Res.y + m_ScreenRB.y;
+
+		if (m_ScreenLTNext.x > m_PlayerLT.x)
 		{
-			m_P2SDist = m_PlayerLT.x - m_ScreenLT.x;
+			m_P2SDist = m_PlayerLT.x - m_ScreenLTNext.x;
 			m_Res.x += m_P2SDist;
 		}
 
-		else if (m_ScreenRB.x < m_PlayerRB.x)
+		else if (m_ScreenRBNext.x < m_PlayerRB.x)
 		{
-			m_P2SDist = m_PlayerRB.x - m_ScreenRB.x;
+			m_P2SDist = m_PlayerRB.x - m_ScreenRBNext.x;
 			m_Res.x += m_P2SDist;
 		}
 
-		if (m_ScreenLT.y < m_PlayerLT.y)
+		if (m_ScreenLTNext.y < m_PlayerLT.y)
 		{
-			m_P2SDist = m_PlayerLT.y - m_ScreenLT.y;
+			m_P2SDist = m_PlayerLT.y - m_ScreenLTNext.y;
 			m_Res.y += m_P2SDist;
 		}
 
-		else if (m_ScreenRB.y > m_PlayerRB.y)
+		else if (m_ScreenRBNext.y > m_PlayerRB.y)
 		{
-			m_P2SDist = m_PlayerRB.y - m_ScreenRB.y;
+			m_P2SDist = m_PlayerRB.y - m_ScreenRBNext.y;
 			m_Res.y += m_P2SDist;
 		}
 	}
 
 	private void BoundaryCheck()
 	{
-		if (m_BorderLT.x > m_ScreenLT.x)
+		if (m_BorderLT.x > m_ScreenLTNext.x)
 		{
-			m_BorderDist = m_BorderLT.x - m_ScreenLT.x;
+			m_BorderDist = m_BorderLT.x - m_ScreenLTNext.x;
 			m_Res.x += m_BorderDist;
 		}
 
-		else if (m_BorderRB.x < m_ScreenRB.x)
+		else if (m_BorderRB.x < m_ScreenRBNext.x)
 		{
-			m_BorderDist = m_BorderRB.x - m_ScreenRB.x;
+			m_BorderDist = m_BorderRB.x - m_ScreenRBNext.x;
 			m_Res.x += m_BorderDist;
 		}
 
-		if (m_BorderLT.y < m_ScreenLT.y)
+		if (m_BorderLT.y < m_ScreenLTNext.y)
 		{
-			m_BorderDist = m_BorderLT.y - m_ScreenLT.y;
+			m_BorderDist = m_BorderLT.y - m_ScreenLTNext.y;
 			m_Res.y += m_BorderDist;
 		}
 
-		else if (m_BorderRB.y > m_ScreenRB.y)
+		else if (m_BorderRB.y > m_ScreenRBNext.y)
 		{
-			m_BorderDist = m_BorderRB.y - m_ScreenRB.y;
+			m_BorderDist = m_BorderRB.y - m_ScreenRBNext.y;
 			m_Res.y += m_BorderDist;
 		}
 	}
@@ -148,11 +153,17 @@ public class Cam : Global
 		if (m_Border == null)
 			Debug.LogError("if (m_Border == null)");
 
-		m_BorderLT.x = m_Border.position.x - m_Border.localScale.x * 0.5f;
-		m_BorderLT.y = m_Border.position.y + m_Border.localScale.y * 0.5f;
+		Vector3 BorderPos = m_Border.position;
+		Vector3 BorderHScale = m_Border.localScale * 0.5f;
 
-		m_BorderRB.x = m_Border.position.x + m_Border.localScale.x * 0.5f;
-		m_BorderRB.y = m_Border.position.y - m_Border.localScale.y * 0.5f;
+		m_BorderLT.x = BorderPos.x - BorderHScale.x;
+		m_BorderLT.y = BorderPos.y + BorderHScale.y;
+
+		m_BorderRB.x = BorderPos.x + BorderHScale.x;
+		m_BorderRB.y = BorderPos.y - BorderHScale.y;
+
+		m_ScreenLT = new Vector3(-m_hRS.x, m_hRS.y, 0);
+		m_ScreenRB = new Vector3(m_hRS.x, -m_hRS.y, 0);
 
 		if (m_PlayerUIObj == null)
 			Debug.LogError("if (m_PlayerUIObj == null)");
@@ -166,7 +177,7 @@ public class Cam : Global
 		m_Pos.z = m_CamZ;
 
 		FollowMouse();
-		Calc();
+		Lerp();
 		BorderCheck();
 	}
 }
