@@ -76,10 +76,10 @@
 
 			BulletSetting(true);
 
-			// 총알 사이의 간격
+			// 총알과 총알 사이의 각도 간격
 			m_P1AngleSteps = m_P1BulletAngle / (m_P1Bullets - 1);
 
-			// 총알이 퍼지는 각도
+			// 총알의 각도
 			float bulletAngle = m_P1BulletAngle * -0.5f;
 
 			for (int i = 0; i < m_P1Bullets; ++i)
