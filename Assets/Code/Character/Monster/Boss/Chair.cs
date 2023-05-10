@@ -48,7 +48,7 @@ public partial class Chair	:	Monster
 
 	private bool m_P2 = false;
 	private const int m_P2Bullets = 32; // 패턴2의 총알 수
-	private const float m_P2AngleSteps = 360f / m_P2Bullets; // 패턴2의 각 총알 각도
+	private const float m_P2AngleSteps = 360f / m_P2Bullets; // 패턴2의 총알과 총알 사이의 작은 부채꼴 각도
 
 	private bool m_P3 = false;
 	private bool m_P3EndNeedUpdate = false;
