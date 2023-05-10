@@ -107,13 +107,15 @@ public partial class Chair	:	Monster
 	private void ExplosionRandom()
 	{
 		Vector3 ExpPos = new Vector2();
+		Vector2 LT = m_Body.m_LeftTop;
+		Vector2 RB = m_Body.m_RightBottom;
 
 		int Count = Random.Range(1, 3);
 
 		for (int i = 0; i < Count; ++i)
 		{
-			ExpPos.x = Random.Range(m_Body.m_LeftTop.x, m_Body.m_RightBottom.x);
-			ExpPos.y = Random.Range(m_Body.m_LeftTop.y, m_Body.m_RightBottom.y);
+			ExpPos.x = Random.Range(LT.x, RB.x);
+			ExpPos.y = Random.Range(LT.y, RB.y);
 
 			GameObject newExplosion = Instantiate(m_Explosion);
 			newExplosion.transform.position = ExpPos;
