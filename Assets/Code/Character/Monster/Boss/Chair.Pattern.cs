@@ -1,4 +1,6 @@
-﻿public partial class Chair : Monster
+﻿using UnityEngine;
+
+public partial class Chair : Monster
 {
 	private void ChangeBulletSpeed()
 	{
@@ -76,7 +78,7 @@
 
 			BulletSetting(true);
 
-			// 총알과 총알 사이의 각도 간격
+			// 총알과 총알 사이의 작은 부채꼴 각도
 			m_P1AngleSteps = m_P1BulletAngle / (m_P1Bullets - 1);
 
 			// 총알의 각도
