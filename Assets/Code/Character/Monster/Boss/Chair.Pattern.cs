@@ -82,7 +82,7 @@ public partial class Chair : Monster
 			m_P1AngleSteps = m_P1BulletAngle / (m_P1Bullets - 1);
 
 			// 총알의 각도
-			float bulletAngle = m_P1BulletAngle * 0.5f;
+			float bulletAngle = m_P1BulletAngle * -0.5f;
 
 			for (int i = 0; i < m_P1Bullets; ++i)
 			{
