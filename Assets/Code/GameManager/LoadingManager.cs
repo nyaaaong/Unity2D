@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadingScene : Global
+public class LoadingManager : Global
 {
 	[SerializeField]
 	private float m_DelayTime = 1f;
@@ -19,7 +19,7 @@ public class LoadingScene : Global
 		AudioManager.StopBGM();
 	}
 
-	IEnumerator Loading()
+	private IEnumerator Loading()
 	{
 		m_OP = SceneManager.LoadSceneAsync(m_NextScene);
 
@@ -30,8 +30,7 @@ public class LoadingScene : Global
 		{
 			yield return null;
 
-			// unscaledDeltaTime는 timeScale에 영향받지 않는 deltaTime을 의미한다
-			m_Time += Time.unscaledDeltaTime;
+			m_Time += Time.deltaTime;
 
 			if (m_Time >= m_DelayTime)
 			{
