@@ -49,7 +49,7 @@ public class Cam : Global
 
 	private void Lerp()
 	{
-		m_Res = Vector3.Lerp(transform.position, m_NextPos, Time.deltaTime);
+		m_Res = Vector3.Lerp(transform.position, m_NextPos, m_Speed * Time.deltaTime);
 	}
 
 	private void PlayerCheck()
@@ -135,7 +135,7 @@ public class Cam : Global
 
 		m_Dir = m_Dist.normalized;
 
-		m_NextPos = m_Pos + new Vector3(m_Dir.x, m_Dir.y, 0f) * m_Speed;
+		m_NextPos = m_Pos + new Vector3(m_Dir.x, m_Dir.y, 0f);
 	}
 
 	private void Awake()
