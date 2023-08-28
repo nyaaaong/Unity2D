@@ -78,15 +78,15 @@ public partial class Chair : Monster
 
 			BulletSetting(true);
 
-			// 총알과 총알 사이의 작은 부채꼴 각도
+			// 총알과 총알 사이의 간격 개수
 			m_P1AngleSteps = m_P1BulletAngle / (m_P1Bullets - 1);
 
-			// 총알의 각도
-			float bulletAngle = m_P1BulletAngle * -0.5f;
+			// 총알의 처음 각도
+			float bulletStartAngle = m_P1BulletAngle * -0.5f;
 
 			for (int i = 0; i < m_P1Bullets; ++i)
 			{
-				m_Angle = bulletAngle + i * m_P1AngleSteps;
+				m_Angle = bulletStartAngle + i * m_P1AngleSteps;
 
 				FireBullet(m_Angle);
 			}
